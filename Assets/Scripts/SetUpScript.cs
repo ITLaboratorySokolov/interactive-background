@@ -9,7 +9,6 @@ public class SetUpScript : MonoBehaviour
     public string pathToConfig = "D:/moje/school/05/PRJ/Projects/Realsense projection/Assets/config.txt";
     float minDepth = 0;
     float maxDepth = 0.69f;
-    int port = 0;
 
     [Header("Server")]
     public ServerConnection conn;
@@ -38,16 +37,12 @@ public class SetUpScript : MonoBehaviour
             }
             if (lines.Length >= 3)
             {
-                int locPort = 0;
-                if (int.TryParse(lines[2].Trim(), out locPort))
-                    port = locPort;
+                conn.url = lines[2].Trim();
             }
         }
 
         imgProc.min = minDepth;
         imgProc.max = maxDepth;
-
-        conn.port = port;
     }
 
 
