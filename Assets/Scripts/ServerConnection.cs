@@ -7,7 +7,7 @@ using ZCU.TechnologyLab.Common.Models;
 
 public class ServerConnection : MonoBehaviour
 {
-    internal string url = "https://localhost:49159/virtualWorldHub";
+    internal string url = "https://localhost:49155/virtualWorldHub";
 
     System.DateTime now;
     System.DateTime last;
@@ -71,11 +71,14 @@ public class ServerConnection : MonoBehaviour
     IEnumerator RecordFrame()
     {
         yield return new WaitForEndOfFrame();
-        var t = ScreenCapture.CaptureScreenshotAsTexture();
-        t = ScaleTexture(t, 30, 15);
-        var b = t.EncodeToPNG();
-        Debug.Log(b.Length);
+        Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture();
+        scaled = ScaleTexture(scaled, 30, 15);
 
+        Texture2D t = new Texture2D(30, 15);
+        Debug.Log("length of new " + t.GetRawTextureData().Length);
+        t.SetPixels(scaled.GetPixels());
+
+        var b = t.EncodeToPNG();
         File.WriteAllBytes("D:/moje/school/05/PRJ/Projects/ScreenshotTest.png", b);
         Debug.Log("Saved to image");
 
@@ -89,8 +92,11 @@ public class ServerConnection : MonoBehaviour
         // data
         string pixelStr = "";
         byte[] data = t.GetRawTextureData();
-        Debug.Log(data.Length);
-        pixelStr = System.Text.Encoding.ASCII.GetString(data);
+        Debug.Log("length of raw data " + data.Length);
+        pixelStr += System.Text.Encoding.Unicode.GetString(data);
+
+        File.WriteAllBytes("D:/moje/school/05/PRJ/Projects/outgoing.txt", data);
+        File.WriteAllText("D:/moje/school/05/PRJ/Projects/outgoing_str.txt", pixelStr);
 
         /*
         Color[] pixels = t.GetPixels();
