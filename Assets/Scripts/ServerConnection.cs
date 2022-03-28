@@ -3,10 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using ZCU.TechnologyLab.Common.Models;
+using UnityEngine.Events;
+using ZCU.TechnologyLab.Common.Serialization;
+using ZCU.TechnologyLab.Common.Unity.VirtualWorld;
+using ZCU.TechnologyLab.Common.Unity.VirtualWorld.WorldObjects;
 
 public class ServerConnection : MonoBehaviour
 {
+    /// <summary>
+    /// Server virtual world.
+    /// </summary>
+    [SerializeField]
+    public VirtualServerWorld serverSpace;
+
     internal string url = "https://localhost:49155/virtualWorldHub";
 
     System.DateTime now;
@@ -17,44 +26,32 @@ public class ServerConnection : MonoBehaviour
 
     double timeToSnapshot;
 
+    GameObject carrier;
+    BitmapWorldObject wo;
 
     /// <summary> Hub connection </summary>
-    private HubConnection hubConnection;
+    // private HubConnection hubConnection;
+    // private VirtualWorldServerConnection vwsc;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private UnityEvent actionStart = new UnityEvent();
+    [SerializeField]
+    private UnityEvent actionEnd = new UnityEvent();
+
+
+    /// <summary>
+    /// Invokes action on start.
+    /// </summary>
+    private void Start()
     {
-        Debug.Log(url);
-        // try to connect to server
-        this.hubConnection = new HubConnectionBuilder().WithUrl(url).Build();
-        TryToConnect();
-        List<WorldObject> l = new List<WorldObject>();
-        this.hubConnection.On<List<WorldObject>>("GetAllWorldObjects", (list) => { Debug.Log("recieved " + list.Count + " world objects"); });
-        hubConnection.On<WorldObject>("UpdateWorldObject", (obj) => { Debug.Log(obj.Name); });
-    }
-
-    // TODO how do i kill you on app end
-    private async void TryToConnect()
-    {
-        if (this.connected || hubConnection.State != HubConnectionState.Disconnected) return;
-
-        connected = false;
-        try
-        {
-            await this.hubConnection.StartAsync();
-            connected = true;
-        }
-        catch (System.Exception e)
-        {
-            connected = false;
-            timeToRetry = 2;
-            Debug.LogError("Cannot connect to a server: " + e.Message);
-        }
-
+        actionStart.Invoke();
     }
 
     private Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
     {
+        return source;
+
+        /*
         Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, false);
         Color[] pixels = result.GetPixels();
         for (int i = 0; i < pixels.Length; i++)
@@ -65,16 +62,21 @@ public class ServerConnection : MonoBehaviour
         result.SetPixels(pixels);
         result.Apply();
         return result;
-
+        */
     }
 
     IEnumerator RecordFrame()
     {
         yield return new WaitForEndOfFrame();
-        Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture();
-        scaled = ScaleTexture(scaled, 30, 15);
 
-        Texture2D t = new Texture2D(30, 15);
+        carrier = new GameObject();
+        carrier.AddComponent<BitmapWorldObject>();
+        wo = carrier.GetComponent<BitmapWorldObject>();
+
+        Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture();
+        scaled = ScaleTexture(scaled, 80,40); // 30, 15);
+
+        Texture2D t = new Texture2D(80,40);//30, 15);
         Debug.Log("length of new " + t.GetRawTextureData().Length);
         t.SetPixels(scaled.GetPixels());
 
@@ -82,56 +84,61 @@ public class ServerConnection : MonoBehaviour
         File.WriteAllBytes("D:/moje/school/05/PRJ/Projects/ScreenshotTest.png", b);
         Debug.Log("Saved to image");
 
-        WorldObject worldImage = new WorldObject();
-        worldImage.Name = "RealsenseProjection";
-        worldImage.Position = new RemoteVector();
-        worldImage.Rotation = new RemoteVector();
-        worldImage.Type = "Bitmap";
-        worldImage.Properties = new System.Collections.Generic.Dictionary<string, string>();
+        // WorldObjectDto worldImage = new WorldObjectDto();
+        // worldImage.Position = new RemoteVectorDto();
+        // worldImage.Rotation = new RemoteVectorDto();
+        // worldImage.Type = "Bitmap";
+        // worldImage.Properties = new System.Collections.Generic.Dictionary<string, string>();
+
+        wo.name = "RealsenseProjection";
 
         // data
-        string pixelStr = "";
         byte[] data = t.GetRawTextureData();
+        Dictionary<string, string> properties;
+        BitmapWorldObjectSerializer serializer = new BitmapWorldObjectSerializer();
+        properties = serializer.SerializeProperties(t.width, t.height, "RGBA", data);
+        int width = serializer.DeserializeWidth(properties);
+
+        /*
+        string pixelStr = "";
         Debug.Log("length of raw data " + data.Length);
         pixelStr += System.Text.Encoding.Unicode.GetString(data);
 
         File.WriteAllBytes("D:/moje/school/05/PRJ/Projects/outgoing.txt", data);
         File.WriteAllText("D:/moje/school/05/PRJ/Projects/outgoing_str.txt", pixelStr);
 
-        /*
-        Color[] pixels = t.GetPixels();
-        Debug.Log(pixels.Length);
-        AddToString(pixels[0].r, pixelStr);
-
-        // TODO do this in another thread? how long it takes -> measure time
-        for (int i = 0; i < pixels.Length; i++)
-        {
-            // yield return new WaitForEndOfFrame();
-            pixelStr = AddToString(pixels[i].r, pixelStr);
-            pixelStr = AddToString(pixels[i].g, pixelStr);
-            pixelStr = AddToString(pixels[i].b, pixelStr);
-            pixelStr = AddToString(pixels[i].a, pixelStr);
-        }
+        Dictionary<string, string> properties = new Dictionary<string, string>();
+        properties.Add("Height", $"{t.height}");
+        properties.Add("Width", $"{t.width}");
+        properties.Add("Format", "RGBA");
+        properties.Add("Pixels", pixelStr);
+        Debug.Log("Converted to string");
         */
 
-        worldImage.Properties.Add("Format", "RGBA");
-        worldImage.Properties.Add("Widht", $"{t.width}");
-        worldImage.Properties.Add("Height", $"{t.height}");
-        worldImage.Properties.Add("Pixels", pixelStr);
-        Debug.Log("Converted to string");
+        wo.SetProperties(properties);
 
-        Debug.Log(worldImage.Properties["Pixels"].Length);
-        Debug.Log(" \" " +worldImage.Properties["Pixels"] + "\"");
+        Debug.Log(properties["Pixels"].Length);
+        Debug.Log(" \" " + properties["Pixels"] + "\"");
 
-        // TODO - musim update když už tam je? jak poznam že se fakt přidal a tak?
-        SendToServer(worldImage);
+        // TODO - musim update když už tam je, jak poznam že se fakt přidal a tak
+        try
+        {
+            SendToServer(carrier);
+        } catch (System.Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
 
         Object.Destroy(t);
     }
 
-    private async void SendToServer(WorldObject worldImage)
+    private async void SendToServer(GameObject worldImage)
     {
+        await serverSpace.AddObjectAsync(worldImage);
+
+        /*
         Debug.Log(hubConnection.State);
+
 
         try
         {
@@ -144,15 +151,9 @@ public class ServerConnection : MonoBehaviour
         }
 
         Debug.Log("Sent to server");
-
+        */
     }
 
-    private string AddToString(float f, string str)
-    {
-        byte[] byteArr = System.BitConverter.GetBytes(f);
-        str += System.BitConverter.ToString(byteArr);
-        return str;
-    }
 
     public void LateUpdate()
     {
@@ -179,6 +180,8 @@ public class ServerConnection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        /*
         // if not connected try to connect every 2s   
         if (!connected)
         {
@@ -189,6 +192,7 @@ public class ServerConnection : MonoBehaviour
                 TryToConnect();
             }
         }
+        */
 
         timeToSnapshot -= Time.deltaTime;
     }
@@ -196,6 +200,6 @@ public class ServerConnection : MonoBehaviour
 
     public void OnDestroy()
     {
-         hubConnection.DisposeAsync();
+        actionEnd.Invoke();
     }
 }
