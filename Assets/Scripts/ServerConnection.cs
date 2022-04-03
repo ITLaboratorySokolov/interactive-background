@@ -25,9 +25,9 @@ public class ServerConnection : MonoBehaviour
     double timeToRetry;
 
     double timeToSnapshot;
-
-    GameObject carrier;
-    BitmapWorldObject wo;
+    
+    public BitmapWorldObject wo;
+    public GameObject carrier;
 
     /// <summary> Hub connection </summary>
     // private HubConnection hubConnection;
@@ -69,14 +69,14 @@ public class ServerConnection : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        carrier = new GameObject();
-        carrier.AddComponent<BitmapWorldObject>();
-        wo = carrier.GetComponent<BitmapWorldObject>();
+        // carrier = new GameObject();
+        // carrier.AddComponent<BitmapWorldObject>();
+        // wo = carrier.GetComponent<BitmapWorldObject>();
 
         Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture();
-        scaled = ScaleTexture(scaled, 80,40); // 30, 15);
+        scaled = ScaleTexture(scaled, 80, 40); // 30, 15);
 
-        Texture2D t = new Texture2D(80,40);//30, 15);
+        Texture2D t = new Texture2D(80, 40);//30, 15);
         Debug.Log("length of new " + t.GetRawTextureData().Length);
         t.SetPixels(scaled.GetPixels());
 
@@ -92,12 +92,19 @@ public class ServerConnection : MonoBehaviour
 
         wo.name = "RealsenseProjection";
 
+        int w = wo.bitmapSerializer.DeserializeWidth($"{t.width}");
+        Debug.Log(w);
+
         // data
         byte[] data = t.GetRawTextureData();
-        Dictionary<string, string> properties;
-        BitmapWorldObjectSerializer serializer = new BitmapWorldObjectSerializer();
-        properties = serializer.SerializeProperties(t.width, t.height, "RGBA", data);
-        int width = serializer.DeserializeWidth(properties);
+        // Dictionary<string, string> properties;
+        // properties = serializer.SerializeProperties(t.width, t.height, "RGBA", data);
+        wo.SetProperty(BitmapWorldObjectSerializer.WidthKey, $"{t.width}");
+        wo.SetProperty(BitmapWorldObjectSerializer.HeightKey, $"{t.height}");
+        wo.SetProperty(BitmapWorldObjectSerializer.FormatKey, "RGBA");
+        wo.SetProperty(BitmapWorldObjectSerializer.PixelsKey, $"{data}");
+
+
 
         /*
         string pixelStr = "";
@@ -115,10 +122,11 @@ public class ServerConnection : MonoBehaviour
         Debug.Log("Converted to string");
         */
 
-        wo.SetProperties(properties);
+        // int w = serializer.DeserializeWidth(properties);
+        // wo.SetProperties(properties);
 
-        Debug.Log(properties["Pixels"].Length);
-        Debug.Log(" \" " + properties["Pixels"] + "\"");
+        // Debug.Log(properties["Pixels"].Length);
+        // Debug.Log(" \" " + properties["Pixels"] + "\"");
 
         // TODO - musim update když už tam je, jak poznam že se fakt přidal a tak
         try

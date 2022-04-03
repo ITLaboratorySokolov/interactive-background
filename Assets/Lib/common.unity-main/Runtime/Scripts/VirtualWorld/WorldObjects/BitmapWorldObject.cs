@@ -45,7 +45,7 @@ namespace ZCU.TechnologyLab.Common.Unity.VirtualWorld.WorldObjects
         /// <summary>
         /// Bitmap serializer.
         /// </summary>
-        private BitmapWorldObjectSerializer bitmapSerializer;
+        public BitmapWorldObjectSerializer bitmapSerializer;
 
         /// <inheritdoc/>
         public string Type => TypeDescription;
@@ -93,8 +93,6 @@ namespace ZCU.TechnologyLab.Common.Unity.VirtualWorld.WorldObjects
         /// <inheritdoc/>
         public void SetProperties(Dictionary<string, string> properties)
         {
-            Debug.Log("pomoc");
-
             this.texture.width = this.bitmapSerializer.DeserializeWidth(properties);
             this.texture.height = this.bitmapSerializer.DeserializeHeight(properties);
 
