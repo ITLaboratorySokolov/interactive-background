@@ -12,11 +12,6 @@ public class DepthProcessing : MonoBehaviour
 
     private Texture2D resultTexture;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     private Texture2D TextureToTexture2D(Texture texture)
     {
         Texture2D texture2D = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false);
@@ -52,11 +47,12 @@ public class DepthProcessing : MonoBehaviour
         {
             for (int h = 0; h < tx.height; h++)
             {
-                // TODO stolen from shader
+                // Rescale depth information to meters - values stolen from realsense shader
                 Color d = tx.GetPixel(w, h);
                 float r = d.r; //r is unscaled depth, normalized to [0-1]
-                float distMeters = r * 65536 * 0.001f;
+                float distMeters = r * 65536 * 0.001f; // to meters
 
+                // If in relevant depth
                 Color res = new Color(0, 0, 0, 0);
                 if (distMeters > min && distMeters < max)
                 {
@@ -64,15 +60,8 @@ public class DepthProcessing : MonoBehaviour
                     count++;
                 }
                 resultTexture.SetPixel(w, h, res);
-
-                // if ( (w + horizontalPan < resultTexture.width && h + verticalPan < resultTexture.height) &&
-                //     (w + horizontalPan >= 0 && h + verticalPan >= 0) )
-                //    resultTexture.SetPixel(w + horizontalPan, h + verticalPan, res);
-
             }
         }
-
-        // resultTexture = ImageProcessor.ScaleTextureImage(resultTexture, zoom);
 
         resultTexture.Apply();
         foregroundImage.texture = resultTexture;

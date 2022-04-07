@@ -68,7 +68,7 @@ public class Swatter : MonoBehaviour
 
         // padding on each side
         int xPadding = (int) (xPaddingPerc/2 * rx.width);
-        int yPadding = (int) (yPaddingPerc/2 * rx.width);
+        int yPadding = (int) (yPaddingPerc/2 * rx.height);
 
         // relevant width and height displayed on screen
         int relWidth = (int) ( (1 - xPaddingPerc) * rx.width);

@@ -14,9 +14,6 @@ using ZCU.TechnologyLab.Common.Unity.VirtualWorld.WorldObjects;
 
 public class ServerConnection : MonoBehaviour
 {
-    /// <summary>
-    /// Server virtual world.
-    /// </summary>
     [SerializeField]
     public VirtualServerWorld serverSpace;
 
@@ -76,9 +73,19 @@ public class ServerConnection : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture();
-        byte[] data = scaled.GetRawTextureData();
+        var ser = new BitmapWorldObjectSerializer();
 
+        Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture();
+        scaled = ChangeFormat(scaled, TextureFormat.ARGB32);
+        Debug.Log(scaled.format);
+
+        var data = scaled.GetRawTextureData();
+        var pxs = ser.SerializePixels(data);
+        var data2 = ser.DeserializePixels(pxs);
+        scaled.SetPixelData(data2, 0);
+        scaled.Apply();
+
+        // TODO vypsat si co je v bytech
         byte[] bytes = scaled.EncodeToPNG();
         var dirPath = Application.dataPath + "/../SaveImages/";
         if (!Directory.Exists(dirPath))
@@ -87,11 +94,24 @@ public class ServerConnection : MonoBehaviour
         }
         File.WriteAllBytes(dirPath + "Image" + ".png", bytes);
 
+        string s = "";
+        string s2 = "";
+        string s3 = "";
+        for (int i = 0; i < 100; i++)
+        {
+            s += data[i];
+            s2 += data2[i];
+            s3 += pxs[i];
+        }
+        Debug.Log(s);
+        Debug.Log(s2);
+        Debug.Log(s3);
+
         Dictionary<string, string> properties = new Dictionary<string, string>();
         properties.Add(BitmapWorldObjectSerializer.WidthKey, $"{scaled.width}");
         properties.Add(BitmapWorldObjectSerializer.HeightKey, $"{scaled.height}");
         properties.Add(BitmapWorldObjectSerializer.FormatKey, "RGBA");
-        properties.Add(BitmapWorldObjectSerializer.PixelsKey, $"{data}");
+        properties.Add(BitmapWorldObjectSerializer.PixelsKey, $"{pxs}");
 
         WorldObjectDto wod = new WorldObjectDto();
         wod.Name = "FlyKiller";
@@ -113,6 +133,18 @@ public class ServerConnection : MonoBehaviour
         }
 
         // Object.Destroy(t);
+    }
+
+    private Texture2D ChangeFormat(Texture2D oldTexture, TextureFormat newFormat)
+    {
+        //Create new empty Texture
+        Texture2D newTex = new Texture2D(oldTexture.width, oldTexture.height, newFormat, false);
+        //Copy old texture pixels into new one
+        newTex.SetPixels(oldTexture.GetPixels());
+        //Apply
+        newTex.Apply();
+
+        return newTex;
     }
 
     private async void SendToServer(GameObject worldImage)
