@@ -1,10 +1,14 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
+using ZCU.TechnologyLab.Common.Entities.DataTransferObjects;
 using ZCU.TechnologyLab.Common.Serialization;
+using ZCU.TechnologyLab.Common.Unity.Connections;
+using ZCU.TechnologyLab.Common.Unity.Connections.Session;
 using ZCU.TechnologyLab.Common.Unity.VirtualWorld;
 using ZCU.TechnologyLab.Common.Unity.VirtualWorld.WorldObjects;
 
@@ -25,9 +29,11 @@ public class ServerConnection : MonoBehaviour
     double timeToRetry;
 
     double timeToSnapshot;
-    
-    public BitmapWorldObject wo;
-    public GameObject carrier;
+
+    [SerializeField]
+    VirtualWorldServerConnectionWrapper connection;
+    [SerializeField]
+    SignalRSessionWrapper session;
 
     /// <summary> Hub connection </summary>
     // private HubConnection hubConnection;
@@ -44,6 +50,7 @@ public class ServerConnection : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        //session.StartSession();
         actionStart.Invoke();
     }
 
@@ -69,75 +76,43 @@ public class ServerConnection : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        // carrier = new GameObject();
-        // carrier.AddComponent<BitmapWorldObject>();
-        // wo = carrier.GetComponent<BitmapWorldObject>();
-
         Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture();
-        scaled = ScaleTexture(scaled, 80, 40); // 30, 15);
+        byte[] data = scaled.GetRawTextureData();
 
-        Texture2D t = new Texture2D(80, 40);//30, 15);
-        Debug.Log("length of new " + t.GetRawTextureData().Length);
-        t.SetPixels(scaled.GetPixels());
-
-        var b = t.EncodeToPNG();
-        File.WriteAllBytes("D:/moje/school/05/PRJ/Projects/ScreenshotTest.png", b);
-        Debug.Log("Saved to image");
-
-        // WorldObjectDto worldImage = new WorldObjectDto();
-        // worldImage.Position = new RemoteVectorDto();
-        // worldImage.Rotation = new RemoteVectorDto();
-        // worldImage.Type = "Bitmap";
-        // worldImage.Properties = new System.Collections.Generic.Dictionary<string, string>();
-
-        wo.name = "RealsenseProjection";
-
-        int w = wo.bitmapSerializer.DeserializeWidth($"{t.width}");
-        Debug.Log(w);
-
-        // data
-        byte[] data = t.GetRawTextureData();
-        // Dictionary<string, string> properties;
-        // properties = serializer.SerializeProperties(t.width, t.height, "RGBA", data);
-        wo.SetProperty(BitmapWorldObjectSerializer.WidthKey, $"{t.width}");
-        wo.SetProperty(BitmapWorldObjectSerializer.HeightKey, $"{t.height}");
-        wo.SetProperty(BitmapWorldObjectSerializer.FormatKey, "RGBA");
-        wo.SetProperty(BitmapWorldObjectSerializer.PixelsKey, $"{data}");
-
-
-
-        /*
-        string pixelStr = "";
-        Debug.Log("length of raw data " + data.Length);
-        pixelStr += System.Text.Encoding.Unicode.GetString(data);
-
-        File.WriteAllBytes("D:/moje/school/05/PRJ/Projects/outgoing.txt", data);
-        File.WriteAllText("D:/moje/school/05/PRJ/Projects/outgoing_str.txt", pixelStr);
+        byte[] bytes = scaled.EncodeToPNG();
+        var dirPath = Application.dataPath + "/../SaveImages/";
+        if (!Directory.Exists(dirPath))
+        {
+            Directory.CreateDirectory(dirPath);
+        }
+        File.WriteAllBytes(dirPath + "Image" + ".png", bytes);
 
         Dictionary<string, string> properties = new Dictionary<string, string>();
-        properties.Add("Height", $"{t.height}");
-        properties.Add("Width", $"{t.width}");
-        properties.Add("Format", "RGBA");
-        properties.Add("Pixels", pixelStr);
-        Debug.Log("Converted to string");
-        */
+        properties.Add(BitmapWorldObjectSerializer.WidthKey, $"{scaled.width}");
+        properties.Add(BitmapWorldObjectSerializer.HeightKey, $"{scaled.height}");
+        properties.Add(BitmapWorldObjectSerializer.FormatKey, "RGBA");
+        properties.Add(BitmapWorldObjectSerializer.PixelsKey, $"{data}");
 
-        // int w = serializer.DeserializeWidth(properties);
-        // wo.SetProperties(properties);
-
-        // Debug.Log(properties["Pixels"].Length);
-        // Debug.Log(" \" " + properties["Pixels"] + "\"");
+        WorldObjectDto wod = new WorldObjectDto();
+        wod.Name = "FlyKiller";
+        wod.Position = new RemoteVectorDto();
+        wod.Rotation = new RemoteVectorDto();
+        wod.Scale = new RemoteVectorDto();
+        wod.Scale.X = 1; wod.Scale.Y = 1; wod.Scale.Z = 1;
+        wod.Type = "Bitmap";
+        wod.Properties = properties;
 
         // TODO - musim update když už tam je, jak poznam že se fakt přidal a tak
         try
         {
-            SendToServer(carrier);
-        } catch (System.Exception e)
+            connection.AddWorldObjectAsync(wod);
+        } catch (Exception e)
         {
+            Debug.LogError("Unable to send to server");
             Debug.LogError(e.Message);
         }
 
-        Object.Destroy(t);
+        // Object.Destroy(t);
     }
 
     private async void SendToServer(GameObject worldImage)
@@ -208,6 +183,7 @@ public class ServerConnection : MonoBehaviour
 
     public void OnDestroy()
     {
+        //session.StopSession();
         actionEnd.Invoke();
     }
 }
