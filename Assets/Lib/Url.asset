@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b525a4c634ef42b65668704d1532f, type: 3}
   m_Name: Url
   m_EditorClassIdentifier: 
-  value: https://localhost:49163/
+  value: test

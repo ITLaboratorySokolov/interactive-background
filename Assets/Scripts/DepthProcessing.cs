@@ -1,47 +1,51 @@
-﻿using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Script processing the incoming depth image from RealSense sensor
+/// </summary>
 public class DepthProcessing : MonoBehaviour
 {
-    public Texture depthTexture { get; set; }
-    public RawImage foregroundImage;
+    [Header("Depth image")]
+    /// <summary> Image displaying the texture </summary>
+    [SerializeField]
+    RawImage bgImage;
+    /// <summary> Incoming depth texture </summary>
+    [SerializeField]
+    Texture depthTexture { get; set; }
+    /// <summary> Processed depth texture </summary>
+    Texture2D resultTexture;
 
+    /// <summary> Min depth (near plane) </summary>
     internal float min;
+    /// <summary> Max depth (far plane) </summary>
     internal float max;
 
-    private Texture2D resultTexture;
-
-    private Texture2D TextureToTexture2D(Texture texture)
-    {
-        Texture2D texture2D = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false);
-        RenderTexture currentRT = RenderTexture.active;
-        RenderTexture renderTexture = RenderTexture.GetTemporary(texture.width, texture.height, 32);
-        Graphics.Blit(texture, renderTexture);
-
-        RenderTexture.active = renderTexture;
-        texture2D.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-        texture2D.Apply();
-
-        RenderTexture.active = currentRT;
-        RenderTexture.ReleaseTemporary(renderTexture);
-        return texture2D;
-    }
-
-    // Update is called once per frame
+    /// <summary>
+    /// Update called once per frame
+    /// </summary>
     void Update()
     {
+        // No incoming depth texture
         if (depthTexture == null)
             return;
 
-        SetForeground();
+        // Process depth image
+        ProcessDepthIm();
     }
 
-    private void SetForeground()
+    /// <summary>
+    /// Processes depth image and sets the texture of image that displays it
+    /// - any pixels further than far plane will be transparent
+    /// - any pixels closer than near plane will be transparent
+    /// </summary>
+    private void ProcessDepthIm()
     {
-        Texture2D tx = TextureToTexture2D(depthTexture);
-        resultTexture = new Texture2D(tx.width, tx.height); //, TextureFormat.RGBA32, false);
+        Texture2D tx = ImageProcessor.TextureToTexture2D(depthTexture);
+        resultTexture = new Texture2D(tx.width, tx.height); 
 
+        // TODO optimize
+        // Go through all pixels
         int count = 0;
         for (int w = 0; w < tx.width; w++)
         {
@@ -64,13 +68,6 @@ public class DepthProcessing : MonoBehaviour
         }
 
         resultTexture.Apply();
-        foregroundImage.texture = resultTexture;
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            var b = resultTexture.EncodeToPNG();
-            File.WriteAllBytes("D:/moje/school/05/PRJ/Projects/Test.png", b);
-            Debug.Log("Saved to image");
-        }
+        bgImage.texture = resultTexture;
     }
 }

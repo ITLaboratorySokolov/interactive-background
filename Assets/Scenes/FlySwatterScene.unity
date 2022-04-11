@@ -358,73 +358,13 @@ RectTransform:
   m_Children:
   - {fileID: 233889190}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &141318450
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 141318451}
-  - component: {fileID: 141318452}
-  m_Layer: 0
-  m_Name: Server
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &141318451
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141318450}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1907310966}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &141318452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141318450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc0cae9819769d749b11e1b7a0834f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverConnection: {fileID: 1893513013}
-  OnWorldObjectReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 141318450}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &178416540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -960,7 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0251dac5e0de2b649902b9f4ddd770d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foregroundImage: {fileID: 1911890405}
+  bgImage: {fileID: 1911890405}
 --- !u!4 &371485022
 Transform:
   m_ObjectHideFlags: 0
@@ -976,7 +916,7 @@ Transform:
   - {fileID: 640792196}
   - {fileID: 765563510}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &396270882
 PrefabInstance:
@@ -1100,8 +1040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathToConfig: D:/moje/school/05/PRJ/Projects/Realsense projection/Assets/config.txt
-  conn: {fileID: 1893513011}
-  imgProc: {fileID: 371485021}
+  serverUrl: {fileID: 11400000, guid: 78091fa411b06224481056c33758d8d4, type: 2}
+  depthProc: {fileID: 371485021}
   canvas: {fileID: 775691679}
 --- !u!4 &433624792
 Transform:
@@ -1116,7 +1056,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459560979
 GameObject:
@@ -1172,11 +1112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fly: {fileID: 355455507}
-  foregroundImage: {fileID: 1911890405}
+  bgImage: {fileID: 1911890405}
   flyController: {fileID: 355455509}
   canvas: {fileID: 775691679}
-  leftMenu: {fileID: 21615922}
-  flyObj: {fileID: 355455505}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,7 +1319,7 @@ RectTransform:
   - {fileID: 459560980}
   - {fileID: 21615923}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1409,6 +1347,7 @@ MonoBehaviour:
   background: {fileID: 1911890403}
   connectionTXT: {fileID: 1013304076}
   depthProcessing: {fileID: 371485021}
+  session: {fileID: 1893513012}
 --- !u!1 &837529143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2980,7 +2919,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1893513009
 GameObject:
@@ -3014,7 +2953,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1893513011
 MonoBehaviour:
@@ -3028,7 +2967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb8ab58866704249a4bf4d9dd8ddab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverSpace: {fileID: 141318452}
   connection: {fileID: 1893513013}
   session: {fileID: 0}
   actionStart:
@@ -3090,38 +3028,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sessionClient: {fileID: 1893513012}
---- !u!1 &1907310965
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1907310966}
-  m_Layer: 0
-  m_Name: Worlds
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1907310966
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907310965}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3646648, y: -0.78135574, z: -0.048731133}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 141318451}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1911890403
 GameObject:
   m_ObjectHideFlags: 0
@@ -3134,7 +3040,7 @@ GameObject:
   - component: {fileID: 1911890406}
   - component: {fileID: 1911890405}
   m_Layer: 6
-  m_Name: Foreground
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

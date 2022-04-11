@@ -1,118 +1,103 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using ZCU.TechnologyLab.Common.Entities.DataTransferObjects;
 using ZCU.TechnologyLab.Common.Serialization;
 using ZCU.TechnologyLab.Common.Unity.Connections;
 using ZCU.TechnologyLab.Common.Unity.Connections.Session;
-using ZCU.TechnologyLab.Common.Unity.VirtualWorld;
-using ZCU.TechnologyLab.Common.Unity.VirtualWorld.WorldObjects;
 
+// TODO retry connection
+// TODO update vs 1st send
+// TODO test if connected to server
+// TODO yells on close that screen capture cannot be done outside of playmode!
+
+/// <summary>
+/// Class that manages connection to server
+/// - connects to server
+/// - 4 times per second sends updates of the screen
+/// - disconnects from server
+/// </summary>
 public class ServerConnection : MonoBehaviour
 {
-    [SerializeField]
-    public VirtualServerWorld serverSpace;
+    /// <summary> Countdown to next image send </summary>
+    private double timeToSnapshot;
 
-    internal string url = "https://localhost:49155/virtualWorldHub";
-
-    System.DateTime now;
-    System.DateTime last;
-
-    bool connected = false;
-    double timeToRetry;
-
-    double timeToSnapshot;
-
+    /// <summary> Connection to server </summary>
     [SerializeField]
     VirtualWorldServerConnectionWrapper connection;
+    /// <summary> Session </summary>
     [SerializeField]
     SignalRSessionWrapper session;
-
-    /// <summary> Hub connection </summary>
-    // private HubConnection hubConnection;
-    // private VirtualWorldServerConnection vwsc;
-
+    
+    /// <summary> Action performed upon Start </summary>
     [SerializeField]
-    private UnityEvent actionStart = new UnityEvent();
+    UnityEvent actionStart = new UnityEvent();
+    /// <summary Action performed upon Destroy </summary>
     [SerializeField]
-    private UnityEvent actionEnd = new UnityEvent();
+    UnityEvent actionEnd = new UnityEvent();
 
+    /// <summary> Bitmap serializer </summary>
+    BitmapWorldObjectSerializer serializer;
 
     /// <summary>
-    /// Invokes action on start.
+    /// Performes once upon start
+    /// - creates instances of needed local classes
+    /// - calls action actionStart
     /// </summary>
     private void Start()
     {
+        serializer = new BitmapWorldObjectSerializer();
         //session.StartSession();
         actionStart.Invoke();
     }
 
-    private Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
-    {
-        return source;
-
-        /*
-        Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, false);
-        Color[] pixels = result.GetPixels();
-        for (int i = 0; i < pixels.Length; i++)
-        {
-            Color newColor = source.GetPixelBilinear((float)(i % result.width) / (float)result.width, (float)(i/result.width) / (float)result.height);
-            pixels[i] = newColor;
-        }
-        result.SetPixels(pixels);
-        result.Apply();
-        return result;
-        */
-    }
-
+    /// <summary>
+    /// Records current frame and sends it to server
+    /// </summary>
+    /// <returns></returns>
     IEnumerator RecordFrame()
     {
         yield return new WaitForEndOfFrame();
 
-        var ser = new BitmapWorldObjectSerializer();
+        // Record screenshot - resizing hurts performance
+        // Texture2D scrsh = ScreenCapture.CaptureScreenshotAsTexture();
+        Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture(); // ImageProcessor.ScaleTexture(scrsh, scrsh.width/2, scrsh.height/2);
+        // scaled = ImageProcessor.ChangeFormat(scaled, TextureFormat.ARGB32);
+        // Debug.Log(scaled.format);
 
-        Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture();
-        scaled = ChangeFormat(scaled, TextureFormat.ARGB32);
-        Debug.Log(scaled.format);
-
+        // Get pixel data
         var data = scaled.GetRawTextureData();
-        var pxs = ser.SerializePixels(data);
-        var data2 = ser.DeserializePixels(pxs);
+        var pxs = serializer.SerializePixels(data);
+
+        /* Debug output
+        var data2 = serializer.DeserializePixels(pxs);
         scaled.SetPixelData(data2, 0);
         scaled.Apply();
-
-        // TODO vypsat si co je v bytech
+        
         byte[] bytes = scaled.EncodeToPNG();
         var dirPath = Application.dataPath + "/../SaveImages/";
         if (!Directory.Exists(dirPath))
-        {
             Directory.CreateDirectory(dirPath);
-        }
         File.WriteAllBytes(dirPath + "Image" + ".png", bytes);
 
-        string s = "";
-        string s2 = "";
-        string s3 = "";
+        string s = ""; string s2 = ""; string s3 = "";
         for (int i = 0; i < 100; i++)
         {
-            s += data[i];
-            s2 += data2[i];
-            s3 += pxs[i];
+            s += data[i]; s2 += data2[i]; s3 += pxs[i]; 
         }
-        Debug.Log(s);
-        Debug.Log(s2);
-        Debug.Log(s3);
+        Debug.Log(s); Debug.Log(s2); Debug.Log(s3);
+        */
 
+        // Add properties
         Dictionary<string, string> properties = new Dictionary<string, string>();
         properties.Add(BitmapWorldObjectSerializer.WidthKey, $"{scaled.width}");
         properties.Add(BitmapWorldObjectSerializer.HeightKey, $"{scaled.height}");
-        properties.Add(BitmapWorldObjectSerializer.FormatKey, "RGBA");
+        properties.Add(BitmapWorldObjectSerializer.FormatKey, $"{scaled.format}");
         properties.Add(BitmapWorldObjectSerializer.PixelsKey, $"{pxs}");
 
+        // Create data transfer object
         WorldObjectDto wod = new WorldObjectDto();
         wod.Name = "FlyKiller";
         wod.Position = new RemoteVectorDto();
@@ -122,97 +107,58 @@ public class ServerConnection : MonoBehaviour
         wod.Type = "Bitmap";
         wod.Properties = properties;
 
+        SendToServer(wod);
+    }
+
+    /// <summary>
+    /// Send transfer object to server
+    /// </summary>
+    /// <param name="worldImage"> Transfer object </param>
+    private void SendToServer(WorldObjectDto worldImage)
+    {
         // TODO - musim update když už tam je, jak poznam že se fakt přidal a tak
         try
         {
-            connection.AddWorldObjectAsync(wod);
-        } catch (Exception e)
+            connection.AddWorldObjectAsync(worldImage);
+        }
+        catch (Exception e)
         {
             Debug.LogError("Unable to send to server");
             Debug.LogError(e.Message);
         }
-
-        // Object.Destroy(t);
     }
 
-    private Texture2D ChangeFormat(Texture2D oldTexture, TextureFormat newFormat)
-    {
-        //Create new empty Texture
-        Texture2D newTex = new Texture2D(oldTexture.width, oldTexture.height, newFormat, false);
-        //Copy old texture pixels into new one
-        newTex.SetPixels(oldTexture.GetPixels());
-        //Apply
-        newTex.Apply();
-
-        return newTex;
-    }
-
-    private async void SendToServer(GameObject worldImage)
-    {
-        await serverSpace.AddObjectAsync(worldImage);
-
-        /*
-        Debug.Log(hubConnection.State);
-
-
-        try
-        {
-            // await hubConnection.SendAsync("RemoveWorldObject", "Name");
-            await hubConnection.SendAsync("AddWorldObject", worldImage);
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError("Could not send  to the server: " + e.Message);
-        }
-
-        Debug.Log("Sent to server");
-        */
-    }
-
-
+    /// <summary>
+    /// Late update called once per frame
+    /// </summary>
     public void LateUpdate()
     {
-        /*
+        // Send frame to server if countdown low enough
         if (timeToSnapshot < 0.01)
         {
-            // 4 times per second
+            // Reset timer
             timeToSnapshot = 0.25;
-            if (connected)
-            {
-                Debug.Log(connected);
-                StartCoroutine(RecordFrame());
-            }
-        }
-        */
-
-        if (Input.GetKeyDown(KeyCode.U))
-        {
             StartCoroutine(RecordFrame());
-
         }
+
+        /* Debug send on key pressed
+        if (Input.GetKeyDown(KeyCode.U))
+            StartCoroutine(RecordFrame());
+        */
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update called once per frame
+    /// </summary>
     void Update()
     {
-
-        /*
-        // if not connected try to connect every 2s   
-        if (!connected)
-        {
-            timeToRetry -= Time.deltaTime;
-
-            if (timeToRetry < 0.01)
-            {
-                TryToConnect();
-            }
-        }
-        */
-
+        // Decrease countdown
         timeToSnapshot -= Time.deltaTime;
     }
 
-
+    /// <summary>
+    /// Called once upon destroying the object
+    /// </summary>
     public void OnDestroy()
     {
         //session.StopSession();

@@ -1,34 +1,94 @@
 ﻿using TMPro;
 using UnityEngine;
+using ZCU.TechnologyLab.Common.Connections.Session;
+using ZCU.TechnologyLab.Common.Unity.Connections.Session;
 
 /// <summary>
-/// Handle input from canvas, display new values to canvas
+/// Script handling the input from canvas
+/// - handles user input and delegates it to other scripts
+/// - displays updated values on canvas
 /// </summary>
 public class CanvasController : MonoBehaviour
 {
     [Header("Depth")]
-    public TMP_InputField nearFLD;
-    public TMP_InputField farFLD;
+    /// <summary> Near plane (min depth) input field </summary>
+    [SerializeField]
+    TMP_InputField nearFLD;
+    /// <summary> Far plane (max depth) input field </summary>
+    [SerializeField]
+    TMP_InputField farFLD;
 
     [Header("Pan")]
-    public TMP_InputField horizontalFLD;
-    public TMP_InputField verticalFLD;
+    /// <summary> Horizontal pan input field </summary>
+    [SerializeField]
+    TMP_InputField horizontalFLD;
+    /// <summary> Vertical pan input field </summary>
+    [SerializeField]
+    TMP_InputField verticalFLD;
 
     [Header("Zoom")]
-    public TMP_InputField zoomFLD;
+    /// <summary> Zoom input field </summary>
+    [SerializeField]
+    TMP_InputField zoomFLD;
 
     [Header("Game")]
-    public TMP_Text scoreTXT;
-    public GameObject background;
+    /// <summary> Text displaying score </summary>
+    [SerializeField]
+    TMP_Text scoreTXT;
+    /// <summary> Depth image </summary>
+    [SerializeField]
+    GameObject background;
     
     [Header("Connection")]
-    public TMP_Text connectionTXT;
+    /// <summary> Text displaying connection status </summary>
+    [SerializeField]
+    TMP_Text connectionTXT;
 
     [Header("Scripts")]
-    public DepthProcessing depthProcessing;
+    /// <summary> Depth processing script </summary>
+    [SerializeField]
+    DepthProcessing depthProcessing;
+    /// <summary> Session script </summary>
+    [SerializeField]
+    SignalRSessionWrapper session;
 
+    /// <summary> Zoom value </summary>
     float zoom;
+    /// <summary> Horizontal and vertical pan value </summary>
     float horizontalPan, verticalPan;
+
+    /// <summary>
+    /// Update - performs every frame
+    /// </summary>
+    private void Update()
+    {
+        SetConnection(session.SessionState == SessionState.Connected);
+    }
+
+    /// <summary>
+    /// Display connection status
+    /// </summary>
+    /// <param name="connected"> Is connected to server </param>
+    private void SetConnection(bool connected)
+    {
+        // If connected to server
+        if (connected)
+            ChangeConnection("Connected", Color.green);
+        // If not connected to server
+        else
+            ChangeConnection("Not connected", Color.red);
+    }
+
+    /// <summary>
+    /// Change displayed connection status
+    /// </summary>
+    /// <param name="msg"> Message </param>
+    /// <param name="c"> Colour of text </param>
+    public void ChangeConnection(string msg, Color c)
+    {
+        connectionTXT.text = msg;
+        connectionTXT.color = c;
+    }
 
     /// <summary>
     /// Set zoom of depth image
@@ -104,8 +164,8 @@ public class CanvasController : MonoBehaviour
     /// <summary>
     /// Change displayed depth levels
     /// </summary>
-    /// <param name="near"> Near </param>
-    /// <param name="far"> Far </param>
+    /// <param name="near"> Near value </param>
+    /// <param name="far"> Far value </param>
     public void ChangeDepthLevels(float near, float far)
     {
         nearFLD.text = "" + near;
@@ -115,8 +175,8 @@ public class CanvasController : MonoBehaviour
     /// <summary>
     /// Change displayed pan values
     /// </summary>
-    /// <param name="hor"> Horizontal pan </param>
-    /// <param name="vert"> Vertical pan </param>
+    /// <param name="hor"> Horizontal pan value </param>
+    /// <param name="vert"> Vertical pan value </param>
     public void ChangePanLevels(int hor, int vert)
     {
         horizontalFLD.text = "" + hor;
@@ -134,22 +194,11 @@ public class CanvasController : MonoBehaviour
         scoreTXT.text = "Points: " + score;
     }
 
-    /// <summary>
-    /// Change displayed connection status
-    /// </summary>
-    /// <param name="msg"> Message </param>
-    /// <param name="c"> Colour of text </param>
-    public void ChangeConnection(string msg, Color c)
-    {
-        connectionTXT.text = msg;
-        connectionTXT.color = c;
-    }
-
 
     /// <summary>
     /// Change displayed zoom value
     /// </summary>
-    /// <param name="zoom"> Zoom </param>
+    /// <param name="zoom"> Zoom value </param>
     public void ChangeZoom(float zoom)
     {
         zoomFLD.text = "" + zoom;
