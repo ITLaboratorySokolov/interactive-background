@@ -34,6 +34,7 @@ namespace ZCU.TechnologyLab.Common.Unity.Connections.Session
             try
             {
                 await this.StartSessionAsync();
+                Debug.Log("Session started");
             }
             catch (Exception ex)
             {
@@ -51,6 +52,7 @@ namespace ZCU.TechnologyLab.Common.Unity.Connections.Session
             try
             {
                 await this.StopSessionAsync();
+                Debug.Log("Session stopped");
             }
             catch (Exception ex)
             {

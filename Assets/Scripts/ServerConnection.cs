@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using ZCU.TechnologyLab.Common.Entities.DataTransferObjects;
-using ZCU.TechnologyLab.Common.Serialization;
-using ZCU.TechnologyLab.Common.Unity.Connections;
 using ZCU.TechnologyLab.Common.Unity.Connections.Session;
+using ZCU.TechnologyLab.Common.Serialization;
+using ZCU.TechnologyLab.Common.Connections.Session;
 
 // TODO retry connection
-// TODO update vs 1st send
 // TODO test if connected to server
 // TODO yells on close that screen capture cannot be done outside of playmode!
 
@@ -26,7 +25,7 @@ public class ServerConnection : MonoBehaviour
 
     /// <summary> Connection to server </summary>
     [SerializeField]
-    VirtualWorldServerConnectionWrapper connection;
+    ZCU.TechnologyLab.Common.Connections.ServerConnection connection;
     /// <summary> Session </summary>
     [SerializeField]
     SignalRSessionWrapper session;
@@ -39,7 +38,11 @@ public class ServerConnection : MonoBehaviour
     UnityEvent actionEnd = new UnityEvent();
 
     /// <summary> Bitmap serializer </summary>
-    BitmapWorldObjectSerializer serializer;
+    BitmapSerializer serializer;
+    /// <summary> World object DTO for screenshot to be sent to server </summary>
+    WorldObjectDto wod;
+
+    bool syncCallDone;
 
     /// <summary>
     /// Performes once upon start
@@ -48,9 +51,74 @@ public class ServerConnection : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        serializer = new BitmapWorldObjectSerializer();
+        serializer = new BitmapSerializer();
+        connection = new ZCU.TechnologyLab.Common.Connections.ServerConnection(session);
         //session.StartSession();
         actionStart.Invoke();
+
+        // Create DTO
+        wod = new WorldObjectDto();
+        wod.Name = "FlyKiller";
+        wod.Position = new RemoteVectorDto();
+        wod.Rotation = new RemoteVectorDto();
+        wod.Scale = new RemoteVectorDto();
+        wod.Scale.X = 1; wod.Scale.Y = 1; wod.Scale.Z = 1;
+        wod.Type = "Bitmap";
+
+        StartCoroutine(SyncCall());
+    }
+
+    /// <summary>
+    /// Starting synchronization call
+    /// </summary>
+    /// <returns> IEnumerator </returns>
+    IEnumerator SyncCall()
+    {
+        yield return new WaitUntil(() => session.SessionState == SessionState.Connected);
+        connection.AllWorldObjectsReceived += ProcessObjects;
+        GetAllObjects();
+    }
+
+    /// <summary>
+    /// Process incoming objects from server
+    /// </summary>
+    /// <param name="l"> List of objects </param>
+    private void ProcessObjects(List<WorldObjectDto> l)
+    {
+        bool present = false;
+
+        // Look through l for "FlyKiller"
+        for (int i = 0; i < l.Count; i++)
+            if (l[i].Name == wod.Name)
+                present = true;
+
+        Debug.Log("Present? " + present);
+
+        // If not present - send
+        if (!present)
+            SendToServer(wod, false);
+
+        syncCallDone = true;
+    }
+
+    /// <summary>
+    /// Get all objects from server
+    /// </summary>
+    private async void GetAllObjects()
+    {
+        Debug.Log("Start");
+
+        // Is it already on server
+        try
+        {
+            await connection.GetAllWorldObjectsAsync();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
+
+        Debug.Log("End");
     }
 
     /// <summary>
@@ -60,6 +128,9 @@ public class ServerConnection : MonoBehaviour
     IEnumerator RecordFrame()
     {
         yield return new WaitForEndOfFrame();
+
+        if (!syncCallDone)
+            yield break;
 
         // Record screenshot - resizing hurts performance
         // Texture2D scrsh = ScreenCapture.CaptureScreenshotAsTexture();
@@ -92,34 +163,35 @@ public class ServerConnection : MonoBehaviour
 
         // Add properties
         Dictionary<string, string> properties = new Dictionary<string, string>();
-        properties.Add(BitmapWorldObjectSerializer.WidthKey, $"{scaled.width}");
-        properties.Add(BitmapWorldObjectSerializer.HeightKey, $"{scaled.height}");
-        properties.Add(BitmapWorldObjectSerializer.FormatKey, $"{scaled.format}");
-        properties.Add(BitmapWorldObjectSerializer.PixelsKey, $"{pxs}");
+        properties.Add(BitmapSerializer.WidthKey, $"{scaled.width}");
+        properties.Add(BitmapSerializer.HeightKey, $"{scaled.height}");
+        properties.Add(BitmapSerializer.FormatKey, $"{scaled.format}");
+        properties.Add(BitmapSerializer.PixelsKey, $"{pxs}");
 
-        // Create data transfer object
-        WorldObjectDto wod = new WorldObjectDto();
-        wod.Name = "FlyKiller";
-        wod.Position = new RemoteVectorDto();
-        wod.Rotation = new RemoteVectorDto();
-        wod.Scale = new RemoteVectorDto();
-        wod.Scale.X = 1; wod.Scale.Y = 1; wod.Scale.Z = 1;
-        wod.Type = "Bitmap";
+        // Add properties to DTO and send to server
         wod.Properties = properties;
-
-        SendToServer(wod);
+        SendToServer(wod, true);
     }
 
     /// <summary>
     /// Send transfer object to server
     /// </summary>
     /// <param name="worldImage"> Transfer object </param>
-    private void SendToServer(WorldObjectDto worldImage)
+    private async void SendToServer(WorldObjectDto worldImage, bool update)
     {
-        // TODO - musim update když už tam je, jak poznam že se fakt přidal a tak
         try
         {
-            connection.AddWorldObjectAsync(worldImage);
+            System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+            stopWatch.Start();
+
+            if (update)
+                await connection.UpdateWorldObjectAsync(worldImage);
+            else 
+                await connection.AddWorldObjectAsync(worldImage);
+
+            stopWatch.Stop();
+            Debug.Log(stopWatch.ElapsedMilliseconds + " ms");
+
         }
         catch (Exception e)
         {

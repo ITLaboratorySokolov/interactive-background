@@ -1,17 +1,20 @@
-using SimpleFileBrowser;
+﻿using SimpleFileBrowser;
 using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityMeshImporter;
-using ZCU.TechnologyLab.Common.Unity.VirtualWorld.WorldObjects;
+using ZCU.TechnologyLab.Common.Unity.WorldObjects;
+using ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties;
 
 namespace ZCU.TechnologyLab.Common.Unity.Utility
 {
     /// <summary>
     /// Loads files from file system with a file dialog.
+    /// 
     /// When files are selected an object with corresponding world object type is created.
-    /// Created object is reported afterwards by an event.
+    /// Created object is reported afterwards by an event. The world object is not added to world object manager.
+    /// If you need to add it, do it in a method that you assign to the event.
     /// </summary>
     public class FileLoader : MonoBehaviour
     {
@@ -36,14 +39,14 @@ namespace ZCU.TechnologyLab.Common.Unity.Utility
         IEnumerator ShowLoadDialogCoroutine()
         {
             FileBrowser.SetFilters(false, 
-                new FileBrowser.Filter("Obr�zek (*.jpg; *.png)", ".jpg", ".png"),
+                new FileBrowser.Filter("Obrázek (*.jpg; *.png)", ".jpg", ".png"),
                 new FileBrowser.Filter("Mesh (*.obj; *.fbx; *.gltf; *.ply; *.stl)", ".obj", ".fbx", ".gltf", ".ply", ".stl"));
 
             // Show a load file dialog and wait for a response from user
             // Load file/folder: both, Allow multiple selection: true
             // Initial path: default (Documents), Initial filename: empty
             // Title: "Load File", Submit button text: "Load"
-            yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, true, null, null, "Load Files and Folders", "Load");
+            yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, true, null, null, "Otevřít soubory", "Otevřít");
 
             // Dialog is closed
             // Print whether the user has selected some files/folders or cancelled the operation (FileBrowser.Success)
@@ -66,14 +69,12 @@ namespace ZCU.TechnologyLab.Common.Unity.Utility
                 string extension = Path.GetExtension(path);
                 GameObject obj;
 
-                switch(extension)
+                switch (extension)
                 {
                     case ".jpg":
                     case ".png":
                         {
-                            obj = new GameObject(Path.GetFileNameWithoutExtension(path));
-                            var bitmap = obj.AddComponent<BitmapWorldObject>();
-                            bitmap.FromFile(path);
+                            obj = ReadImage(path);
                         }
                         break;
                     case ".obj":
@@ -82,11 +83,7 @@ namespace ZCU.TechnologyLab.Common.Unity.Utility
                     case ".ply":
                     case ".stl":
                         {
-                            obj = MeshImporter.Load(path);
-                            if (obj != null)
-                            {
-                                obj.AddComponent<MeshWorldObject>();
-                            }
+                            obj = ReadMesh(path);
                         }
                         break;
                     default:
@@ -96,6 +93,41 @@ namespace ZCU.TechnologyLab.Common.Unity.Utility
 
                 this.OnFileLoaded.Invoke(obj);
             }
+        }
+
+        /// <summary>
+        /// Creates a bitmap world object from a file.
+        /// </summary>
+        /// <param name="path">Path of the file.</param>
+        private GameObject ReadImage(string filePath)
+        {
+            GameObject obj = new GameObject(Path.GetFileNameWithoutExtension(filePath));
+            var data = File.ReadAllBytes(filePath);
+            var texture = new Texture2D(1, 1);
+            texture.LoadImage(data);
+
+            var propertiesManager = obj.AddComponent<BitmapPropertiesManager>();
+            propertiesManager.SetTexture(texture);
+
+            return obj;
+        }
+
+        /// <summary>
+        /// Creates a mesh world object from a file.
+        /// </summary>
+        /// <param name="filePath">Path of the file.</param>
+        /// <returns></returns>
+        private GameObject ReadMesh(string filePath)
+        {
+            GameObject obj = MeshImporter.Load(filePath);
+
+            var mesh = obj.GetComponent<MeshFilter>().mesh;
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
+
+            obj.AddComponent<MeshPropertiesManager>();
+
+            return obj;
         }
     }
 }
