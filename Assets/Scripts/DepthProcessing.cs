@@ -42,32 +42,29 @@ public class DepthProcessing : MonoBehaviour
     private void ProcessDepthIm()
     {
         Texture2D tx = ImageProcessor.TextureToTexture2D(depthTexture);
-        resultTexture = new Texture2D(tx.width, tx.height); 
+        resultTexture = new Texture2D(tx.width, tx.height);
 
-        // TODO optimize
         // Go through all pixels
+        Color[] pixels = tx.GetPixels();
         int count = 0;
-        for (int w = 0; w < tx.width; w++)
+        for (int i = 0; i < pixels.Length; i++)
         {
-            for (int h = 0; h < tx.height; h++)
+            Color d = pixels[i];
+            float r = d.r; //r is unscaled depth, normalized to [0-1]
+            float distMeters = r * 65536 * 0.001f; // to meters
+
+            // If in relevant depth
+            Color res = new Color(0, 0, 0, 0);
+            if (distMeters > min && distMeters < max)
             {
-                // Rescale depth information to meters - values stolen from realsense shader
-                Color d = tx.GetPixel(w, h);
-                float r = d.r; //r is unscaled depth, normalized to [0-1]
-                float distMeters = r * 65536 * 0.001f; // to meters
-
-                // If in relevant depth
-                Color res = new Color(0, 0, 0, 0);
-                if (distMeters > min && distMeters < max)
-                {
-                    res = new Color(0, 0, 0, 1);
-                    count++;
-                }
-                resultTexture.SetPixel(w, h, res);
+                res = new Color(0, 0, 0, 1);
+                count++;
             }
+            pixels[i] = res;
         }
-
+        resultTexture.SetPixels(pixels);
         resultTexture.Apply();
+
         bgImage.texture = resultTexture;
     }
 }

@@ -41,7 +41,7 @@ public class ServerConnection : MonoBehaviour
     BitmapSerializer serializer;
     /// <summary> World object DTO for screenshot to be sent to server </summary>
     WorldObjectDto wod;
-
+    /// <summary> Synchronization call has been finished </summary>
     bool syncCallDone;
 
     /// <summary>
@@ -213,7 +213,8 @@ public class ServerConnection : MonoBehaviour
             StartCoroutine(RecordFrame());
         }
 
-        /* Debug send on key pressed
+        // Debug send on key pressed
+        /*
         if (Input.GetKeyDown(KeyCode.U))
             StartCoroutine(RecordFrame());
         */
