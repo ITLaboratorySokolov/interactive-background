@@ -30,6 +30,8 @@ public class Swatter : MonoBehaviour
     /// <summary> Number of hits </summary>
     private int hits = 0;
 
+    Texture2D rx;
+
     /// <summary>
     /// Performes once upon start
     /// </summary>
@@ -51,8 +53,8 @@ public class Swatter : MonoBehaviour
         int vertMove = (int)bgImage.transform.localPosition.y;
 
         // Get textures
-        Texture2D rx = ImageProcessor.TextureToTexture2D(bgImage.texture);
-        Texture2D fx = ImageProcessor.TextureToTexture2D(fly.texture);
+        rx = ImageProcessor.TextureToTexture2D(bgImage.texture);
+        // Texture2D fx = ImageProcessor.TextureToTexture2D(fly.texture);
 
         // How big is the scaled texture on screen
         float scale = bgImage.transform.localScale.x;
@@ -114,6 +116,8 @@ public class Swatter : MonoBehaviour
             }
             flyController.MoveToNewLocation();
         }
+
+        // UnityEngine.Object.Destroy(rx);
     }
 
     /// <summary>

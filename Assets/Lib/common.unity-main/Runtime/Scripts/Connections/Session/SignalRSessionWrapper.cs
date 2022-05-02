@@ -22,7 +22,7 @@ namespace ZCU.TechnologyLab.Common.Unity.Connections.Session
         [SerializeField]
         private StringVariable hub;
 
-        /// <inheritdocs/>
+        /// <inheritdoc/>
         protected override void Awake()
         {
             this.sessionClient = new SignalRSession(this.serverUrl.Value, this.hub.Value);

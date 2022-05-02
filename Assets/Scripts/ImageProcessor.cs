@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -5,6 +6,10 @@ using UnityEngine;
 /// </summary>
 public static class ImageProcessor
 {
+    public static Texture2D texture2D;
+    static RenderTexture currentRT;
+    static RenderTexture renderTexture;
+
     /// <summary>
     /// Converts Texture to Texture2D
     /// </summary>
@@ -12,18 +17,26 @@ public static class ImageProcessor
     /// <returns> Resulting texture </returns>
     public static Texture2D TextureToTexture2D(Texture texture)
     {
-        Texture2D texture2D = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false);
-        RenderTexture currentRT = RenderTexture.active;
-        RenderTexture renderTexture = RenderTexture.GetTemporary(texture.width, texture.height, 32);
+        texture2D.Reinitialize(texture.width, texture.height); // new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false);
+
+        currentRT = RenderTexture.active;
+        renderTexture = RenderTexture.GetTemporary(texture.width, texture.height, 32);
         Graphics.Blit(texture, renderTexture);
 
         RenderTexture.active = renderTexture;
         texture2D.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
         texture2D.Apply();
 
-        RenderTexture.active = currentRT;
         RenderTexture.ReleaseTemporary(renderTexture);
+        RenderTexture.active = currentRT;
+
+        UnityEngine.Object.Destroy(currentRT);
         return texture2D;
+    }
+
+    internal static void NewT()
+    {
+        texture2D = new Texture2D(3, 3, TextureFormat.RGBA32, false);
     }
 
     /// <summary>

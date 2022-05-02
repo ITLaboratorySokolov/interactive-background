@@ -61,34 +61,34 @@ namespace ZCU.TechnologyLab.Common.Unity.Connections.Session
             }
         }
 
-        /// <inheritdocs/>
+        /// <inheritdoc/>
         public Task StartSessionAsync()
         {
             return this.sessionClient.StartSessionAsync();
         }
 
-        /// <inheritdocs/>
+        /// <inheritdoc/>
         public Task StopSessionAsync()
         {
             return this.sessionClient.StopSessionAsync();
         }
 
-        /// <inheritdocs/>
+        /// <inheritdoc/>
         public void RegisterCallback<T>(string method, Action<T> callback)
         {
             this.sessionClient.RegisterCallback(method, callback);
         }
 
-        /// <inheritdocs/>
+        /// <inheritdoc/>
         public void UnregisterCallback(string method)
         {
             this.sessionClient.UnregisterCallback(method);
         }
 
-        /// <inheritdocs/>
-        public Task SendMessageAsync(string method, params object[] args)
+        /// <inheritdoc/>
+        public Task SendMessageAsync<T>(string method, T parameter)
         {
-            return this.sessionClient.SendMessageAsync(method, args);
+            return this.sessionClient.SendMessageAsync(method, parameter);
         }
     }
 }

@@ -7,9 +7,10 @@ using ZCU.TechnologyLab.Common.Entities.DataTransferObjects;
 using ZCU.TechnologyLab.Common.Unity.Connections.Session;
 using ZCU.TechnologyLab.Common.Serialization;
 using ZCU.TechnologyLab.Common.Connections.Session;
+using ZCU.TechnologyLab.Common.Connections;
+using ZCU.TechnologyLab.Common.Unity.Connections.Data;
 
 // TODO retry connection
-// TODO test if connected to server
 // TODO yells on close that screen capture cannot be done outside of playmode!
 
 /// <summary>
@@ -25,11 +26,14 @@ public class ServerConnection : MonoBehaviour
 
     /// <summary> Connection to server </summary>
     [SerializeField]
-    ZCU.TechnologyLab.Common.Connections.ServerConnection connection;
+    ServerSessionConnection connection;
+    ServerDataConnection dataConnection;
     /// <summary> Session </summary>
     [SerializeField]
     SignalRSessionWrapper session;
-    
+    [SerializeField]
+    RestDataClientWrapper dataSession;
+
     /// <summary> Action performed upon Start </summary>
     [SerializeField]
     UnityEvent actionStart = new UnityEvent();
@@ -44,6 +48,11 @@ public class ServerConnection : MonoBehaviour
     /// <summary> Synchronization call has been finished </summary>
     bool syncCallDone;
 
+    Dictionary<string, byte[]> properties;
+    Texture2D scaled;
+    byte[] data;
+    System.Diagnostics.Stopwatch stopWatch;
+
     /// <summary>
     /// Performes once upon start
     /// - creates instances of needed local classes
@@ -52,7 +61,8 @@ public class ServerConnection : MonoBehaviour
     private void Start()
     {
         serializer = new BitmapSerializer();
-        connection = new ZCU.TechnologyLab.Common.Connections.ServerConnection(session);
+        connection = new ServerSessionConnection(session);
+        dataConnection = new ServerDataConnection(dataSession);
         //session.StartSession();
         actionStart.Invoke();
 
@@ -75,8 +85,23 @@ public class ServerConnection : MonoBehaviour
     IEnumerator SyncCall()
     {
         yield return new WaitUntil(() => session.SessionState == SessionState.Connected);
-        connection.AllWorldObjectsReceived += ProcessObjects;
-        GetAllObjects();
+        GetObjectAsync();
+    }
+
+    private async void GetObjectAsync()
+    {
+        try
+        {
+            WorldObjectDto d = await dataConnection.GetWorldObjectAsync("FlyKiller");
+        }
+        catch
+        {
+            SendToServer(wod, false);
+            Debug.Log("Init sent to server");
+
+        }
+        syncCallDone = true;
+        Debug.Log("Sync call done");
     }
 
     /// <summary>
@@ -102,26 +127,6 @@ public class ServerConnection : MonoBehaviour
     }
 
     /// <summary>
-    /// Get all objects from server
-    /// </summary>
-    private async void GetAllObjects()
-    {
-        Debug.Log("Start");
-
-        // Is it already on server
-        try
-        {
-            await connection.GetAllWorldObjectsAsync();
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e.Message);
-        }
-
-        Debug.Log("End");
-    }
-
-    /// <summary>
     /// Records current frame and sends it to server
     /// </summary>
     /// <returns></returns>
@@ -133,15 +138,10 @@ public class ServerConnection : MonoBehaviour
             yield break;
 
         // Record screenshot - resizing hurts performance
-        // Texture2D scrsh = ScreenCapture.CaptureScreenshotAsTexture();
-        Texture2D scaled = ScreenCapture.CaptureScreenshotAsTexture(); // ImageProcessor.ScaleTexture(scrsh, scrsh.width/2, scrsh.height/2);
-        // scaled = ImageProcessor.ChangeFormat(scaled, TextureFormat.ARGB32);
-        // Debug.Log(scaled.format);
+        scaled = ScreenCapture.CaptureScreenshotAsTexture(); // ImageProcessor.ScaleTexture(scrsh, scrsh.width/2, scrsh.height/2);
 
         // Get pixel data
-        var data = scaled.GetRawTextureData();
-        var pxs = serializer.SerializePixels(data);
-
+        data = scaled.GetRawTextureData();
         /* Debug output
         var data2 = serializer.DeserializePixels(pxs);
         scaled.SetPixelData(data2, 0);
@@ -162,15 +162,13 @@ public class ServerConnection : MonoBehaviour
         */
 
         // Add properties
-        Dictionary<string, string> properties = new Dictionary<string, string>();
-        properties.Add(BitmapSerializer.WidthKey, $"{scaled.width}");
-        properties.Add(BitmapSerializer.HeightKey, $"{scaled.height}");
-        properties.Add(BitmapSerializer.FormatKey, $"{scaled.format}");
-        properties.Add(BitmapSerializer.PixelsKey, $"{pxs}");
+        properties = serializer.SerializeRawBitmap(scaled.width, scaled.height, $"{scaled.format}", data);  // new Dictionary<string, string>();
 
         // Add properties to DTO and send to server
         wod.Properties = properties;
         SendToServer(wod, true);
+
+        UnityEngine.Object.Destroy(scaled);
     }
 
     /// <summary>
@@ -181,13 +179,13 @@ public class ServerConnection : MonoBehaviour
     {
         try
         {
-            System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+            stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
 
             if (update)
-                await connection.UpdateWorldObjectAsync(worldImage);
+                await dataConnection.UpdateWorldObjectAsync(worldImage);
             else 
-                await connection.AddWorldObjectAsync(worldImage);
+                await dataConnection.AddWorldObjectAsync(worldImage);
 
             stopWatch.Stop();
             Debug.Log(stopWatch.ElapsedMilliseconds + " ms");
@@ -196,7 +194,6 @@ public class ServerConnection : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError("Unable to send to server");
-            Debug.LogError(e.Message);
         }
     }
 

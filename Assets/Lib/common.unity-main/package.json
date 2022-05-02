@@ -1,6 +1,6 @@
 {
   "name": "zcu.technologylab.common.unity",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "displayName": "Unity Library For Technology Lab",
   "description": "This is a package used in technology lab project that contains common scripts used in multiple unity projects",
   "unity": "2021.2",

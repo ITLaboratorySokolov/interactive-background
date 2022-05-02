@@ -19,14 +19,9 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
     public interface IPropertiesManager
     {
         /// <summary>
-        /// Event called when multiple properties change at once.
+        /// Event called when some of the properties change.
         /// </summary>
         event EventHandler<PropertiesChangedEventArgs> PropertiesChanged;
-
-        /// <summary>
-        /// Event called when a single property is changed.
-        /// </summary>
-        event EventHandler<PropertyChangedEventArgs> PropertyChanged;
 
         /// <summary>
         /// Gets a type of a managed world object.
@@ -37,23 +32,14 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
         /// Gets properties of a world object.
         /// </summary>
         /// <returns>Properties of a world object.</returns>
-        Dictionary<string, string> GetProperties();
+        Dictionary<string, byte[]> GetProperties();
 
         /// <summary>
         /// Sets properties of a world object.
         /// 
-        /// This method does not cause events <see cref="PropertiesChanged"/> and <see cref="PropertyChanged"/> to be called.
+        /// This method does not cause events <see cref="PropertiesChanged"/> to be called.
         /// </summary>
         /// <param name="properties">Properties of a world object.</param>
-        void SetProperties(Dictionary<string, string> properties);
-
-        /// <summary>
-        /// Sets value of a single property.
-        /// 
-        /// This method does not cause events <see cref="PropertiesChanged"/> and <see cref="PropertyChanged"/> to be called.
-        /// </summary>
-        /// <param name="propertyName">Name of the property.</param>
-        /// <param name="propertyValue">Value of the property.</param>
-        void SetProperty(string propertyName, string propertyValue);
+        void SetProperties(Dictionary<string, byte[]> properties);
     }
 }

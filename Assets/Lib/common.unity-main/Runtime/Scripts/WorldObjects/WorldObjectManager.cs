@@ -4,11 +4,9 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using ZCU.TechnologyLab.Common.Connections;
-using ZCU.TechnologyLab.Common.Connections.Session;
 using ZCU.TechnologyLab.Common.Entities.DataTransferObjects;
-using ZCU.TechnologyLab.Common.Unity.Connections;
+using ZCU.TechnologyLab.Common.Unity.Connections.Data;
 using ZCU.TechnologyLab.Common.Unity.Connections.Session;
-using ZCU.TechnologyLab.Common.Unity.Utility;
 using ZCU.TechnologyLab.Common.Unity.Utility.Events;
 using ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties;
 
@@ -39,10 +37,16 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
         private readonly Dictionary<string, Type> supportedTypes = new Dictionary<string, Type>();
 
         /// <summary>
-        /// Connection to a server.
+        /// Connection to a server via a session client.
         /// </summary>
         [SerializeField]
         private SessionClientWrapper sessionClient;
+
+        /// <summary>
+        /// Connection to a server via a data client.
+        /// </summary>
+        [SerializeField]
+        private DataClientWrapper dataClient;
 
         /// <summary>
         /// Event that is called when a new object is received from a server.
@@ -51,10 +55,15 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
         private UnityEvent<GameObject> OnWorldObjectReceived = new UnityEvent<GameObject>();
 
         /// <summary>
-        /// Connection to a server.
+        /// Session connection to a server.
         /// </summary>
-        private ServerConnection serverConnection;
+        private ServerSessionConnection sessionConnection;
 
+        /// <summary>
+        /// Data connection to a server.
+        /// </summary>
+        private ServerDataConnection dataConnection;
+        
         /// <summary>
         /// Inicialize private members.
         /// </summary>
@@ -69,15 +78,14 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
         /// </summary>
         private void Start()
         {
-            this.serverConnection = new ServerConnection(sessionClient);
+            this.sessionConnection = new ServerSessionConnection(sessionClient);
+            this.dataConnection = new ServerDataConnection(dataClient);
 
-            this.serverConnection.AllWorldObjectsReceived += LoadWorldObjects;
-            this.serverConnection.WorldObjectAdded += AddWorldObject;
-            this.serverConnection.WorldObjectRemoved += RemoveWorldObject;
-            this.serverConnection.WorldObjectPropertiesUpdated += SetWorldObjectProperties;
-            this.serverConnection.WorldObjectPropertyUpdated += SetWorldObjectProperty;
-            this.serverConnection.WorldObjectUpdated += UpdateWorldObject;
-            this.serverConnection.WorldObjectTransformed += TransformWorldObject;
+            this.sessionConnection.WorldObjectAdded += SessionConnection_WorldObjectAdded;
+            this.sessionConnection.WorldObjectRemoved += SessionConnection_WorldObjectRemoved;
+            this.sessionConnection.WorldObjectUpdated += SessionConnection_WorldObjectUpdated;
+            this.sessionConnection.WorldObjectPropertiesUpdated += SessionConnection_WorldObjectPropertiesUpdated;
+            this.sessionConnection.WorldObjectTransformed += SessionConnection_WorldObjectTransformed;
         }
 
         /// <summary>
@@ -85,13 +93,11 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
         /// </summary>
         private void OnDestroy()
         {
-            this.serverConnection.AllWorldObjectsReceived -= LoadWorldObjects;
-            this.serverConnection.WorldObjectAdded -= AddWorldObject;
-            this.serverConnection.WorldObjectRemoved -= RemoveWorldObject;
-            this.serverConnection.WorldObjectPropertiesUpdated -= SetWorldObjectProperties;
-            this.serverConnection.WorldObjectPropertyUpdated -= SetWorldObjectProperty;
-            this.serverConnection.WorldObjectUpdated -= UpdateWorldObject;
-            this.serverConnection.WorldObjectTransformed -= TransformWorldObject;
+            this.sessionConnection.WorldObjectAdded -= SessionConnection_WorldObjectAdded;
+            this.sessionConnection.WorldObjectRemoved -= SessionConnection_WorldObjectRemoved;
+            this.sessionConnection.WorldObjectUpdated -= SessionConnection_WorldObjectUpdated;
+            this.sessionConnection.WorldObjectPropertiesUpdated -= SessionConnection_WorldObjectPropertiesUpdated;
+            this.sessionConnection.WorldObjectTransformed -= SessionConnection_WorldObjectTransformed;
 
             this.FreeWorldObjectsEvents();
         }
@@ -111,7 +117,6 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
             }
 
             propertiesManager.PropertiesChanged += PropertiesManager_PropertiesChanged;
-            propertiesManager.PropertyChanged += PropertiesManager_PropertyChanged;
 
             var transformReport = gameObject.GetComponent<ReportTransformChange>();
             if(transformReport != null)
@@ -147,7 +152,40 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
                 Properties = propertiesManager.GetProperties()
             };
 
-            await this.serverConnection.AddWorldObjectAsync(worldObjectDto);
+            await this.dataConnection.AddWorldObjectAsync(worldObjectDto);
+        }
+
+        /// <summary>
+        /// Deletes an object from the manager and sends delete message to a server.
+        /// </summary>
+        /// <param name="objectName">Name of the object.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException">Thrown when object is not added to the manager, or when the object does not have <see cref="IPropertiesManager"/> component.</exception>
+        public async Task RemoveObjectAsync(string objectName)
+        {
+            if (this.worldObjects.Remove(objectName, out GameObject worldObject))
+            {
+                var propertiesManager = worldObject.GetComponent<IPropertiesManager>();
+                if (propertiesManager == null)
+                {
+                    throw new ArgumentException($"GameObject does not contain component of type {nameof(IPropertiesManager)}");
+                }
+
+                propertiesManager.PropertiesChanged -= PropertiesManager_PropertiesChanged;
+
+                var transformReport = worldObject.GetComponent<ReportTransformChange>();
+                if (transformReport != null) 
+                {
+                    transformReport.TransformChanged -= TransformReport_TransformChanged;
+                }
+
+                Destroy(worldObject);
+
+                await this.dataConnection.RemoveWorldObjectAsync(objectName);
+            } else
+            {
+                throw new ArgumentException($"GameObject with name {objectName} is unknown");
+            }
         }
 
         /// <summary>
@@ -158,7 +196,7 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
         /// <exception cref="ArgumentException">Thrown when object is not added to the manager, or when the object does not have <see cref="IPropertiesManager"/> component.</exception>
         public async Task UpdateObjectAsync(string objectName)
         {
-            if(!this.worldObjects.TryGetValue(objectName, out var worldObject))
+            if (!this.worldObjects.TryGetValue(objectName, out var worldObject))
             {
                 throw new ArgumentException($"GameObject with name {objectName} is unknown");
             }
@@ -194,41 +232,7 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
                 Properties = propertiesManager.GetProperties()
             };
 
-            await this.serverConnection.UpdateWorldObjectAsync(worldObjectDto);
-        }
-
-        /// <summary>
-        /// Deletes an object from the manager and sends delete message to a server.
-        /// </summary>
-        /// <param name="objectName">Name of the object.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException">Thrown when object is not added to the manager, or when the object does not have <see cref="IPropertiesManager"/> component.</exception>
-        public async Task RemoveObjectAsync(string objectName)
-        {
-            if (this.worldObjects.Remove(objectName, out GameObject worldObject))
-            {
-                var propertiesManager = worldObject.GetComponent<IPropertiesManager>();
-                if (propertiesManager == null)
-                {
-                    throw new ArgumentException($"GameObject does not contain component of type {nameof(IPropertiesManager)}");
-                }
-
-                propertiesManager.PropertyChanged -= PropertiesManager_PropertyChanged;
-                propertiesManager.PropertiesChanged -= PropertiesManager_PropertiesChanged;
-
-                var transformReport = worldObject.GetComponent<ReportTransformChange>();
-                if (transformReport != null) 
-                {
-                    transformReport.TransformChanged -= TransformReport_TransformChanged;
-                }
-
-                Destroy(worldObject);
-
-                await this.serverConnection.RemoveWorldObjectAsync(objectName);
-            } else
-            {
-                throw new ArgumentException($"GameObject with name {objectName} is unknown");
-            }
+            await this.dataConnection.UpdateWorldObjectAsync(worldObjectDto);
         }
 
         /// <summary>
@@ -238,7 +242,15 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
         public async Task CopyServerContentAsync()
         {
             this.ClearLocalCopy();
-            await this.serverConnection.GetAllWorldObjectsAsync();
+
+            IEnumerable<WorldObjectDto> allObjects = await this.dataConnection.GetAllWorldObjectsAsync();
+
+            Debug.Log("Load world objects");
+
+            foreach (var worldObject in allObjects)
+            {
+                this.AddObject(worldObject);
+            }
         }
 
         /// <summary>
@@ -265,7 +277,6 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
                 var propertiesManager = gameObject.GetComponent<IPropertiesManager>();
                 if (propertiesManager != null)
                 {
-                    propertiesManager.PropertyChanged -= PropertiesManager_PropertyChanged;
                     propertiesManager.PropertiesChanged -= PropertiesManager_PropertiesChanged;
                 }
 
@@ -274,187 +285,6 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
                 {
                     transformReport.TransformChanged -= TransformReport_TransformChanged;
                 }
-            }
-        }
-
-        /// <summary>
-        /// Adds world object from server on the machine.
-        /// </summary>
-        /// <param name="worldObjectDto">World object that should be added.</param>
-        private void AddWorldObject(WorldObjectDto worldObjectDto)
-        {
-            try
-            {
-                Debug.Log("Add world object");
-                Debug.Log($"Name: {worldObjectDto.Name}");
-                Debug.Log($"Properties count: {worldObjectDto.Properties.Count}");
-                foreach (var property in worldObjectDto.Properties)
-                {
-                    Debug.Log($"Property key: {property.Key}; Property value: {property.Value}");
-                }
-
-                if (this.supportedTypes.TryGetValue(worldObjectDto.Type, out Type type))
-                {
-                    var gameObject = new GameObject(worldObjectDto.Name);
-                    gameObject.transform.parent = this.transform;
-
-                    this.SetTransform(gameObject, worldObjectDto.Position, worldObjectDto.Rotation, worldObjectDto.Scale);
-
-                    IPropertiesManager worldObject = (IPropertiesManager)gameObject.AddComponent(type);
-                    worldObject.SetProperties(worldObjectDto.Properties);
-                    this.worldObjects.Add(worldObjectDto.Name, gameObject);
-
-                    this.OnWorldObjectReceived.Invoke(gameObject);
-                }                
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Removes a world object when it was deleted from a server.
-        /// </summary>
-        /// <param name="name">Name of the world object.</param>
-        private void RemoveWorldObject(string name)
-        {
-            try
-            {
-                Debug.Log("Remove world object");
-                Debug.Log($"Name: {name}");
-                if (this.worldObjects.TryGetValue(name, out var worldObject))
-                {
-                    GameObject.Destroy(worldObject);
-                    this.worldObjects.Remove(name);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Loads all objects from server.
-        /// </summary>
-        /// <param name="worldObjectDtos">World objects that are sent form server.</param>
-        private void LoadWorldObjects(List<WorldObjectDto> worldObjectDtos)
-        {
-            try
-            {
-                Debug.Log("Load world objects");
-
-                foreach (var worldObjectDto in worldObjectDtos)
-                {
-                    this.AddWorldObject(worldObjectDto);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Sets propeties of a world object.
-        /// </summary>
-        /// <param name="propertiesDto">Properties received from a server.</param>
-        private void SetWorldObjectProperties(WorldObjectPropertiesDto propertiesDto)
-        {
-            try
-            {
-                Debug.Log("Set world object properties");
-                Debug.Log($"Name: {propertiesDto.ObjectName}");
-                if (this.worldObjects.TryGetValue(propertiesDto.ObjectName, out var worldObject))
-                {
-                    var worldObjectType = worldObject.GetComponent<IPropertiesManager>();
-                    if (worldObjectType != null)
-                    {
-                        worldObjectType.SetProperties(propertiesDto.Properties);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Sets a single property of a world object.
-        /// </summary>
-        /// <param name="propertyDto">Property received from a server.</param>
-        private void SetWorldObjectProperty(WorldObjectPropertyDto propertyDto)
-        {
-            try 
-            {
-                Debug.Log("Set world object property");
-                Debug.Log($"Name: {propertyDto.ObjectName}");
-                Debug.Log($"Property name: {propertyDto.PropertyName}");
-                Debug.Log($"Property value: {propertyDto.PropertyValue}");
-                if (this.worldObjects.TryGetValue(propertyDto.ObjectName, out var worldObject))
-                {
-                    var worldObjectType = worldObject.GetComponent<IPropertiesManager>();
-                    if (worldObjectType != null)
-                    {
-                        worldObjectType.SetProperty(propertyDto.PropertyName, propertyDto.PropertyValue);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Transforms an object.
-        /// </summary>
-        /// <param name="worldObjectTransformDto">Transform of an object.</param>
-        private void TransformWorldObject(WorldObjectTransformDto worldObjectTransformDto)
-        {
-            try
-            {
-                Debug.Log("Transform world object");
-                Debug.Log($"Name: {worldObjectTransformDto.ObjectName}");
-                if (this.worldObjects.TryGetValue(worldObjectTransformDto.ObjectName, out var gameObject))
-                {
-                    this.SetTransform(gameObject, worldObjectTransformDto.Position, worldObjectTransformDto.Rotation, worldObjectTransformDto.Scale);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Updates a world object.
-        /// World object must be already added.
-        /// </summary>
-        /// <param name="worldObjectDto">Updated world object.</param>
-        private void UpdateWorldObject(WorldObjectDto worldObjectDto)
-        {
-            try
-            {
-                Debug.Log("Update world object");
-                Debug.Log($"Name: {worldObjectDto.Name}");
-                if (this.worldObjects.TryGetValue(worldObjectDto.Name, out GameObject gameObject))
-                {
-                    var worldObject = gameObject.GetComponent<IPropertiesManager>();
-                    if (worldObject == null)
-                    {
-                        throw new ArgumentException($"GameObject does not contain component of type {nameof(IPropertiesManager)}");
-                    }
-
-                    this.SetTransform(gameObject, worldObjectDto.Position, worldObjectDto.Rotation, worldObjectDto.Scale);
-                    worldObject.SetProperties(worldObjectDto.Properties);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
             }
         }
 
@@ -473,6 +303,163 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
 
             gameObject.transform.localScale = new Vector3(scale.X, scale.Y, scale.Z);
         }
+
+        /// <summary>
+        /// Adds 
+        /// </summary>
+        /// <param name="worldObjectDto"></param>
+        private void AddObject(WorldObjectDto worldObjectDto)
+        {
+            Debug.Log($"Properties count: {worldObjectDto.Properties.Count}");
+            foreach (var property in worldObjectDto.Properties)
+            {
+                Debug.Log($"Property key: {property.Key}; Property value: {property.Value}");
+            }
+
+            if (this.supportedTypes.TryGetValue(worldObjectDto.Type, out Type type))
+            {
+                var gameObject = new GameObject(worldObjectDto.Name);
+                gameObject.transform.parent = this.transform;
+
+                this.SetTransform(gameObject, worldObjectDto.Position, worldObjectDto.Rotation, worldObjectDto.Scale);
+
+                IPropertiesManager worldObject = (IPropertiesManager)gameObject.AddComponent(type);
+                worldObject.SetProperties(worldObjectDto.Properties);
+                this.worldObjects.Add(worldObjectDto.Name, gameObject);
+
+                this.OnWorldObjectReceived.Invoke(gameObject);
+            }
+        }
+
+        #region Session handlers
+
+        /// <summary>
+        /// Downloads added object from a server and adds it to the manager.
+        /// </summary>
+        /// <param name="worldObjectName">World object that should be added.</param>
+        private async void SessionConnection_WorldObjectAdded(string worldObjectName)
+        {
+            try
+            {
+                Debug.Log("Add world object");
+                Debug.Log($"Name: {worldObjectName}");
+
+                if(!this.worldObjects.ContainsKey(worldObjectName))
+                {
+                    // Download the object from the server
+                    WorldObjectDto addedObject = await this.dataConnection.GetWorldObjectAsync(worldObjectName);
+                    this.AddObject(addedObject);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Removes a world object when it was deleted from a server.
+        /// </summary>
+        /// <param name="worldObjectName">Name of the world object.</param>
+        private void SessionConnection_WorldObjectRemoved(string worldObjectName)
+        {
+            try
+            {
+                Debug.Log("Remove world object");
+                Debug.Log($"Name: {worldObjectName}");
+                if (this.worldObjects.TryGetValue(worldObjectName, out var worldObject))
+                {
+                    GameObject.Destroy(worldObject);
+                    this.worldObjects.Remove(worldObjectName);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Updates a world object when it was updated on a server.
+        /// </summary>
+        /// <param name="worldObjectName">Name of the world object.</param>
+        private async void SessionConnection_WorldObjectUpdated(string worldObjectName)
+        {
+            try
+            {
+                Debug.Log("Update world object");
+                Debug.Log($"Name: {worldObjectName}");
+                if (this.worldObjects.TryGetValue(worldObjectName, out var worldObject))
+                {
+                    WorldObjectDto worldObjectDto = await this.dataConnection.GetWorldObjectAsync(worldObjectName);
+
+                    this.SetTransform(worldObject, worldObjectDto.Position, worldObjectDto.Rotation, worldObjectDto.Scale);
+
+                    var worldObjectType = worldObject.GetComponent<IPropertiesManager>();
+                    if (worldObjectType != null)
+                    {
+                        worldObjectType.SetProperties(worldObjectDto.Properties);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Sets propeties of a world object.
+        /// </summary>
+        /// <param name="worldObjectName">Name of the world object.</param>
+        private async void SessionConnection_WorldObjectPropertiesUpdated(string worldObjectName)
+        {
+            try
+            {
+                Debug.Log("Set world object properties");
+                Debug.Log($"Name: {worldObjectName}");
+
+                if (this.worldObjects.TryGetValue(worldObjectName, out var worldObject))
+                {
+                    WorldObjectPropertiesDto propertiesDto = await this.dataConnection.GetWorldObjectPropertiesAsync(worldObjectName);
+                    var worldObjectType = worldObject.GetComponent<IPropertiesManager>();
+                    if (worldObjectType != null)
+                    {
+                        worldObjectType.SetProperties(propertiesDto.Properties);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Transforms an object.
+        /// </summary>
+        /// <param name="worldObjectTransformDto">Transform of an object.</param>
+        private void SessionConnection_WorldObjectTransformed(WorldObjectTransformDto worldObjectTransformDto)
+        {
+            try
+            {
+                Debug.Log("Transform world object");
+                Debug.Log($"Name: {worldObjectTransformDto.ObjectName}");
+                if (this.worldObjects.TryGetValue(worldObjectTransformDto.ObjectName, out var gameObject))
+                {
+                    this.SetTransform(gameObject, worldObjectTransformDto.Position, worldObjectTransformDto.Rotation, worldObjectTransformDto.Scale);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
+        }
+
+        #endregion
+
+
+        #region Object properties handlers
 
         /// <summary>
         /// Reports transform changes to a server.
@@ -508,38 +495,11 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
                     }
                 };
 
-                await this.serverConnection.TransformWorldObjectAsync(transformDto);
+                await this.sessionConnection.TransformWorldObjectAsync(transformDto);
             }
             catch (Exception ex)
             {
                 Debug.Log("Unable to update transform on a server.", this);
-                Debug.LogException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Reports change to a property to a server.
-        /// </summary>
-        /// <param name="sender">Object, whose property was updated.</param>
-        /// <param name="e">Property changed arguments.</param>
-        private async void PropertiesManager_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            try
-            {
-                Debug.Log($"Property of {e.ObjectName} changed. Update server");
-
-                var propertyDto = new WorldObjectPropertyDto
-                {
-                    ObjectName = e.ObjectName,
-                    PropertyName = e.PropertyName,
-                    PropertyValue = e.PropertyValue
-                };
-
-                await this.serverConnection.SetWorldObjectPropertyAsync(propertyDto);
-            }
-            catch (Exception ex)
-            {
-                Debug.Log("Unable to update property on a server.", this);
                 Debug.LogException(ex);
             }
         }
@@ -557,11 +517,10 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
 
                 var propertiesDto = new WorldObjectPropertiesDto
                 {
-                    ObjectName = e.ObjectName,
                     Properties = e.Properties
                 };
 
-                await this.serverConnection.SetWorldObjectPropertiesAsync(propertiesDto);
+                await this.dataConnection.UpdateWorldObjectPropertiesAsync(e.ObjectName, propertiesDto);
             }
             catch (Exception ex)
             {
@@ -569,5 +528,6 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
                 Debug.LogException(ex);
             }
         }
+        #endregion
     }
 }

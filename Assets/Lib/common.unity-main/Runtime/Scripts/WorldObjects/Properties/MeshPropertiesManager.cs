@@ -9,11 +9,11 @@ using ZCU.TechnologyLab.Common.Unity.Utility.Events;
 namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
 {
     /// <summary>
-    /// The MeshPropertiesManager class provides access to properties of a mesh
+    /// The <see cref="MeshPropertiesManager"/> class provides access to properties of a mesh
     /// and reports when some of the properties are changed.
     /// 
     /// The class requires that <see cref="MeshFilter"/> and <see cref="MeshRenderer"/> are added to the game object.
-    /// If they are added before MeshPropertiesManager, manager works with the mesh
+    /// If they are added before <see cref="MeshPropertiesManager"/>, the manager works with the mesh
     /// assigned to <see cref="MeshFilter"/> and material assigned to <see cref="MeshRenderer"/>.
     /// Otherwise, when these classes are not on the same game object, the manager
     /// creates its own mesh and material and creates new <see cref="MeshFilter"/> and <see cref="MeshRenderer"/>.
@@ -21,10 +21,10 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
     /// If you need to change the mesh you can do it in multiple ways:
     ///     1) Via your own custom classes
     ///     2) Via <see cref="SetMesh"/>, <see cref="SetVertices"/>, <see cref="SetTriangles"/>, <see cref="SetVerticesAndTriangles"/>
-    ///     3) Via <see cref="SetProperties"/>, <see cref="SetProperty"/>
+    ///     3) Via <see cref="SetProperties"/>
     /// 
     /// If you use the first option, the changes to the mesh will not triggger <see cref="PropertiesChanged"/> 
-    /// or <see cref="PropertyChanged"/> events and even if you add the mesh to <see cref="WorldObjectManager"/> 
+    /// event and even if you add the mesh to <see cref="WorldObjectManager"/> 
     /// it will not propagete changes to a server. You would have to update the mesh manually by 
     /// <see cref="WorldObjectManager.UpdateObjectAsync"/>.
     /// 
@@ -33,7 +33,7 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
     /// Please keep in mind that all these methods except the first one recalculate bounds and normals
     /// to keep the mesh consistent.
     /// 
-    /// The third option is not supposed to do updates to properties made by a user. 
+    /// The third option is not supposed to update properties by a user. 
     /// It should be used exclusively for communication between the application and the server.
     /// </summary>
     [RequireComponent(typeof(MeshFilter))]
@@ -42,9 +42,6 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
     {
         /// <inheritdoc/>
         public event EventHandler<PropertiesChangedEventArgs> PropertiesChanged;
-
-        /// <inheritdoc/>
-        public event EventHandler<PropertyChangedEventArgs> PropertyChanged;
 
         /// <summary>
         /// Description of a type of this world object.
@@ -159,7 +156,7 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
         /// If you need to set triangles as well, use <see cref="SetVerticesAndTriangles(Vector3[], int[])"/>
         /// to save one recalculation of normals and bounds.
         /// 
-        /// The method triggers <see cref="PropertyChanged"/> event.
+        /// The method triggers <see cref="PropertiesChanged"/> event.
         /// When vertices of a mesh are changed outside of the scope of this method
         /// the event is not called.
         /// </summary>
@@ -170,11 +167,10 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
             this.meshFilter.mesh.RecalculateNormals();
             this.meshFilter.mesh.RecalculateBounds();
 
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs 
+            this.PropertiesChanged?.Invoke(this, new PropertiesChangedEventArgs
             { 
                 ObjectName = this.gameObject.name,
-                PropertyName = MeshSerializer.PointsKey, 
-                PropertyValue = this.meshSerializer.SerializeVertices(PointConverter.Point3DToFloat(vertices)) 
+                Properties = this.GetProperties()
             });
         }
         /// <summary>
@@ -184,7 +180,7 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
         /// If you need to set vertices as well, use <see cref="SetVerticesAndTriangles(Vector3[], int[])"/>
         /// to save one recalculation of normals and bounds.
         /// 
-        /// The method triggers <see cref="PropertyChanged"/> event.
+        /// The method triggers <see cref="PropertiesChanged"/> event.
         /// When triangles of a mesh are changed outside of the scope of this method
         /// the event is not called.
         /// </summary>
@@ -195,22 +191,21 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
             this.meshFilter.mesh.RecalculateNormals();
             this.meshFilter.mesh.RecalculateBounds();
 
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs
+            this.PropertiesChanged?.Invoke(this, new PropertiesChangedEventArgs
             {
                 ObjectName = this.gameObject.name,
-                PropertyName = MeshSerializer.IndicesKey,
-                PropertyValue = this.meshSerializer.SerializeIndices(triangles)
+                Properties = this.GetProperties()
             });
         }
 
         /// <inheritdoc/>
-        public Dictionary<string, string> GetProperties()
+        public Dictionary<string, byte[]> GetProperties()
         {
             return this.meshSerializer.SerializeProperties(PointConverter.Point3DToFloat(this.meshFilter.mesh.vertices), this.meshFilter.mesh.triangles, SupportedPrimitives[0]);
         }
 
         /// <inheritdoc/>
-        public void SetProperties(Dictionary<string, string> properties)
+        public void SetProperties(Dictionary<string, byte[]> properties)
         {
             if (this.meshSerializer.SupportPrimitive(properties, SupportedPrimitives))
             {
@@ -219,27 +214,6 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
                 this.meshFilter.mesh.RecalculateNormals();
                 this.meshFilter.mesh.RecalculateBounds();
             }
-        }
-
-        /// <inheritdoc/>
-        public void SetProperty(string propertyName, string propertyValue)
-        {
-            switch (propertyName)
-            {
-                case MeshSerializer.PointsKey:
-                    {
-                        this.meshFilter.mesh.vertices = PointConverter.FloatToPoint3D(this.meshSerializer.DeserializeVertices(propertyValue));
-                    }
-                    break;
-                case MeshSerializer.IndicesKey:
-                    {
-                        this.meshFilter.mesh.triangles = this.meshSerializer.DeserializeIndices(propertyValue);
-                    }
-                    break;
-            }
-
-            this.meshFilter.mesh.RecalculateNormals();
-            this.meshFilter.mesh.RecalculateBounds();
         }
     }
 }

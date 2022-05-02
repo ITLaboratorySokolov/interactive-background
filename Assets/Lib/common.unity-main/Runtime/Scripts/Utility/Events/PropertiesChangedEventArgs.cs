@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ZCU.TechnologyLab.Common.Unity.Utility.Events
 {
@@ -19,6 +15,6 @@ namespace ZCU.TechnologyLab.Common.Unity.Utility.Events
         /// <summary>
         /// Changed properties.
         /// </summary>
-        public Dictionary<string, string> Properties { get; set; }
+        public Dictionary<string, byte[]> Properties { get; set; }
     }
 }

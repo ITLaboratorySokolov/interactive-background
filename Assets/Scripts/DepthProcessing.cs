@@ -6,6 +6,8 @@ using UnityEngine.UI;
 /// </summary>
 public class DepthProcessing : MonoBehaviour
 {
+    private double timeToSnapshot;
+
     [Header("Depth image")]
     /// <summary> Image displaying the texture </summary>
     [SerializeField]
@@ -21,6 +23,15 @@ public class DepthProcessing : MonoBehaviour
     /// <summary> Max depth (far plane) </summary>
     internal float max;
 
+    Color[] pixels;
+    Texture2D tx;
+
+    private void Start()
+    {
+        ImageProcessor.NewT();
+        resultTexture = new Texture2D(100, 100);
+    }
+
     /// <summary>
     /// Update called once per frame
     /// </summary>
@@ -31,7 +42,13 @@ public class DepthProcessing : MonoBehaviour
             return;
 
         // Process depth image
-        ProcessDepthIm();
+        // if (timeToSnapshot < 0.01)
+        {
+            ProcessDepthIm();
+            timeToSnapshot = 1;
+        }
+
+        //timeToSnapshot -= Time.deltaTime;
     }
 
     /// <summary>
@@ -41,11 +58,11 @@ public class DepthProcessing : MonoBehaviour
     /// </summary>
     private void ProcessDepthIm()
     {
-        Texture2D tx = ImageProcessor.TextureToTexture2D(depthTexture);
-        resultTexture = new Texture2D(tx.width, tx.height);
+        tx = ImageProcessor.TextureToTexture2D(depthTexture);
+        resultTexture.Reinitialize(tx.width, tx.height); // = new Texture2D(tx.width, tx.height);
 
         // Go through all pixels
-        Color[] pixels = tx.GetPixels();
+        pixels = tx.GetPixels();
         int count = 0;
         for (int i = 0; i < pixels.Length; i++)
         {

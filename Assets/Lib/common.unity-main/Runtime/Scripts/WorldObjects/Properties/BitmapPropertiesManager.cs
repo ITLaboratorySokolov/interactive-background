@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using ZCU.TechnologyLab.Common.Serialization;
 using ZCU.TechnologyLab.Common.Unity.Utility.Events;
@@ -8,11 +7,11 @@ using ZCU.TechnologyLab.Common.Unity.Utility.Events;
 namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
 {
     /// <summary>
-    /// The BitmapPropertiesManager class provides access to properties of an image
+    /// The <see cref="BitmapPropertiesManager"/> class provides access to properties of an image
     /// and reports when some of the properties are changed.
     /// 
     /// The class requires that <see cref="MeshFilter"/> and <see cref="MeshRenderer"/> are added to the game object.
-    /// If they are added before BitmapPropertiesManager, manager works with the mesh
+    /// If they are added before <see cref="BitmapPropertiesManager"/>, manager works with the mesh
     /// assigned to <see cref="MeshFilter"/> and material assigned to <see cref="MeshRenderer"/>.
     /// Otherwise, when these classes are not on the same game object, the manager
     /// creates its own mesh and material and creates new <see cref="MeshFilter"/> and <see cref="MeshRenderer"/>.
@@ -20,17 +19,17 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
     /// If you need to change the image you can do it in multiple ways:
     ///     1) Via your own custom classes
     ///     2) Via <see cref="SetTexture"/>, <see cref="SetTextureData"/>
-    ///     3) Via <see cref="SetProperties"/>, <see cref="SetProperty"/>
+    ///     3) Via <see cref="SetProperties"/>/>
     /// 
-    /// If you use the first option, the changes to the image will not triggger <see cref="PropertiesChanged"/> 
-    /// or <see cref="PropertyChanged"/> events and even if you add the image to <see cref="WorldObjectManager"/> 
+    /// If you use the first option, the changes to the image will not triggger <see cref="PropertiesChanged"/>
+    /// event and even if you add the image to <see cref="WorldObjectManager"/> 
     /// it will not propagete changes to a server. You would have to update the image manually by 
     /// <see cref="WorldObjectManager.UpdateObjectAsync"/>.
     /// 
     /// If you want to propagate changes via events automatically you can use the second option, but 
     /// the image should be added to <see cref="WorldObjectManager"/> to actually send the updates to the server.
     /// 
-    /// The third option is not supposed to do updates to properties made by a user. 
+    /// The third option is not supposed to update properties by a user. 
     /// It should be used exclusively for communication between the application and the server.
     /// </summary>
     [RequireComponent(typeof(MeshFilter))]
@@ -39,9 +38,6 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
     {
         /// <inheritdoc/>
         public event EventHandler<PropertiesChangedEventArgs> PropertiesChanged;
-
-        /// <inheritdoc/>
-        public event EventHandler<PropertyChangedEventArgs> PropertyChanged;
 
         /// <summary>
         /// RGBA pixel format.
@@ -164,11 +160,11 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
         }
 
         /// <inheritdoc/>
-        public Dictionary<string, string> GetProperties()
+        public Dictionary<string, byte[]> GetProperties()
         {
             var texture = (Texture2D)this.meshRenderer.material.mainTexture;
 
-            return this.bitmapSerializer.SerializeProperties(
+            return this.bitmapSerializer.SerializeRawBitmap(
                 this.meshRenderer.material.mainTexture.width,
                 this.meshRenderer.material.mainTexture.height, 
                 this.ConvertFormatToString(texture.format),
@@ -176,7 +172,7 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
         }
 
         /// <inheritdoc/>
-        public void SetProperties(Dictionary<string, string> properties)
+        public void SetProperties(Dictionary<string, byte[]> properties)
         {
             var height = this.bitmapSerializer.DeserializeHeight(properties);
             var width = this.bitmapSerializer.DeserializeWidth(properties);
@@ -188,53 +184,6 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects.Properties
             texture.Apply();
 
             this.meshFilter.mesh = GeneratePlane(width, height);
-        }
-
-        /// <inheritdoc/>
-        public void SetProperty(string propertyName, string propertyValue)
-        {
-            var texture = (Texture2D)this.meshRenderer.material.mainTexture;
-
-            switch (propertyName)
-            {
-                case BitmapSerializer.WidthKey:
-                    {
-                        var width = this.bitmapSerializer.DeserializeWidth(propertyValue);
-                        var data = texture.GetRawTextureData();
-
-                        texture.Reinitialize(width, texture.height, texture.format, false);
-                        texture.SetPixelData(data, 0);
-                        this.meshFilter.mesh = GeneratePlane(width, texture.height);
-                    }
-                    break;
-                case BitmapSerializer.HeightKey:
-                    {
-                        var height = this.bitmapSerializer.DeserializeHeight(propertyValue);
-                        var data = texture.GetRawTextureData();
-
-                        texture.Reinitialize(texture.width, height, texture.format, false);
-                        texture.SetPixelData(data, 0);
-                        this.meshFilter.mesh = GeneratePlane(texture.width, height);
-                    }
-                    break;
-                case BitmapSerializer.FormatKey:
-                    {
-                        var format = this.ConvertFormatFromString(propertyValue);
-                        var data = texture.GetRawTextureData();
-
-                        texture.Reinitialize(texture.width, texture.height, texture.format, false);
-                        texture.SetPixelData(data, 0);
-                        this.meshFilter.mesh = GeneratePlane(texture.width, texture.height);
-                    }
-                    break;
-                case BitmapSerializer.PixelsKey:
-                    {
-                        texture.SetPixelData(this.bitmapSerializer.DeserializePixels(propertyValue), 0);
-                    }
-                    break;
-            }
-            
-            texture.Apply();
         }
 
         /// <summary>
