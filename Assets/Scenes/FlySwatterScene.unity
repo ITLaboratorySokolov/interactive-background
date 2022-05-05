@@ -990,7 +990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d7681779ddd7a40a1b4393a4634b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathToConfig: D:/moje/school/05/PRJ/Projects/Realsense projection/Assets/config.txt
   serverUrl: {fileID: 11400000, guid: 78091fa411b06224481056c33758d8d4, type: 2}
   depthProc: {fileID: 371485021}
   canvas: {fileID: 775691679}
@@ -2815,7 +2814,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1888222311}
   - component: {fileID: 1888222310}
-  - component: {fileID: 1888222309}
+  - component: {fileID: 1888222312}
+  - component: {fileID: 1888222313}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2823,25 +2823,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1888222309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888222308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1888222310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2872,6 +2853,144 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1888222312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888222308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_PointAction: {fileID: -4505891042530435115, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_MoveAction: {fileID: -2046075241461399783, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_SubmitAction: {fileID: 996584905548749306, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_CancelAction: {fileID: -4974868376520353271, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_LeftClickAction: {fileID: -220479415903757702, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_MiddleClickAction: {fileID: 6135016322147015384, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_RightClickAction: {fileID: 1660990481848433456, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_ScrollWheelAction: {fileID: -2607733976676182862, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 3461933231584346239, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 2391663741159142562, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+--- !u!114 &1888222313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888222308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 91d0e79ab0cb7dd48b33e7556eccade9,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 1888222312}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4363ee41-d32e-4798-984f-8c6522d9be70
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a87c26ac-b6e3-4a2c-9a64-bf1aadfbf485
+    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 53541ec1-4e9f-4020-8244-3e4e6fe6a8ea
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 47467dfa-1682-4071-a3bf-7be9a51d0699
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c871271-0b9c-4fbd-ba3a-d3cc7ed7714d
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 73ae891f-6ebb-4ffe-a713-9e546986986f
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 91d4d906-df43-48ad-bc90-e6ec3f8593be
+    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4b4c89aa-4e4c-444c-9f1e-c5f1cda05fb8
+    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d1f87ea7-dd35-4886-b5b9-54e07d5a6806
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a46943bb-52c7-49d9-a409-4aa8719ad515
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ff6c7aec-c422-46bb-98d2-1bf45b9e5bee
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 356f66f8-5d0b-418c-a196-030ca70e5b8f
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62f6ba5a-5000-44e2-b830-37a22e0d67b0
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 775691679}
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
+        m_MethodName: OnExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ebdb04be-50d0-4f1b-9401-52992f4a26e3
+    m_ActionName: Player/Exit[/Keyboard/escape,/Keyboard/p]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1893513009
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,8 +14,7 @@ public class SetUpScript : MonoBehaviour
 {
     [Header("Config")]
     /// <summary> Path to config file </summary>
-    [SerializeField]
-    string pathToConfig = "D:/moje/school/05/PRJ/Projects/Realsense projection/Assets/config.txt";
+    string pathToConfig;
     /// <summary> Minimum depth </summary>
     float minDepth = 0;
     /// <summary> Maximum depth </summary>
@@ -46,10 +45,14 @@ public class SetUpScript : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        pathToConfig = Directory.GetCurrentDirectory() + "\\config.txt";
+        Debug.Log(pathToConfig);
+
         // Set culture -> doubles are written with decimal dot
         Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
         if (File.Exists(pathToConfig))
         {
+            Debug.Log("Loading config file...");
             string[] lines = File.ReadAllLines(pathToConfig);
             if (lines.Length >= 5)
             {

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 /// </summary>
 public class DepthProcessing : MonoBehaviour
 {
-    private double timeToSnapshot;
-
     [Header("Depth image")]
     /// <summary> Image displaying the texture </summary>
     [SerializeField]
@@ -42,13 +40,7 @@ public class DepthProcessing : MonoBehaviour
             return;
 
         // Process depth image
-        // if (timeToSnapshot < 0.01)
-        {
-            ProcessDepthIm();
-            timeToSnapshot = 1;
-        }
-
-        //timeToSnapshot -= Time.deltaTime;
+        ProcessDepthIm();
     }
 
     /// <summary>

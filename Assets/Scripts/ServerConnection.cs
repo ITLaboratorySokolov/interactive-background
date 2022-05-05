@@ -194,6 +194,7 @@ public class ServerConnection : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError("Unable to send to server");
+            Debug.Log(e.Message);
         }
     }
 

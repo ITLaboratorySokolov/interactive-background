@@ -1,5 +1,7 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using ZCU.TechnologyLab.Common.Connections.Session;
 using ZCU.TechnologyLab.Common.Unity.Connections.Session;
 
@@ -56,6 +58,15 @@ public class CanvasController : MonoBehaviour
     float zoom;
     /// <summary> Horizontal and vertical pan value </summary>
     float horizontalPan, verticalPan;
+
+    /// <summary>
+    /// Handle exit
+    /// </summary>
+    public void OnExit()
+    {
+        Debug.Log("Quitting!");
+        Application.Quit();
+    }
 
     /// <summary>
     /// Update - performs every frame
