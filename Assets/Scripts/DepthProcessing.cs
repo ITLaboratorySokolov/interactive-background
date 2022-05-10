@@ -1,128 +1,79 @@
-﻿using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Script processing the incoming depth image from RealSense sensor
+/// </summary>
 public class DepthProcessing : MonoBehaviour
 {
-    public Texture depthTexture { get; set; }
-    public RawImage foregroundImage;
-    public CanvasController canvas;
+    [Header("Depth image")]
+    /// <summary> Image displaying the texture </summary>
+    [SerializeField]
+    RawImage bgImage;
+    /// <summary> Incoming depth texture </summary>
+    [SerializeField]
+    Texture depthTexture { get; set; }
+    /// <summary> Processed depth texture </summary>
+    Texture2D resultTexture;
 
+    /// <summary> Min depth (near plane) </summary>
     internal float min;
+    /// <summary> Max depth (far plane) </summary>
     internal float max;
-    private Texture2D resultTexture;
-    
-    //public RawImage red;
 
-    // Start is called before the first frame update
-    void Start()
+    Color[] pixels;
+    Texture2D tx;
+
+    private void Start()
     {
-        canvas.ChangeDepthLevels(min, max);
+        ImageProcessor.NewT();
+        resultTexture = new Texture2D(100, 100);
     }
 
-    private Texture2D TextureToTexture2D(Texture texture)
-    {
-        Texture2D texture2D = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false);
-        RenderTexture currentRT = RenderTexture.active;
-        RenderTexture renderTexture = RenderTexture.GetTemporary(texture.width, texture.height, 32);
-        Graphics.Blit(texture, renderTexture);
-
-        RenderTexture.active = renderTexture;
-        texture2D.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-        texture2D.Apply();
-
-        RenderTexture.active = currentRT;
-        RenderTexture.ReleaseTemporary(renderTexture);
-        return texture2D;
-    }
-
-    // Update is called once per frame
+    /// <summary>
+    /// Update called once per frame
+    /// </summary>
     void Update()
     {
+        // No incoming depth texture
         if (depthTexture == null)
             return;
 
-        SetForeground();
+        // Process depth image
+        ProcessDepthIm();
     }
 
-    /*
-    private void Control()
+    /// <summary>
+    /// Processes depth image and sets the texture of image that displays it
+    /// - any pixels further than far plane will be transparent
+    /// - any pixels closer than near plane will be transparent
+    /// </summary>
+    private void ProcessDepthIm()
     {
-        Texture2D rx = TextureToTexture2D(red.texture);
-        Texture2D px = new Texture2D(resultTexture.width, resultTexture.height); //, TextureFormat.RGBA32, false);
+        tx = ImageProcessor.TextureToTexture2D(depthTexture);
+        resultTexture.Reinitialize(tx.width, tx.height); // = new Texture2D(tx.width, tx.height);
 
+        // Go through all pixels
+        pixels = tx.GetPixels();
         int count = 0;
-        int obstructed = 0;
-
-        // width * height
-        //resultTexture.GetPixels(minX, minY, (maxX - minX), (maxY - minY));
-
-        Color[] tC = resultTexture.GetPixels();
-        Color[] rC = rx.GetPixels();
-        Color[] pC = new Color[tC.Length];
-
-        for (int i = 0; i < tC.Length; i++)
+        for (int i = 0; i < pixels.Length; i++)
         {
-            if (rC[i].a > 0.1 && tC[i].a > 0.1)
-                obstructed++;
+            Color d = pixels[i];
+            float r = d.r; //r is unscaled depth, normalized to [0-1]
+            float distMeters = r * 65536 * 0.001f; // to meters
 
-            if (rC[i].a > 0.1)
-                count++;
-
-            pC[i] = rC[i] + tC[i];
-        }
-
-        px.SetPixels(pC);
-
-        double perc = ((double)obstructed) / count;
-        // Debug.Log(obstructed + " vs " + count);
-        if (perc > 0.4)
-        {
-            Debug.Log("NOW RED");
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            var b = px.EncodeToPNG();
-            File.WriteAllBytes("D:/moje/school/05/PRJ/Projects/Test2.png", b);
-            Debug.Log("Saved to image");
-        }
-    }
-    */
-
-    private void SetForeground()
-    {
-        Texture2D tx = TextureToTexture2D(depthTexture);
-        resultTexture = new Texture2D(tx.width, tx.height); //, TextureFormat.RGBA32, false);
-
-        int count = 0;
-        for (int w = 0; w < tx.width; w++)
-        {
-            for (int h = 0; h < tx.height; h++)
+            // If in relevant depth
+            Color res = new Color(0, 0, 0, 0);
+            if (distMeters > min && distMeters < max)
             {
-                // TODO stolen from shader
-                Color d = tx.GetPixel(w, h);
-                float r = d.r; //r is unscaled depth, normalized to [0-1]
-                float distMeters = r * 65536 * 0.001f;
-
-                Color res = new Color(0, 0, 0, 0);
-                if (distMeters > min && distMeters < max)
-                {
-                    res = new Color(1, 1, 1, 1);
-                    count++;
-                }
-
-                resultTexture.SetPixel(w, h, res);
+                res = new Color(0, 0, 0, 1);
+                count++;
             }
+            pixels[i] = res;
         }
+        resultTexture.SetPixels(pixels);
         resultTexture.Apply();
-        foregroundImage.texture = resultTexture;
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            var b = resultTexture.EncodeToPNG();
-            File.WriteAllBytes("D:/moje/school/05/PRJ/Projects/Test.png", b);
-            Debug.Log("Saved to image");
-        }
+        bgImage.texture = resultTexture;
     }
 }
