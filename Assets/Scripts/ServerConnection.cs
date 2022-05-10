@@ -66,6 +66,10 @@ public class ServerConnection : MonoBehaviour
         //session.StartSession();
         actionStart.Invoke();
 
+        Texture2D t = new Texture2D(1, 1);
+        data = t.GetRawTextureData();
+        properties = serializer.SerializeRawBitmap(t.width, t.height, "RGBA", data);
+
         // Create DTO
         wod = new WorldObjectDto();
         wod.Name = "FlyKiller";
@@ -74,8 +78,11 @@ public class ServerConnection : MonoBehaviour
         wod.Scale = new RemoteVectorDto();
         wod.Scale.X = 1; wod.Scale.Y = 1; wod.Scale.Z = 1;
         wod.Type = "Bitmap";
+        wod.Properties = properties;
 
         StartCoroutine(SyncCall());
+
+        Destroy(t);
     }
 
     /// <summary>
@@ -162,7 +169,7 @@ public class ServerConnection : MonoBehaviour
         */
 
         // Add properties
-        properties = serializer.SerializeRawBitmap(scaled.width, scaled.height, $"{scaled.format}", data);  // new Dictionary<string, string>();
+        properties = serializer.SerializeRawBitmap(scaled.width, scaled.height, "RGBA", data);  // new Dictionary<string, string>();
 
         // Add properties to DTO and send to server
         wod.Properties = properties;
@@ -183,13 +190,15 @@ public class ServerConnection : MonoBehaviour
             stopWatch.Start();
 
             if (update)
-                await dataConnection.UpdateWorldObjectAsync(worldImage);
-            else 
+            {
+                WorldObjectPropertiesDto props = new WorldObjectPropertiesDto() { Properties = worldImage.Properties };
+                await dataConnection.UpdateWorldObjectPropertiesAsync(worldImage.Name, props);
+            }
+            else
                 await dataConnection.AddWorldObjectAsync(worldImage);
 
             stopWatch.Stop();
             Debug.Log(stopWatch.ElapsedMilliseconds + " ms");
-
         }
         catch (Exception e)
         {
@@ -207,7 +216,7 @@ public class ServerConnection : MonoBehaviour
         if (timeToSnapshot < 0.01)
         {
             // Reset timer
-            timeToSnapshot = 0.25;
+            timeToSnapshot = 1;
             StartCoroutine(RecordFrame());
         }
 

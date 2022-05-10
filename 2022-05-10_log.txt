@@ -1,0 +1,416 @@
+Debug: 5/10/2022 7:41:10 PM Starting HubConnection.
+Information: 5/10/2022 7:41:10 PM Starting transport. Transfer mode: Binary. Url: 'wss://localhost:49153/virtualWorldHub?id=QxyS_IRiPmSEoSg2bmsifg'.
+Information: 5/10/2022 7:41:10 PM HttpConnection Started.
+Information: 5/10/2022 7:41:10 PM Using HubProtocol 'messagepack v1'.
+Debug: 5/10/2022 7:41:10 PM Sending Hub Handshake.
+Debug: 5/10/2022 7:41:10 PM Handshake with server complete.
+Debug: 5/10/2022 7:41:10 PM Sending PingMessage message.
+Debug: 5/10/2022 7:41:10 PM Sending PingMessage message completed.
+Debug: 5/10/2022 7:41:10 PM Receive loop starting.
+Information: 5/10/2022 7:41:10 PM HubConnection started.
+Debug: 5/10/2022 7:41:11 PM Processing 32 byte message from server.
+Warning: 5/10/2022 7:41:11 PM Failed to find handler for 'AddWorldObject' method.
+Error: 5/10/2022 7:41:11 PM Failed to bind arguments received in invocation '(null)' of 'AddWorldObject'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:11 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:11 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:11 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:12 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:12 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:12 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:13 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:13 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:13 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:14 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:14 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:14 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:15 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:15 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:15 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:16 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:16 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:16 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:17 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:17 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:17 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:18 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:18 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:18 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:19 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:19 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:19 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:20 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:20 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:20 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:21 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:21 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:21 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:22 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:22 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:22 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:23 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:23 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:23 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:24 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:24 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:24 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:25 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:25 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:25 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:25 PM Processing 3 byte message from server.
+Debug: 5/10/2022 7:41:25 PM Sending PingMessage message.
+Debug: 5/10/2022 7:41:25 PM Sending PingMessage message completed.
+Debug: 5/10/2022 7:41:26 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:26 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:26 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:27 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:27 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:27 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:28 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:28 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:28 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:29 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:29 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:29 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:30 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:30 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:30 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:31 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:31 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:31 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:32 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:32 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:32 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:33 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:33 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:33 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:34 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:34 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:34 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:35 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:35 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:35 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:36 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:36 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:36 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:37 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:37 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:37 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:38 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:38 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:38 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:39 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:39 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:39 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:40 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:41:40 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:41:40 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:41:41 PM Stopping HubConnection.
+Debug: 5/10/2022 7:41:41 PM Terminating receive loop.
+Debug: 5/10/2022 7:41:41 PM Waiting for the receive loop to terminate.
+Information: 5/10/2022 7:41:41 PM Transport is stopping.
+Information: 5/10/2022 7:41:42 PM HttpConnection Disposed.
+Information: 5/10/2022 7:41:42 PM WebSocket closed by the server. Close status NormalClosure.
+Debug: 5/10/2022 7:41:42 PM Canceling all outstanding invocations.
+Debug: 5/10/2022 7:41:42 PM Invoking the Closed event handler.
+Debug: 5/10/2022 7:41:42 PM HubConnection stopped.
+Debug: 5/10/2022 7:42:15 PM Starting HubConnection.
+Information: 5/10/2022 7:42:16 PM Starting transport. Transfer mode: Binary. Url: 'wss://localhost:49153/virtualWorldHub?id=r5tU4PQW9OfuZs80ZbyAKg'.
+Information: 5/10/2022 7:42:16 PM HttpConnection Started.
+Information: 5/10/2022 7:42:16 PM Using HubProtocol 'messagepack v1'.
+Debug: 5/10/2022 7:42:16 PM Sending Hub Handshake.
+Debug: 5/10/2022 7:42:16 PM Handshake with server complete.
+Debug: 5/10/2022 7:42:16 PM Sending PingMessage message.
+Debug: 5/10/2022 7:42:16 PM Sending PingMessage message completed.
+Debug: 5/10/2022 7:42:16 PM Receive loop starting.
+Information: 5/10/2022 7:42:16 PM HubConnection started.
+Debug: 5/10/2022 7:42:17 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:17 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:17 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:18 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:18 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:18 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:19 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:19 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:19 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:20 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:20 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:20 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:21 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:21 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:21 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:22 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:22 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:22 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:23 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:23 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:23 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:24 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:24 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:24 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:25 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:25 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:25 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:26 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:26 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:26 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:27 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:27 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:27 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:29 PM Stopping HubConnection.
+Debug: 5/10/2022 7:42:29 PM Terminating receive loop.
+Debug: 5/10/2022 7:42:29 PM Waiting for the receive loop to terminate.
+Information: 5/10/2022 7:42:29 PM Transport is stopping.
+Information: 5/10/2022 7:42:29 PM HttpConnection Disposed.
+Debug: 5/10/2022 7:42:29 PM Canceling all outstanding invocations.
+Debug: 5/10/2022 7:42:29 PM Invoking the Closed event handler.
+Debug: 5/10/2022 7:42:29 PM HubConnection stopped.
+Debug: 5/10/2022 7:42:50 PM Starting HubConnection.
+Information: 5/10/2022 7:42:51 PM Starting transport. Transfer mode: Binary. Url: 'wss://localhost:49153/virtualWorldHub?id=8I2ZyqoocT-ud2OmdtHrnQ'.
+Information: 5/10/2022 7:42:51 PM HttpConnection Started.
+Information: 5/10/2022 7:42:51 PM Using HubProtocol 'messagepack v1'.
+Debug: 5/10/2022 7:42:51 PM Sending Hub Handshake.
+Debug: 5/10/2022 7:42:51 PM Handshake with server complete.
+Debug: 5/10/2022 7:42:51 PM Sending PingMessage message.
+Debug: 5/10/2022 7:42:51 PM Sending PingMessage message completed.
+Debug: 5/10/2022 7:42:51 PM Receive loop starting.
+Information: 5/10/2022 7:42:51 PM HubConnection started.
+Debug: 5/10/2022 7:42:52 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:52 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:52 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:53 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:53 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:53 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:54 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:54 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:54 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:55 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:55 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:55 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:56 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:56 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:56 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:57 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:57 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:57 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:58 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:58 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:58 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:42:59 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:42:59 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:42:59 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:43:00 PM Processing 42 byte message from server.
+Warning: 5/10/2022 7:43:00 PM Failed to find handler for 'SetWorldObjectProperties' method.
+Error: 5/10/2022 7:43:00 PM Failed to bind arguments received in invocation '(null)' of 'SetWorldObjectProperties'.
+
+System.IO.InvalidDataException: Invocation provides 1 argument(s) but target expects 0.
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.BindArguments (MessagePack.MessagePackReader& reader, System.Collections.Generic.IReadOnlyList`1[T] parameterTypes) [0x00036] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+  at Microsoft.AspNetCore.SignalR.Protocol.MessagePackHubProtocolWorker.CreateInvocationMessage (MessagePack.MessagePackReader& reader, Microsoft.AspNetCore.SignalR.IInvocationBinder binder, System.Int32 itemCount) [0x0002f] in <2f64ddba29f44b0c80ff972746b0593f>:0 
+Debug: 5/10/2022 7:43:01 PM Stopping HubConnection.
+Debug: 5/10/2022 7:43:01 PM Terminating receive loop.
+Debug: 5/10/2022 7:43:01 PM Waiting for the receive loop to terminate.
+Information: 5/10/2022 7:43:01 PM Transport is stopping.
+Information: 5/10/2022 7:43:01 PM HttpConnection Disposed.
+Information: 5/10/2022 7:43:01 PM WebSocket closed by the server. Close status NormalClosure.
+Debug: 5/10/2022 7:43:01 PM Canceling all outstanding invocations.
+Debug: 5/10/2022 7:43:01 PM Invoking the Closed event handler.
+Debug: 5/10/2022 7:43:01 PM HubConnection stopped.

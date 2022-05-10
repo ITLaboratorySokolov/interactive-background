@@ -45,7 +45,7 @@ public class SetUpScript : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        pathToConfig = Directory.GetCurrentDirectory() + "\\config.txt";
+        pathToConfig = "./config.txt"; // Directory.GetCurrentDirectory() + "\\config.txt";
         Debug.Log(pathToConfig);
 
         // Set culture -> doubles are written with decimal dot
