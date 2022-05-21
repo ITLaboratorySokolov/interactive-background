@@ -22,7 +22,16 @@ public class Swatter : MonoBehaviour
     /// <summary> Canvas controller </summary>
     [SerializeField]
     CanvasController canvas;
-    
+
+    [Header("Sound")]
+    /// <summary> Fly buzz sound - https://www.youtube.com/watch?v=AtbWRz4gdzU </summary>
+    [SerializeField]
+    AudioSource swatSound;
+    /// <summary> Swatting sound - https://youtu.be/_BQbK3vm0AA </summary>
+    [SerializeField]
+    AudioSource flySound;
+
+
     /// <summary> Left top corner of fly </summary>
     private Transform flyMinLoc;
     /// <summary> Right bottom corner of fly </summary>
@@ -111,9 +120,15 @@ public class Swatter : MonoBehaviour
             // Fly was hit more than one frame ago = it found an empty place to sit on
             if (!flyController.oneFrame)
             {
+                // Play sound
+                swatSound.Play();
+                flySound.Play();
+
+                // Add points
                 hits++;
                 canvas.ChangeScore(hits);
             }
+            // Move fly
             flyController.MoveToNewLocation();
         }
 
