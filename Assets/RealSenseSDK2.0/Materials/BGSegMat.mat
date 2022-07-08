@@ -27,6 +27,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _DepthScale: 0.001
     - _Feather: 0
@@ -35,3 +36,4 @@ Material:
     - _MaxRange: 0.69
     - _MinRange: 0
     m_Colors: []
+  m_BuildTextureStacks: []

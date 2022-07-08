@@ -1,0 +1,630 @@
+Debug: 7/2/2022 5:25:10 PM Starting HubConnection.
+Error: 7/2/2022 5:25:14 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:25:19 PM Starting HubConnection.
+Error: 7/2/2022 5:25:24 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:25:29 PM Starting HubConnection.
+Error: 7/2/2022 5:25:33 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:25:43 PM Starting HubConnection.
+Error: 7/2/2022 5:25:47 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:25:53 PM Starting HubConnection.
+Error: 7/2/2022 5:25:57 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:26:40 PM Starting HubConnection.
+Error: 7/2/2022 5:26:45 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:26:50 PM Starting HubConnection.
+Error: 7/2/2022 5:26:54 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:28:01 PM Starting HubConnection.
+Error: 7/2/2022 5:28:05 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:31:10 PM Starting HubConnection.
+Error: 7/2/2022 5:31:14 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:31:41 PM Starting HubConnection.
+Error: 7/2/2022 5:31:46 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:31:51 PM Starting HubConnection.
+Error: 7/2/2022 5:31:55 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:32:22 PM Starting HubConnection.
+Error: 7/2/2022 5:32:26 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:32:31 PM Starting HubConnection.
+Error: 7/2/2022 5:32:35 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:32:40 PM Starting HubConnection.
+Error: 7/2/2022 5:32:44 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:33:31 PM Starting HubConnection.
+Error: 7/2/2022 5:33:35 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:33:40 PM Starting HubConnection.
+Error: 7/2/2022 5:33:44 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:33:50 PM Starting HubConnection.
+Error: 7/2/2022 5:33:54 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:33:59 PM Starting HubConnection.
+Error: 7/2/2022 5:34:03 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 5:34:09 PM Starting HubConnection.
+Error: 7/2/2022 5:34:14 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:18:16 PM Starting HubConnection.
+Error: 7/2/2022 10:18:20 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:18:25 PM Starting HubConnection.
+Error: 7/2/2022 10:18:29 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:18:34 PM Starting HubConnection.
+Error: 7/2/2022 10:18:38 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:18:43 PM Starting HubConnection.
+Error: 7/2/2022 10:18:48 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:20:48 PM Starting HubConnection.
+Error: 7/2/2022 10:20:52 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:20:57 PM Starting HubConnection.
+Error: 7/2/2022 10:21:02 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:22:50 PM Starting HubConnection.
+Error: 7/2/2022 10:22:54 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:22:59 PM Starting HubConnection.
+Error: 7/2/2022 10:23:03 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:23:09 PM Starting HubConnection.
+Error: 7/2/2022 10:23:13 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:23:18 PM Starting HubConnection.
+Error: 7/2/2022 10:23:22 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:23:27 PM Starting HubConnection.
+Error: 7/2/2022 10:23:31 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:23:36 PM Starting HubConnection.
+Error: 7/2/2022 10:23:40 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:23:45 PM Starting HubConnection.
+Error: 7/2/2022 10:23:49 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:23:55 PM Starting HubConnection.
+Error: 7/2/2022 10:23:59 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:24:44 PM Starting HubConnection.
+Error: 7/2/2022 10:24:49 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:24:54 PM Starting HubConnection.
+Error: 7/2/2022 10:24:58 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:25:03 PM Starting HubConnection.
+Error: 7/2/2022 10:25:07 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:25:26 PM Starting HubConnection.
+Error: 7/2/2022 10:25:31 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:25:36 PM Starting HubConnection.
+Error: 7/2/2022 10:25:40 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:27:13 PM Starting HubConnection.
+Error: 7/2/2022 10:27:18 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:27:23 PM Starting HubConnection.
+Error: 7/2/2022 10:27:27 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:27:32 PM Starting HubConnection.
+Error: 7/2/2022 10:27:36 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:27:41 PM Starting HubConnection.
+Error: 7/2/2022 10:27:45 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:27:50 PM Starting HubConnection.
+Error: 7/2/2022 10:27:54 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:31:56 PM Starting HubConnection.
+Error: 7/2/2022 10:32:00 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:32:30 PM Starting HubConnection.
+Error: 7/2/2022 10:32:34 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:32:42 PM Starting HubConnection.
+Error: 7/2/2022 10:32:46 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:33:38 PM Starting HubConnection.
+Error: 7/2/2022 10:33:42 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:33:47 PM Starting HubConnection.
+Error: 7/2/2022 10:33:51 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:33:56 PM Starting HubConnection.
+Error: 7/2/2022 10:34:00 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:34:05 PM Starting HubConnection.
+Error: 7/2/2022 10:34:09 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:35:27 PM Starting HubConnection.
+Error: 7/2/2022 10:35:31 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:35:36 PM Starting HubConnection.
+Error: 7/2/2022 10:35:40 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:35:53 PM Starting HubConnection.
+Error: 7/2/2022 10:35:57 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:36:02 PM Starting HubConnection.
+Error: 7/2/2022 10:36:06 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:36:11 PM Starting HubConnection.
+Error: 7/2/2022 10:36:15 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:36:20 PM Starting HubConnection.
+Error: 7/2/2022 10:36:25 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:36:30 PM Starting HubConnection.
+Error: 7/2/2022 10:36:34 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:36:39 PM Starting HubConnection.
+Error: 7/2/2022 10:36:43 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:36:48 PM Starting HubConnection.
+Error: 7/2/2022 10:36:52 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:36:57 PM Starting HubConnection.
+Error: 7/2/2022 10:37:01 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:37:06 PM Starting HubConnection.
+Error: 7/2/2022 10:37:11 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:37:16 PM Starting HubConnection.
+Error: 7/2/2022 10:37:20 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:37:25 PM Starting HubConnection.
+Error: 7/2/2022 10:37:29 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:37:34 PM Starting HubConnection.
+Error: 7/2/2022 10:37:38 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:37:43 PM Starting HubConnection.
+Error: 7/2/2022 10:37:47 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:37:52 PM Starting HubConnection.
+Error: 7/2/2022 10:37:57 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:39:08 PM Starting HubConnection.
+Error: 7/2/2022 10:39:12 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:41:33 PM Starting HubConnection.
+Error: 7/2/2022 10:41:37 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:41:43 PM Starting HubConnection.
+Error: 7/2/2022 10:41:47 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+Debug: 7/2/2022 10:41:52 PM Starting HubConnection.
+Error: 7/2/2022 10:41:57 PM Failed to start connection. Error getting negotiation response from 'https://localhost:49155/virtualWorldHub'.
+
+System.Net.Http.HttpRequestException: An error occurred while sending the request
+  at System.Net.Http.MonoWebRequestHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00509] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x000ff] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) [0x00095] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 
+  at System.Net.Http.HttpClient.SendAsyncWorker (System.Net.Http.HttpRequestMessage request, System.Net.Http.HttpCompletionOption completionOption, System.Threading.CancellationToken cancellationToken) [0x000e8] in <06147aa5b56f46dfbf1deab890f870b4>:0 
+  at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync (System.Uri url, System.Net.Http.HttpClient httpClient, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken) [0x00147] in <aab75bd23cf0495fa556f9fd878cdf1f>:0 

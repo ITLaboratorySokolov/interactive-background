@@ -13,7 +13,7 @@ public class Swatter : MonoBehaviour
     RawImage fly;
     /// <summary> Background image - processed depth </summary>
     [SerializeField]
-    RawImage bgImage;
+    internal RawImage bgImage;
 
     [Header("Scripts")]
     /// <summary> Fly controller </summary>
@@ -107,6 +107,7 @@ public class Swatter : MonoBehaviour
         // How many of them are object
         int count = (maxX - minX) * (maxY - minY);
         int obstructed = 0;
+
         for (int i = 0; i < rC.Length; i++)
         {
             if (rC[i].a > 0.1)

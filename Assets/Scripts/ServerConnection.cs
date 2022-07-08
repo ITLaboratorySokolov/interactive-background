@@ -10,7 +10,6 @@ using ZCU.TechnologyLab.Common.Connections.Session;
 using ZCU.TechnologyLab.Common.Connections;
 using ZCU.TechnologyLab.Common.Unity.Connections.Data;
 
-// TODO retry connection
 // TODO yells on close that screen capture cannot be done outside of playmode!
 
 /// <summary>
@@ -48,9 +47,13 @@ public class ServerConnection : MonoBehaviour
     /// <summary> Synchronization call has been finished </summary>
     bool syncCallDone;
 
+    /// <summary> WOD Properties </summary>
     Dictionary<string, byte[]> properties;
+    /// <summary> Scaled screen capture texture </summary>
     Texture2D scaled;
+    /// <summary> Object data in byte array </summary>
     byte[] data;
+    /// <summary> Stopwatch for debug </summary>
     System.Diagnostics.Stopwatch stopWatch;
 
     /// <summary>
@@ -63,7 +66,7 @@ public class ServerConnection : MonoBehaviour
         serializer = new BitmapSerializer();
         connection = new ServerSessionConnection(session);
         dataConnection = new ServerDataConnection(dataSession);
-        //session.StartSession();
+        
         actionStart.Invoke();
 
         Texture2D t = new Texture2D(1, 1);
@@ -80,9 +83,37 @@ public class ServerConnection : MonoBehaviour
         wod.Type = "Bitmap";
         wod.Properties = properties;
 
-        StartCoroutine(SyncCall());
-
         Destroy(t);
+    }
+
+    /// <summary>
+    /// Called when automatic connection to server fails
+    /// - attempts to restart connection to server
+    /// </summary>
+    public void ConnectionFailed()
+    {
+        Debug.Log("Launching restart procedure");
+        StartCoroutine(RestartConnection());
+    }
+
+    /// <summary>
+    /// Restarting procedure
+    /// - creates a minimum 5s delay
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator RestartConnection()
+    {
+        yield return new WaitForSeconds(5);
+        actionStart.Invoke();
+    }
+
+    /// <summary>
+    /// Called when successfully connected to server
+    /// </summary>
+    public void ConnectedToServer()
+    {
+        Debug.Log("Connected to server");
+        StartCoroutine(SyncCall());
     }
 
     /// <summary>
@@ -149,24 +180,6 @@ public class ServerConnection : MonoBehaviour
 
         // Get pixel data
         data = scaled.GetRawTextureData();
-        /* Debug output
-        var data2 = serializer.DeserializePixels(pxs);
-        scaled.SetPixelData(data2, 0);
-        scaled.Apply();
-        
-        byte[] bytes = scaled.EncodeToPNG();
-        var dirPath = Application.dataPath + "/../SaveImages/";
-        if (!Directory.Exists(dirPath))
-            Directory.CreateDirectory(dirPath);
-        File.WriteAllBytes(dirPath + "Image" + ".png", bytes);
-
-        string s = ""; string s2 = ""; string s3 = "";
-        for (int i = 0; i < 100; i++)
-        {
-            s += data[i]; s2 += data2[i]; s3 += pxs[i]; 
-        }
-        Debug.Log(s); Debug.Log(s2); Debug.Log(s3);
-        */
 
         // Add properties
         properties = serializer.SerializeRawBitmap(scaled.width, scaled.height, "RGBA", data);  // new Dictionary<string, string>();
@@ -175,7 +188,7 @@ public class ServerConnection : MonoBehaviour
         wod.Properties = properties;
         SendToServer(wod, true);
 
-        UnityEngine.Object.Destroy(scaled);
+        Destroy(scaled);
     }
 
     /// <summary>

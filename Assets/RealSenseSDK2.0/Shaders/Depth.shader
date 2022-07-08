@@ -53,9 +53,15 @@ Shader "Custom/Depth" {
 			{
 				// [0..1] -> ushort -> meters
 				float z = tex2D(_MainTex, pix.uv).r * 0xffff * _DepthScale;
+				if (z > _MaxRange || z < _MinRange) {
+					discard;
+				}
+
 				z = (z - _MinRange) / (_MaxRange - _MinRange);
-				if(z <= 0)
+				if (z <= 0) {
+					discard;
 					return 0;
+				}
 				return tex2D(_Colormaps, float2(z, 1 - (_Colormap + 0.5) * _Colormaps_TexelSize.y));
 			}
 			ENDCG

@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using ZCU.TechnologyLab.Common.Connections.Session;
 using ZCU.TechnologyLab.Common.Unity.Connections.Session;
 
@@ -54,10 +55,19 @@ public class CanvasController : MonoBehaviour
     [SerializeField]
     SignalRSessionWrapper session;
 
+    [SerializeField]
+    RawImage colorBg;
+    [SerializeField]
+    RawImage shadowBg;
+
+    [SerializeField]
+    Swatter flySwatter;
+
     /// <summary> Zoom value </summary>
     float zoom;
     /// <summary> Horizontal and vertical pan value </summary>
     float horizontalPan, verticalPan;
+    private bool depth;
 
     /// <summary>
     /// Handle exit
@@ -214,5 +224,30 @@ public class CanvasController : MonoBehaviour
     {
         zoomFLD.text = "" + zoom;
         background.transform.localScale = new Vector3(Mathf.Sign(background.transform.localScale.x) * zoom, Mathf.Sign(background.transform.localScale.y) * zoom, Mathf.Sign(background.transform.localScale.z) * zoom);
+    }
+
+
+    /// <summary>
+    /// Toggle colorOn
+    /// </summary>
+    public void ToggleColor()
+    {
+        depthProcessing.colorOn = !depthProcessing.colorOn;
+
+        if (depthProcessing.colorOn)
+        {
+            shadowBg.gameObject.SetActive(false);
+            colorBg.gameObject.SetActive(true);
+
+            colorBg.material.SetFloat("_MinRange", depthProcessing.min);
+            colorBg.material.SetFloat("_MaxRange", depthProcessing.max);
+        }
+        else
+        {
+            shadowBg.gameObject.SetActive(true);
+            colorBg.gameObject.SetActive(false);
+
+        }
+
     }
 }

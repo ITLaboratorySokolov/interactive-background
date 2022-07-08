@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using ZCU.TechnologyLab.Common.Unity.Utility.Events;
 
@@ -39,7 +35,7 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
         /// Time interval between reports [in miliseconds].
         /// </summary>
         [SerializeField]
-        private int transformChangedEventReportDelay = 100;
+        private float transformChangedEventReportDelay = 0.1f;
 
         /// <summary>
         /// Remaining time to next report. 
@@ -58,7 +54,7 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
         /// <summary>
         /// Gets or sets duration between reports.
         /// </summary>
-        public int TransformChangedEventReportDelay
+        public float TransformChangedEventReportDelay
         {
             get => this.transformChangedEventReportDelay;
             set => this.transformChangedEventReportDelay = value;
@@ -77,6 +73,7 @@ namespace ZCU.TechnologyLab.Common.Unity.WorldObjects
             if (this.transform.hasChanged && this.reportTransformChangedEvent && this.remainingTime <= 0)
             {
                 this.remainingTime = this.transformChangedEventReportDelay;
+                this.transform.hasChanged = false;
                 this.TransformChanged?.Invoke(this, new TransformChangedEventArgs { Transform = this.transform });
             }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityMeshImporter;
 using ZCU.TechnologyLab.Common.Serialization;
 using ZCU.TechnologyLab.Common.Unity.Utility;
 using ZCU.TechnologyLab.Common.Unity.Utility.Events;
