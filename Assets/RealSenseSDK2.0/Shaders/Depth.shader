@@ -40,28 +40,41 @@ Shader "Custom/Depth" {
 
 			#include "UnityCG.cginc"
 
+			// Depth texture
 			sampler2D _MainTex;
+			// Color coding colormaps
 			sampler2D _Colormaps;
 			float4 _Colormaps_TexelSize;
 			
+			// Selected colormap
 			float _Colormap;
+			// Minimum visible range
 			float _MinRange;
+			// Maximum visible range
 			float _MaxRange;
+			// Depth scale
 			float _DepthScale;
 
+			// Fragment shader
 			half4 frag (v2f_img pix) : SV_Target
 			{
+				// Depth value to meters
 				// [0..1] -> ushort -> meters
 				float z = tex2D(_MainTex, pix.uv).r * 0xffff * _DepthScale;
+				
+				// If out of range -> discard fragment
 				if (z > _MaxRange || z < _MinRange) {
 					discard;
 				}
 
+				// Compute color coordinates
 				z = (z - _MinRange) / (_MaxRange - _MinRange);
 				if (z <= 0) {
 					discard;
 					return 0;
 				}
+
+				// Get color from colormap
 				return tex2D(_Colormaps, float2(z, 1 - (_Colormap + 0.5) * _Colormaps_TexelSize.y));
 			}
 			ENDCG

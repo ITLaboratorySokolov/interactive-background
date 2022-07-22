@@ -31,7 +31,7 @@ public class Swatter : MonoBehaviour
     [SerializeField]
     AudioSource flySound;
 
-
+    [Header("Fly information")]
     /// <summary> Left top corner of fly </summary>
     private Transform flyMinLoc;
     /// <summary> Right bottom corner of fly </summary>
@@ -39,6 +39,8 @@ public class Swatter : MonoBehaviour
     /// <summary> Number of hits </summary>
     private int hits = 0;
 
+    [Header("Helper variables")]
+    /// <summary> Texture2D used for manipulation </summary>
     Texture2D rx;
 
     /// <summary>
@@ -133,7 +135,6 @@ public class Swatter : MonoBehaviour
             flyController.MoveToNewLocation();
         }
 
-        // UnityEngine.Object.Destroy(rx);
     }
 
     /// <summary>

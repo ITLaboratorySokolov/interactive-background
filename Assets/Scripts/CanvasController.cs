@@ -1,7 +1,5 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using ZCU.TechnologyLab.Common.Connections.Session;
 using ZCU.TechnologyLab.Common.Unity.Connections.Session;
@@ -54,14 +52,18 @@ public class CanvasController : MonoBehaviour
     /// <summary> Session script </summary>
     [SerializeField]
     SignalRSessionWrapper session;
+    /// <summary> Fly swatter script </summary>
+    [SerializeField]
+    Swatter flySwatter;
 
+    [Header("Background images")]
+    /// <summary> Colored background image </summary>
     [SerializeField]
     RawImage colorBg;
+    /// <summary> Black and white background image </summary>
     [SerializeField]
     RawImage shadowBg;
 
-    [SerializeField]
-    Swatter flySwatter;
 
     /// <summary> Zoom value </summary>
     float zoom;
@@ -74,7 +76,6 @@ public class CanvasController : MonoBehaviour
     /// </summary>
     public void OnExit()
     {
-        Debug.Log("Quitting!");
         Application.Quit();
     }
 
@@ -215,7 +216,6 @@ public class CanvasController : MonoBehaviour
         scoreTXT.text = "Points: " + score;
     }
 
-
     /// <summary>
     /// Change displayed zoom value
     /// </summary>
@@ -226,7 +226,6 @@ public class CanvasController : MonoBehaviour
         background.transform.localScale = new Vector3(Mathf.Sign(background.transform.localScale.x) * zoom, Mathf.Sign(background.transform.localScale.y) * zoom, Mathf.Sign(background.transform.localScale.z) * zoom);
     }
 
-
     /// <summary>
     /// Toggle colorOn
     /// </summary>
@@ -234,11 +233,13 @@ public class CanvasController : MonoBehaviour
     {
         depthProcessing.colorOn = !depthProcessing.colorOn;
 
+        // Switch active background images
         if (depthProcessing.colorOn)
         {
             shadowBg.gameObject.SetActive(false);
             colorBg.gameObject.SetActive(true);
 
+            // Set shader variables
             colorBg.material.SetFloat("_MinRange", depthProcessing.min);
             colorBg.material.SetFloat("_MaxRange", depthProcessing.max);
         }
@@ -246,8 +247,6 @@ public class CanvasController : MonoBehaviour
         {
             shadowBg.gameObject.SetActive(true);
             colorBg.gameObject.SetActive(false);
-
         }
-
     }
 }

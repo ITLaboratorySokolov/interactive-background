@@ -10,8 +10,6 @@ using ZCU.TechnologyLab.Common.Connections.Session;
 using ZCU.TechnologyLab.Common.Connections;
 using ZCU.TechnologyLab.Common.Unity.Connections.Data;
 
-// TODO yells on close that screen capture cannot be done outside of playmode!
-
 /// <summary>
 /// Class that manages connection to server
 /// - connects to server
@@ -20,9 +18,8 @@ using ZCU.TechnologyLab.Common.Unity.Connections.Data;
 /// </summary>
 public class ServerConnection : MonoBehaviour
 {
-    /// <summary> Countdown to next image send </summary>
-    private double timeToSnapshot;
 
+    [Header("Server connection")]
     /// <summary> Connection to server </summary>
     [SerializeField]
     ServerSessionConnection connection;
@@ -30,31 +27,36 @@ public class ServerConnection : MonoBehaviour
     /// <summary> Session </summary>
     [SerializeField]
     SignalRSessionWrapper session;
+    /// <summary> Data session </summary>
     [SerializeField]
     RestDataClientWrapper dataSession;
+    /// <summary> Countdown to next image send </summary>
+    private double timeToSnapshot;
 
+    [Header("Connection actions")]
     /// <summary> Action performed upon Start </summary>
     [SerializeField]
     UnityEvent actionStart = new UnityEvent();
     /// <summary Action performed upon Destroy </summary>
     [SerializeField]
     UnityEvent actionEnd = new UnityEvent();
+    /// <summary> Synchronization call has been finished </summary>
+    bool syncCallDone;
+    /// <summary> Has client been disconnected from server </summary>
+    bool disconnected;
 
+    [Header("Data objects")]
     /// <summary> Bitmap serializer </summary>
     BitmapSerializer serializer;
     /// <summary> World object DTO for screenshot to be sent to server </summary>
     WorldObjectDto wod;
-    /// <summary> Synchronization call has been finished </summary>
-    bool syncCallDone;
-
     /// <summary> WOD Properties </summary>
     Dictionary<string, byte[]> properties;
     /// <summary> Scaled screen capture texture </summary>
     Texture2D scaled;
     /// <summary> Object data in byte array </summary>
     byte[] data;
-    /// <summary> Stopwatch for debug </summary>
-    System.Diagnostics.Stopwatch stopWatch;
+
 
     /// <summary>
     /// Performes once upon start
@@ -66,9 +68,11 @@ public class ServerConnection : MonoBehaviour
         serializer = new BitmapSerializer();
         connection = new ServerSessionConnection(session);
         dataConnection = new ServerDataConnection(dataSession);
-        
+
+        syncCallDone = false;
         actionStart.Invoke();
 
+        // Get "empty" texture
         Texture2D t = new Texture2D(1, 1);
         data = t.GetRawTextureData();
         properties = serializer.SerializeRawBitmap(t.width, t.height, "RGBA", data);
@@ -86,13 +90,25 @@ public class ServerConnection : MonoBehaviour
         Destroy(t);
     }
 
+    public void Disconnected()
+    {
+        Debug.Log("Server offline!!");
+        disconnected = true;
+    }
+
+    public void ResetConnection()
+    {
+        disconnected = false;
+        syncCallDone = false;
+    }
+
     /// <summary>
     /// Called when automatic connection to server fails
     /// - attempts to restart connection to server
     /// </summary>
     public void ConnectionFailed()
     {
-        Debug.Log("Launching restart procedure");
+        Debug.Log("Connection to server failed. Launching restart procedure");
         StartCoroutine(RestartConnection());
     }
 
@@ -112,7 +128,6 @@ public class ServerConnection : MonoBehaviour
     /// </summary>
     public void ConnectedToServer()
     {
-        Debug.Log("Connected to server");
         StartCoroutine(SyncCall());
     }
 
@@ -126,6 +141,11 @@ public class ServerConnection : MonoBehaviour
         GetObjectAsync();
     }
 
+    /// <summary>
+    /// Get "FlyKiller" object from server database
+    /// - if it is present, do nothing
+    /// - if it is not, send initializing object to server
+    /// </summary>
     private async void GetObjectAsync()
     {
         try
@@ -135,33 +155,10 @@ public class ServerConnection : MonoBehaviour
         catch
         {
             SendToServer(wod, false);
-            Debug.Log("Init sent to server");
-
+            Debug.Log("Object " + wod.Name + " was sent to server database.");
         }
         syncCallDone = true;
         Debug.Log("Sync call done");
-    }
-
-    /// <summary>
-    /// Process incoming objects from server
-    /// </summary>
-    /// <param name="l"> List of objects </param>
-    private void ProcessObjects(List<WorldObjectDto> l)
-    {
-        bool present = false;
-
-        // Look through l for "FlyKiller"
-        for (int i = 0; i < l.Count; i++)
-            if (l[i].Name == wod.Name)
-                present = true;
-
-        Debug.Log("Present? " + present);
-
-        // If not present - send
-        if (!present)
-            SendToServer(wod, false);
-
-        syncCallDone = true;
     }
 
     /// <summary>
@@ -171,9 +168,16 @@ public class ServerConnection : MonoBehaviour
     IEnumerator RecordFrame()
     {
         yield return new WaitForEndOfFrame();
-
+        
+        // No recording until synchronized with server
         if (!syncCallDone)
             yield break;
+
+        // TODO does this work correctly?
+        if (session.SessionState != SessionState.Connected)
+        {
+            yield break;
+        }
 
         // Record screenshot - resizing hurts performance
         scaled = ScreenCapture.CaptureScreenshotAsTexture(); // ImageProcessor.ScaleTexture(scrsh, scrsh.width/2, scrsh.height/2);
@@ -199,9 +203,6 @@ public class ServerConnection : MonoBehaviour
     {
         try
         {
-            stopWatch = new System.Diagnostics.Stopwatch();
-            stopWatch.Start();
-
             if (update)
             {
                 WorldObjectPropertiesDto props = new WorldObjectPropertiesDto() { Properties = worldImage.Properties };
@@ -209,13 +210,10 @@ public class ServerConnection : MonoBehaviour
             }
             else
                 await dataConnection.AddWorldObjectAsync(worldImage);
-
-            stopWatch.Stop();
-            Debug.Log(stopWatch.ElapsedMilliseconds + " ms");
         }
         catch (Exception e)
         {
-            Debug.LogError("Unable to send to server");
+            Debug.LogError("Unable to send to server:");
             Debug.Log(e.Message);
         }
     }
@@ -232,12 +230,6 @@ public class ServerConnection : MonoBehaviour
             timeToSnapshot = 1;
             StartCoroutine(RecordFrame());
         }
-
-        // Debug send on key pressed
-        /*
-        if (Input.GetKeyDown(KeyCode.U))
-            StartCoroutine(RecordFrame());
-        */
     }
 
     /// <summary>

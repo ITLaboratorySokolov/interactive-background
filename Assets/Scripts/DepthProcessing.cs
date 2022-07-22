@@ -22,12 +22,19 @@ public class DepthProcessing : MonoBehaviour
     /// <summary> Max depth (far plane) </summary>
     internal float max;
 
+    [Header("Helper variables")]
+    /// <summary> Array with color pixels </summary>
     Color[] pixels;
+    /// <summary> Texture used for transformations </summary>
     Texture2D tx;
-
-    /// <summary> Is color depth displayed </summary>
+    /// <summary> Depth scale </summary>
+    double depthScale = 0.001;
+    /// <summary> Is color coding on or not </summary>
     internal bool colorOn;
-        
+    
+    /// <summary>
+    /// Performed once upon start
+    /// </summary>
     private void Start()
     {
         ImageProcessor.NewT();
@@ -54,62 +61,36 @@ public class DepthProcessing : MonoBehaviour
     /// </summary>
     private void ProcessDepthIm()
     {
+        // If color coding active, then processed through shader
+        if (colorOn)
+            return;
+
         tx = ImageProcessor.TextureToTexture2D(depthTexture);
         resultTexture.Reinitialize(tx.width, tx.height); // = new Texture2D(tx.width, tx.height);
 
-        // Go through all pixels
         pixels = tx.GetPixels();
-        int count = 0;
 
-        float toM = 0.001f;
-        float cmpMax = max / (0xffff * toM);
-        float cmpMin = min / (0xffff * toM);
-        Debug.Log(cmpMax + " " + cmpMin);
+        // Min and max visible valuable
+        double cmpMax = max / (0xffff * depthScale);
+        double cmpMin = min / (0xffff * depthScale);
 
-        HashSet<float> set = new HashSet<float>();
-
+        // Go through all pixels
         for (int i = 0; i < pixels.Length; i++)
         {
             Color res = new Color(0, 0, 0, 0);
             Color d = pixels[i];
-            
+
             float r = d.r; //r is unscaled depth, normalized to [0-1]
-            float distMeters = r * 0xffff * 0.001f; // to meters
-            float z = (distMeters - min) / (max - min);
+            // double distMeters = r * 0xffff * 0.001f; // to meters
+            
+            // Is depth in visible field
             if (r > cmpMin && r < cmpMax)
-            {
-                set.Add(z);
                 res = new Color(0, 0, 0, 1);
-                if (colorOn)
-                    res = new Color(0, 0, z, 1);
-                count++;
-            }
-
-            // If in relevant depth
-            /*
-            if (r > cmpMin && r < cmpMax)
-            {
-
-                // return tex2D(_Colormaps, float2(z, 1 - (_Colormap + 0.5) * _Colormaps_TexelSize.y));
-
-                res = new Color(0, 0, 0, 1);
-                if (colorOn)
-                {
-                    float m = (r - cmpMin) / (cmpMax - cmpMin); // should be 0 - 1
-                    res = new Color(1 - m, 0, m, 1);
-                }
-
-                count++;
-            }
-            */
 
             pixels[i] = res;
-
         }
         resultTexture.SetPixels(pixels);
         resultTexture.Apply();
-
-        Debug.Log(set.Count);
 
         bgImage.texture = resultTexture;
     }

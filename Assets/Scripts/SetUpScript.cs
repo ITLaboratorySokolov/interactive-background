@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Threading;
 using UnityEngine;
@@ -38,10 +39,13 @@ public class SetUpScript : MonoBehaviour
     /// <summary> Canvas manager script </summary>
     [SerializeField]
     CanvasController canvas;
+    /// <summary> Server connection </summary>
+    [SerializeField]
+    ServerConnection serverConnection;
+
 
     /// <summary>
     /// Set up configuration before application starts
-    /// - read from config min and max recorded depth, horizontal and vertical pan, zoom and server url
     /// </summary>
     private void Awake()
     {
@@ -50,6 +54,15 @@ public class SetUpScript : MonoBehaviour
 
         // Set culture -> doubles are written with decimal dot
         Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+
+        ReadConfig();
+    }
+
+    /// <summary>
+    /// Reads from config min and max recorded depth, horizontal and vertical pan, zoom and server url
+    /// </summary>
+    private void ReadConfig()
+    {
         if (File.Exists(pathToConfig))
         {
             Debug.Log("Loading config file...");
@@ -92,5 +105,11 @@ public class SetUpScript : MonoBehaviour
         canvas.ChangeZoom(zoom);
     }
 
+    public void ResetSetUp()
+    {
+        Debug.Log("Reseting configuration");
+        ReadConfig();
+        serverConnection.ResetConnection();
+    }
 
 }

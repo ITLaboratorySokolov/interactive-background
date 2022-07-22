@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 /// <summary>
@@ -6,18 +5,22 @@ using UnityEngine;
 /// </summary>
 public static class ImageProcessor
 {
+    /// <summary> Texture2D used for transformations </summary>
     public static Texture2D texture2D;
+    /// <summary> Current render texture </summary>
     static RenderTexture currentRT;
+    /// <summary> Render texture used for transformations </summary>
     static RenderTexture renderTexture;
 
     /// <summary>
     /// Converts Texture to Texture2D
+    /// Uses static class's transformation texture as a holding variable
     /// </summary>
     /// <param name="texture"> Source texture </param>
     /// <returns> Resulting texture </returns>
     public static Texture2D TextureToTexture2D(Texture texture)
     {
-        texture2D.Reinitialize(texture.width, texture.height); // new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false);
+        texture2D.Reinitialize(texture.width, texture.height);
 
         currentRT = RenderTexture.active;
         renderTexture = RenderTexture.GetTemporary(texture.width, texture.height, 32);
@@ -34,13 +37,20 @@ public static class ImageProcessor
         return texture2D;
     }
 
+    /// <summary>
+    /// Creates a new texture used for transformations
+    /// </summary>
     internal static void NewT()
     {
+        if (texture2D != null)
+            UnityEngine.Object.Destroy(texture2D);
+
         texture2D = new Texture2D(3, 3, TextureFormat.RGBA32, false);
     }
 
     /// <summary>
-    /// Scales texture to new width and height using bilinear interpolation
+    /// Creates a new texture with new width and height using bilinear interpolation
+    /// Uses static class's transformation texture as a holding variable
     /// </summary>
     /// <param name="source"> Source texture </param>
     /// <param name="targetWidth"> Target width </param>
@@ -48,25 +58,26 @@ public static class ImageProcessor
     /// <returns> Edited texture </returns>
     private static Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
     {
+        texture2D.Reinitialize(targetWidth, targetHeight);
         // Create new empty Texture
-        Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, false);
-        
+        //Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, false);
+
         // Interpolate
-        Color[] pixels = result.GetPixels();
+        Color[] pixels = texture2D.GetPixels();
         for (int i = 0; i < pixels.Length; i++)
         {
-            Color newColor = source.GetPixelBilinear((float)(i % result.width) / (float)result.width, (float)(i / result.width) / (float)result.height);
+            Color newColor = source.GetPixelBilinear((float)(i % targetWidth) / (float)targetWidth, (float)(i / targetWidth) / (float)targetHeight);
             pixels[i] = newColor;
         }
 
         // Set new pixels
-        result.SetPixels(pixels);
-        result.Apply();
-        return result;
+        texture2D.SetPixels(pixels);
+        texture2D.Apply();
+        return texture2D;
     }
 
     /// <summary>
-    /// Changes format of texture
+    /// Creates a new texture with same data but different format
     /// </summary>
     /// <param name="oldTexture"> Source texture </param>
     /// <param name="newFormat"> New texture format </param>
