@@ -3784,23 +3784,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   session: {fileID: 1893513012}
-  dataSession: {fileID: 1893513013}
+  url: {fileID: 11400000, guid: 78091fa411b06224481056c33758d8d4, type: 2}
   actionStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1893513012}
-        m_TargetAssemblyTypeName: ZCU.TechnologyLab.Common.Unity.Connections.Session.SignalRSessionWrapper,
-          zcu.technologylab.common.unity
-        m_MethodName: CreateSession
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1893513012}
         m_TargetAssemblyTypeName: ZCU.TechnologyLab.Common.Unity.Connections.Session.SessionClientWrapper,
           zcu.technologylab.common.unity
@@ -3855,10 +3842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8ee2ac28cf9574c81e838427d0301b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnCreated:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStarted:
+  onStarted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1893513011}
@@ -3873,7 +3857,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnStartFailed:
+      - m_Target: {fileID: 775691679}
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
+        m_MethodName: SetConnection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStartFailed:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1893513011}
@@ -3888,18 +3884,66 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDisconnected:
-    m_PersistentCalls:
-      m_Calls: []
-  OnReconnecting:
-    m_PersistentCalls:
-      m_Calls: []
-  OnReconnected:
+      - m_Target: {fileID: 775691679}
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
+        m_MethodName: SetConnection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDisconnected:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1893513011}
         m_TargetAssemblyTypeName: ServerConnection, zcu.technologylab.realsenseprojection
-        m_MethodName: ConnectedToServer
+        m_MethodName: Disconnected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 775691679}
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
+        m_MethodName: SetConnection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onReconnecting:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 775691679}
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
+        m_MethodName: SetConnection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onReconnected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 775691679}
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
+        m_MethodName: SetConnection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

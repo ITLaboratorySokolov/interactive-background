@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.donghok.meshimporter": {
-      "version": "git@github.com:eastskykang/UnityMeshImporter.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "d3b2be29d6eec3a8a05799001acaa38c37e6a596"
-    },
     "com.unity.2d.animation": {
       "version": "7.0.2",
       "depth": 0,

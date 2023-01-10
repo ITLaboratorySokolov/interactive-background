@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using ZCU.TechnologyLab.Common.Entities.DataTransferObjects;
-using ZCU.TechnologyLab.Common.Unity.Connections.Session;
-using ZCU.TechnologyLab.Common.Serialization;
-using ZCU.TechnologyLab.Common.Connections.Session;
-using ZCU.TechnologyLab.Common.Connections;
-using ZCU.TechnologyLab.Common.Unity.Connections.Data;
+using ZCU.TechnologyLab.Common.Connections.Client.Session;
+using ZCU.TechnologyLab.Common.Serialization.Bitmap;
+using ZCU.TechnologyLab.Common.Connections.Client.Data;
+using ZCU.TechnologyLab.Common.Unity.Behaviours.AssetVariables;
+using ZCU.TechnologyLab.Common.Connections.Repository.Server;
+using ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session;
 
 /// <summary>
 /// Class that manages connection to server
@@ -22,16 +23,19 @@ public class ServerConnection : MonoBehaviour
     [Header("Server connection")]
     /// <summary> Connection to server </summary>
     [SerializeField]
-    ServerSessionConnection connection;
-    ServerDataConnection dataConnection;
+    ServerSessionAdapter connection; // ServerSessionConnection 
+    ServerDataAdapter dataConnection; // ServerDataConnection 
     /// <summary> Session </summary>
     [SerializeField]
-    SignalRSessionWrapper session;
+    SignalRSessionWrapper session; //SignalRSessionWrapper
     /// <summary> Data session </summary>
     [SerializeField]
-    RestDataClientWrapper dataSession;
+    RestDataClient dataSession; // RestDataClientWrapper 
     /// <summary> Countdown to next image send </summary>
     private double timeToSnapshot;
+
+    [SerializeField]
+    StringVariable url;
 
     [Header("Connection actions")]
     /// <summary> Action performed upon Start </summary>
@@ -47,7 +51,7 @@ public class ServerConnection : MonoBehaviour
 
     [Header("Data objects")]
     /// <summary> Bitmap serializer </summary>
-    BitmapSerializer serializer;
+    RawBitmapSerializer serializer; //  BitmapSerializer 
     /// <summary> World object DTO for screenshot to be sent to server </summary>
     WorldObjectDto wod;
     /// <summary> WOD Properties </summary>
@@ -65,9 +69,11 @@ public class ServerConnection : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        serializer = new BitmapSerializer();
-        connection = new ServerSessionConnection(session);
-        dataConnection = new ServerDataConnection(dataSession);
+        serializer = new RawBitmapSerializer();
+        connection = new ServerSessionAdapter(session);
+
+        var restClient = new RestDataClient(url.Value);
+        dataConnection = new ServerDataAdapter(restClient); // dataSession
 
         syncCallDone = false;
         actionStart.Invoke();
@@ -75,7 +81,7 @@ public class ServerConnection : MonoBehaviour
         // Get "empty" texture
         Texture2D t = new Texture2D(1, 1);
         data = t.GetRawTextureData();
-        properties = serializer.SerializeRawBitmap(t.width, t.height, "RGBA", data);
+        properties = serializer.Serialize(t.width, t.height, "RGBA", data);
 
         // Create DTO
         wod = new WorldObjectDto();
@@ -90,12 +96,24 @@ public class ServerConnection : MonoBehaviour
         Destroy(t);
     }
 
+    public void OnReconnecting()
+    {
+        Debug.Log("Trying to reconnect...");
+    }
+
+    /// <summary>
+    /// Disconnected from server
+    /// </summary>
     public void Disconnected()
     {
         Debug.Log("Server offline!!");
         disconnected = true;
+        StartCoroutine(RestartConnection());
     }
 
+    /// <summary>
+    /// Reset connection to server
+    /// </summary>
     public void ResetConnection()
     {
         disconnected = false;
@@ -137,7 +155,7 @@ public class ServerConnection : MonoBehaviour
     /// <returns> IEnumerator </returns>
     IEnumerator SyncCall()
     {
-        yield return new WaitUntil(() => session.SessionState == SessionState.Connected);
+        yield return new WaitUntil(() => session.State == SessionState.Connected);
         GetObjectAsync();
     }
 
@@ -174,10 +192,8 @@ public class ServerConnection : MonoBehaviour
             yield break;
 
         // TODO does this work correctly?
-        if (session.SessionState != SessionState.Connected)
-        {
+        if (session.State != SessionState.Connected)
             yield break;
-        }
 
         // Record screenshot - resizing hurts performance
         scaled = ScreenCapture.CaptureScreenshotAsTexture(); // ImageProcessor.ScaleTexture(scrsh, scrsh.width/2, scrsh.height/2);
@@ -186,7 +202,7 @@ public class ServerConnection : MonoBehaviour
         data = scaled.GetRawTextureData();
 
         // Add properties
-        properties = serializer.SerializeRawBitmap(scaled.width, scaled.height, "RGBA", data);  // new Dictionary<string, string>();
+        properties = serializer.Serialize(scaled.width, scaled.height, "RGBA", data); 
 
         // Add properties to DTO and send to server
         wod.Properties = properties;

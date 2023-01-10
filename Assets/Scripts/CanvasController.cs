@@ -1,8 +1,8 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using ZCU.TechnologyLab.Common.Connections.Session;
-using ZCU.TechnologyLab.Common.Unity.Connections.Session;
+using ZCU.TechnologyLab.Common.Connections.Client.Session;
+using ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session;
 
 /// <summary>
 /// Script handling the input from canvas
@@ -79,26 +79,41 @@ public class CanvasController : MonoBehaviour
         Application.Quit();
     }
 
+    public void Start()
+    {
+        SetConnection();//session.State == SessionState.Connected);
+    }
+
     /// <summary>
     /// Update - performs every frame
     /// </summary>
     private void Update()
     {
-        SetConnection(session.SessionState == SessionState.Connected);
+        // TODO todle jinak! přes reakce na změny stavu session
+        //SetConnection(session.State == SessionState.Connected);
     }
 
     /// <summary>
     /// Display connection status
     /// </summary>
     /// <param name="connected"> Is connected to server </param>
-    private void SetConnection(bool connected)
+    public void SetConnection() // bool connected)
     {
+        Debug.Log(session.State.ToString());
+
+        if (session.State == SessionState.Connected)
+            ChangeConnection(session.State.ToString(), Color.green);
+        else
+            ChangeConnection(session.State.ToString(), Color.red);
+
+        /*
         // If connected to server
         if (connected)
             ChangeConnection("Connected", Color.green);
         // If not connected to server
         else
             ChangeConnection("Not connected", Color.red);
+        */
     }
 
     /// <summary>

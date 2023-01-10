@@ -3,7 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using UnityEngine;
-using ZCU.TechnologyLab.Common.Unity.AssetVariables;
+using ZCU.TechnologyLab.Common.Unity.Behaviours.AssetVariables;
 
 // TODO path to config file
 
