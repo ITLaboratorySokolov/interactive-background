@@ -137,21 +137,30 @@ namespace ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session
         {
             Debug.Log("Session disconnected");
             this.Disconnected?.Invoke(sender, e);
-            this.onDisconnected.Invoke();
+            ExecuteOnMainThread.RunOnMainThread.Enqueue(() => {
+                // Code here will be called in the main thread...
+                this.onDisconnected.Invoke();
+            });
         }
 
         private void SessionClient_Reconnecting(object sender, Exception e)
         {
             Debug.Log("Session reconnecting");
             this.Reconnecting?.Invoke(sender, e);
-            this.onReconnecting.Invoke();
+            ExecuteOnMainThread.RunOnMainThread.Enqueue(() => {
+                // Code here will be called in the main thread...
+                this.onReconnecting.Invoke();
+            });
         }
 
         private void SessionClient_Reconnected(object sender, EventArgs e)
         {
             Debug.Log("Session reconnected");
             this.Reconnected?.Invoke(sender, e);
-            this.onReconnected.Invoke();
+            ExecuteOnMainThread.RunOnMainThread.Enqueue(() => {
+                // Code here will be called in the main thread...
+                this.onReconnected.Invoke();
+            });
         }
     }
 }

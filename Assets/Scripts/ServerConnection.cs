@@ -101,13 +101,22 @@ public class ServerConnection : MonoBehaviour
         Debug.Log("Trying to reconnect...");
     }
 
+    public void OnReconnected()
+    {
+        Debug.Log("Reconnected...");
+
+        connection = new ServerSessionAdapter(session);
+        var restClient = new RestDataClient(url.Value);
+        dataConnection = new ServerDataAdapter(restClient); // dataSession
+    }
+
     /// <summary>
     /// Disconnected from server
     /// </summary>
     public void Disconnected()
     {
         Debug.Log("Server offline!!");
-        disconnected = true;
+        ResetConnection();
         StartCoroutine(RestartConnection());
     }
 
@@ -169,6 +178,10 @@ public class ServerConnection : MonoBehaviour
         try
         {
             WorldObjectDto d = await dataConnection.GetWorldObjectAsync("FlyKiller");
+            wod.Position = d.Position;
+            wod.Rotation = d.Rotation;
+            wod.Scale = d.Scale;
+            wod.Properties = d.Properties;
         }
         catch
         {

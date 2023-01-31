@@ -3749,6 +3749,7 @@ GameObject:
   - component: {fileID: 1893513011}
   - component: {fileID: 1893513012}
   - component: {fileID: 1893513013}
+  - component: {fileID: 1893513014}
   m_Layer: 0
   m_Name: ServerConnection
   m_TagString: Untagged
@@ -3953,6 +3954,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1893513011}
+        m_TargetAssemblyTypeName: ServerConnection, zcu.technologylab.realsenseprojection
+        m_MethodName: OnReconnected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   serverUrl: {fileID: 11400000, guid: 78091fa411b06224481056c33758d8d4, type: 2}
   hub: {fileID: 11400000, guid: 27d23a2083afa994caca6ef2f2e4f64d, type: 2}
 --- !u!114 &1893513013
@@ -3968,6 +3981,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverUrl: {fileID: 11400000, guid: 78091fa411b06224481056c33758d8d4, type: 2}
+--- !u!114 &1893513014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893513009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbb2fe843ccdcf4f869fe6be2300a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911890403
 GameObject:
   m_ObjectHideFlags: 0
