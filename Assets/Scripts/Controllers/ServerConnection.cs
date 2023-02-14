@@ -10,6 +10,7 @@ using ZCU.TechnologyLab.Common.Connections.Client.Data;
 using ZCU.TechnologyLab.Common.Unity.Behaviours.AssetVariables;
 using ZCU.TechnologyLab.Common.Connections.Repository.Server;
 using ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session;
+using System.Threading.Tasks;
 
 /// <summary>
 /// Class that manages connection to server
@@ -36,6 +37,8 @@ public class ServerConnection : MonoBehaviour
 
     [SerializeField]
     StringVariable url;
+    [SerializeField]
+    StringVariable clientName;
 
     [Header("Connection actions")]
     /// <summary> Action performed upon Start </summary>
@@ -85,7 +88,7 @@ public class ServerConnection : MonoBehaviour
 
         // Create DTO
         wod = new WorldObjectDto();
-        wod.Name = "FlyKiller";
+        wod.Name = "FlyKiller_" + clientName.Value;
         wod.Position = new RemoteVectorDto();
         wod.Rotation = new RemoteVectorDto();
         wod.Scale = new RemoteVectorDto();
@@ -99,15 +102,14 @@ public class ServerConnection : MonoBehaviour
     public void OnReconnecting()
     {
         Debug.Log("Trying to reconnect...");
+        syncCallDone = false;
     }
 
     public void OnReconnected()
     {
         Debug.Log("Reconnected...");
 
-        connection = new ServerSessionAdapter(session);
-        var restClient = new RestDataClient(url.Value);
-        dataConnection = new ServerDataAdapter(restClient); // dataSession
+        StartCoroutine(SyncCall());
     }
 
     /// <summary>
@@ -165,7 +167,14 @@ public class ServerConnection : MonoBehaviour
     IEnumerator SyncCall()
     {
         yield return new WaitUntil(() => session.State == SessionState.Connected);
-        GetObjectAsync();
+        
+        var t = GetObjectAsync();
+
+        while (!t.IsCompleted)
+            yield return null;
+
+        syncCallDone = true;
+        Debug.Log("Sync call done");
     }
 
     /// <summary>
@@ -173,11 +182,11 @@ public class ServerConnection : MonoBehaviour
     /// - if it is present, do nothing
     /// - if it is not, send initializing object to server
     /// </summary>
-    private async void GetObjectAsync()
+    private async Task GetObjectAsync()
     {
         try
         {
-            WorldObjectDto d = await dataConnection.GetWorldObjectAsync("FlyKiller");
+            WorldObjectDto d = await dataConnection.GetWorldObjectAsync("FlyKiller_" + clientName.Value);
             wod.Position = d.Position;
             wod.Rotation = d.Rotation;
             wod.Scale = d.Scale;
@@ -188,8 +197,6 @@ public class ServerConnection : MonoBehaviour
             SendToServer(wod, false);
             Debug.Log("Object " + wod.Name + " was sent to server database.");
         }
-        syncCallDone = true;
-        Debug.Log("Sync call done");
     }
 
     /// <summary>
@@ -238,7 +245,9 @@ public class ServerConnection : MonoBehaviour
                 await dataConnection.UpdateWorldObjectPropertiesAsync(worldImage.Name, props);
             }
             else
+            {
                 await dataConnection.AddWorldObjectAsync(worldImage);
+            }
         }
         catch (Exception e)
         {

@@ -30,10 +30,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _DepthScale: 0.001
-    - _Feather: 0
+    - _Feather: 0.6831067
     - _Gamma: 1.2
     - _HasColor: 1
-    - _MaxRange: 0.69
+    - _MaxRange: 0.97072965
     - _MinRange: 0
     m_Colors: []
   m_BuildTextureStacks: []

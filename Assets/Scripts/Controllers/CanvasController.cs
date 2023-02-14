@@ -39,6 +39,7 @@ public class CanvasController : MonoBehaviour
     /// <summary> Depth image </summary>
     [SerializeField]
     GameObject background;
+    int score;
     
     [Header("Connection")]
     /// <summary> Text displaying connection status </summary>
@@ -55,6 +56,8 @@ public class CanvasController : MonoBehaviour
     /// <summary> Fly swatter script </summary>
     [SerializeField]
     Swatter flySwatter;
+    [SerializeField]
+    LanguageController langController;
 
     [Header("Background images")]
     /// <summary> Colored background image </summary>
@@ -81,16 +84,8 @@ public class CanvasController : MonoBehaviour
 
     public void Start()
     {
-        SetConnection();//session.State == SessionState.Connected);
-    }
-
-    /// <summary>
-    /// Update - performs every frame
-    /// </summary>
-    private void Update()
-    {
-        // TODO todle jinak! přes reakce na změny stavu session
-        //SetConnection(session.State == SessionState.Connected);
+        SetConnection();
+        ChangeScore(0);
     }
 
     /// <summary>
@@ -101,19 +96,14 @@ public class CanvasController : MonoBehaviour
     {
         Debug.Log(session.State.ToString());
 
-        if (session.State == SessionState.Connected)
-            ChangeConnection(session.State.ToString(), Color.green);
-        else
-            ChangeConnection(session.State.ToString(), Color.red);
+        string state = langController.GetSessionStateString(session.State);
 
-        /*
-        // If connected to server
-        if (connected)
-            ChangeConnection("Connected", Color.green);
-        // If not connected to server
+        if (session.State == SessionState.Connected)
+            ChangeConnection(state, Color.green);
+        else if (session.State == SessionState.Reconnecting)
+            ChangeConnection(state, Color.yellow);
         else
-            ChangeConnection("Not connected", Color.red);
-        */
+            ChangeConnection(state, Color.red);
     }
 
     /// <summary>
@@ -228,7 +218,8 @@ public class CanvasController : MonoBehaviour
     /// <param name="score"> Score </param>
     public void ChangeScore(int score)
     {
-        scoreTXT.text = "Points: " + score;
+        this.score = score;
+        scoreTXT.text = langController.GetPointsTitle() + score;
     }
 
     /// <summary>
@@ -263,5 +254,11 @@ public class CanvasController : MonoBehaviour
             shadowBg.gameObject.SetActive(true);
             colorBg.gameObject.SetActive(false);
         }
+    }
+
+    public void SwitchLanguages()
+    {
+        langController.SwapLanguage(score);
+        SetConnection();
     }
 }

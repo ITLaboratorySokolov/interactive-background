@@ -16,21 +16,19 @@ public class SetUpScript : MonoBehaviour
     [Header("Config")]
     /// <summary> Path to config file </summary>
     string pathToConfig;
-    /// <summary> Minimum depth </summary>
-    float minDepth = 0;
-    /// <summary> Maximum depth </summary>
-    float maxDepth = 0.69f;
-    /// <summary> Horizontal pan </summary>
-    int panHor = 0;
-    /// <summary> Vertical pan </summary>
-    int panVert = 0;
-    /// <summary> Zoom </summary>
-    float zoom = 1;
 
     [Header("Server connection")]
     /// <summary> Server url </summary>
     [SerializeField]
     private StringVariable serverUrl;
+    /// <summary> Client name </summary>
+    [SerializeField]
+    private StringVariable clientName;
+
+    [Header("Filter settings")]
+    /// <summary> Filter settings </summary>
+    [SerializeField]
+    private FilterSettingVariable settings;
 
     [Header("Game scripts")]
     /// <summary> Depth processing script </summary>
@@ -55,7 +53,7 @@ public class SetUpScript : MonoBehaviour
         // Set culture -> doubles are written with decimal dot
         Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
-        ReadConfig();
+        SetValues();
     }
 
     /// <summary>
@@ -72,37 +70,49 @@ public class SetUpScript : MonoBehaviour
                 // Min depth
                 float locMin = float.NaN;
                 if (float.TryParse(lines[0].Trim(), out locMin))
-                    minDepth = locMin;
+                    settings.MinDepth = locMin;
                 // Max depth
                 float locMax = float.NaN;
                 if (float.TryParse(lines[1].Trim(), out locMax))
-                    maxDepth = locMax;
+                    settings.MaxDepth = locMax;
                 // Horizontal pan
                 int panH = 0;
                 if (int.TryParse(lines[2].Trim(), out panH))
-                    panHor = panH;
+                    settings.PanHor = panH;
                 // Vertical pan
                 int panV = 0;
                 if (int.TryParse(lines[3].Trim(), out panV))
-                    panVert = panV;
+                    settings.PanVert = panV;
                 // Zoom
                 float z = float.NaN;
                 if (float.TryParse(lines[4].Trim(), out z))
-                    zoom = z;
+                    settings.Zoom = z;
             }
             // Url
             if (lines.Length >= 6)
             {
                 serverUrl.Value = lines[5].Trim();
             }
+            // ClientName
+            if (lines.Length >= 7)
+            {
+                clientName.Value = lines[6].Trim();
+            }
         }
 
-        // Set values in depth processor, and canvas
-        depthProc.min = minDepth;
-        depthProc.max = maxDepth;
-        canvas.ChangeDepthLevels(minDepth, maxDepth);
-        canvas.ChangePanLevels(panHor, panVert);
-        canvas.ChangeZoom(zoom);
+        SetValues();
+    }
+
+    /// <summary>
+    /// Set values in depth processor, and canvas
+    /// </summary>
+    private void SetValues()
+    {
+        depthProc.min = settings.MinDepth;
+        depthProc.max = settings.MaxDepth;
+        canvas.ChangeDepthLevels(settings.MinDepth, settings.MaxDepth);
+        canvas.ChangePanLevels(settings.PanHor, settings.PanVert);
+        canvas.ChangeZoom(settings.Zoom);
     }
 
     public void ResetSetUp()
