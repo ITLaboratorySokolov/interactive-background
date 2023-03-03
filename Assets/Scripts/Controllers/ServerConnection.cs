@@ -211,12 +211,11 @@ public class ServerConnection : MonoBehaviour
         if (!syncCallDone)
             yield break;
 
-        // TODO does this work correctly?
         if (session.State != SessionState.Connected)
             yield break;
 
         // Record screenshot - resizing hurts performance
-        scaled = ScreenCapture.CaptureScreenshotAsTexture(); // ImageProcessor.ScaleTexture(scrsh, scrsh.width/2, scrsh.height/2);
+        scaled = ScreenCapture.CaptureScreenshotAsTexture(); 
 
         // Get pixel data
         data = scaled.GetRawTextureData();

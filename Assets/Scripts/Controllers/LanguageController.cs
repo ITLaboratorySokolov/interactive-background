@@ -25,10 +25,16 @@ public class LanguageController : MonoBehaviour
     TMP_Text depthColorTitleTXT;
     [SerializeField()]
     TMP_Text colorsTXT;
+    [SerializeField()]
+    TMP_Text quitTXT;
 
     [Header("Buttons")]
     [SerializeField()]
     Button langBT;
+    [SerializeField()]
+    Button yesBT;
+    [SerializeField()]
+    Button noBT;
 
     [Header("Input fields")]
     [SerializeField()]
@@ -65,6 +71,13 @@ public class LanguageController : MonoBehaviour
 
     string inputPromptCZ = "Vložte èíslo...";
     string inputPromptEN = "Enter number...";
+
+    string quitCZ = "Ukonèit aplikaci?";
+    string quitEN = "Do you want to quit?";
+    string yesCZ = "Ano";
+    string yesEN = "Yes";
+    string noCZ = "Ne";
+    string noEN = "No";
 
     string langCZ = "EN";
     string langEN = "CZ";
@@ -104,6 +117,7 @@ public class LanguageController : MonoBehaviour
             farTXT.text = farCZ;
             depthColorTitleTXT.text = colorTCZ;
             colorsTXT.text = colorCZ;
+            quitTXT.text = quitCZ;
 
             langBT.GetComponentInChildren<TMP_Text>().text = langCZ;
 
@@ -112,6 +126,8 @@ public class LanguageController : MonoBehaviour
             horizontalFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptCZ;
             verticalFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptCZ;
             zoomFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptCZ;
+            yesBT.GetComponentInChildren<TMP_Text>().text = yesCZ;
+            noBT.GetComponentInChildren<TMP_Text>().text = noCZ;
         }
 
         else if (langCZ == "EN")
@@ -124,6 +140,7 @@ public class LanguageController : MonoBehaviour
             farTXT.text = farEN;
             depthColorTitleTXT.text = colorTEN;
             colorsTXT.text = colorEN;
+            quitTXT.text = quitEN;
 
             langBT.GetComponentInChildren<TMP_Text>().text = langEN;
 
@@ -132,6 +149,8 @@ public class LanguageController : MonoBehaviour
             horizontalFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptEN;
             verticalFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptEN;
             zoomFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptEN;
+            yesBT.GetComponentInChildren<TMP_Text>().text = yesEN;
+            noBT.GetComponentInChildren<TMP_Text>().text = noEN;
         }
     }
 

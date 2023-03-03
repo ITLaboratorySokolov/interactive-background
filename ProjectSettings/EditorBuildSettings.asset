@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ConfigScene.unity
+    guid: 4c78f9c20b2b35941b48d93dddc8ee94
+  - enabled: 1
     path: Assets/Scenes/FlySwatterScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/RealSenseSDK2.0/Scenes/Samples/BackgroundSegmentation.unity
+    guid: dcb7835ca163a40408d6227793143806
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 772c8b705ab36304595fe074626237ef,
       type: 2}

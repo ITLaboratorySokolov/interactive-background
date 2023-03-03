@@ -40,7 +40,10 @@ public class CanvasController : MonoBehaviour
     [SerializeField]
     GameObject background;
     int score;
-    
+    [SerializeField]
+    GameObject exitWindow;
+
+
     [Header("Connection")]
     /// <summary> Text displaying connection status </summary>
     [SerializeField]
@@ -261,4 +264,10 @@ public class CanvasController : MonoBehaviour
         langController.SwapLanguage(score);
         SetConnection();
     }
+
+    public void ToggleExitWindow(bool val)
+    {
+        exitWindow.SetActive(val);
+    }
+
 }

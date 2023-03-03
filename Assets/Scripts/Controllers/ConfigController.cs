@@ -110,6 +110,11 @@ public class ConfigController : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 
+    public void OnExit()
+    {
+        Application.Quit();
+    }
+
     // Update is called once per frame
     void Update()
     {
