@@ -5283,6 +5283,7 @@ GameObject:
   - component: {fileID: 1893513015}
   - component: {fileID: 1893513014}
   - component: {fileID: 1893513013}
+  - component: {fileID: 1893513016}
   m_Layer: 0
   m_Name: ServerConnection
   m_TagString: Untagged
@@ -5555,6 +5556,18 @@ MonoBehaviour:
   _worldObjectTransformed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1893513016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893513009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0e938d02793034f8a91313b24d68ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911890403
 GameObject:
   m_ObjectHideFlags: 0

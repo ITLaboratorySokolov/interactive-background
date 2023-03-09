@@ -151,6 +151,8 @@ namespace ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session
 
         private void SessionClient_Reconnecting(Exception cause)
         {
+            Debug.Log("Session reconnecting");
+
             UnityDispatcher.ExecuteOnUnityThread(() =>
             {
                 Debug.Log("Session reconnecting");
@@ -161,6 +163,8 @@ namespace ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session
 
         private void SessionClient_Reconnected()
         {
+            Debug.Log("Session reconnected");
+
             UnityDispatcher.ExecuteOnUnityThread(() =>
             {
                 Debug.Log("Session reconnected");
