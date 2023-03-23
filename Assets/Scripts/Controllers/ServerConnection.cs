@@ -23,15 +23,15 @@ public class ServerConnection : MonoBehaviour
 
     [Header("Server connection")]
     /// <summary> Connection to server </summary>
-    [SerializeField]
+    // [SerializeField]
     ServerSessionAdapter connection; // ServerSessionConnection 
     ServerDataAdapter dataConnection; // ServerDataConnection 
     /// <summary> Session </summary>
     [SerializeField]
     SignalRSessionWrapper session; //SignalRSessionWrapper
     /// <summary> Data session </summary>
-    [SerializeField]
-    RestDataClient dataSession; // RestDataClientWrapper 
+    // [SerializeField]
+    // RestDataClient dataSession; // RestDataClientWrapper 
     /// <summary> Countdown to next image send </summary>
     private double timeToSnapshot;
 
