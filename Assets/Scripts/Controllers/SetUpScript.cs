@@ -108,8 +108,8 @@ public class SetUpScript : MonoBehaviour
     /// </summary>
     private void SetValues()
     {
-        depthProc.min = settings.MinDepth;
-        depthProc.max = settings.MaxDepth;
+        depthProc.Min = settings.MinDepth;
+        depthProc.Max = settings.MaxDepth;
         canvas.ChangeDepthLevels(settings.MinDepth, settings.MaxDepth);
         canvas.ChangePanLevels(settings.PanHor, settings.PanVert);
         canvas.ChangeZoom(settings.Zoom);

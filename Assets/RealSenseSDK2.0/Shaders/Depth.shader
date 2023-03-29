@@ -65,6 +65,7 @@ Shader "Custom/Depth" {
 				// If out of range -> discard fragment
 				if (z > _MaxRange || z < _MinRange) {
 					discard;
+					return 0;
 				}
 
 				// Compute color coordinates

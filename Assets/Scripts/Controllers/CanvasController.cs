@@ -142,9 +142,9 @@ public class CanvasController : MonoBehaviour
     {
         float min = -1;
         if (float.TryParse(nearFLD.text.Trim(), out min))
-            depthProcessing.min = min;
+            depthProcessing.Min = min;
         else
-            nearFLD.text = "" + depthProcessing.min;
+            nearFLD.text = "" + depthProcessing.Min;
     }
 
     /// <summary>
@@ -155,10 +155,10 @@ public class CanvasController : MonoBehaviour
         float max = -1;
         if (float.TryParse(farFLD.text.Trim(), out max))
         {
-            depthProcessing.max = max;
+            depthProcessing.Max = max;
         }
         else
-            farFLD.text = "" + depthProcessing.max;
+            farFLD.text = "" + depthProcessing.Max;
     }
 
     /// <summary>
@@ -249,8 +249,8 @@ public class CanvasController : MonoBehaviour
             colorBg.gameObject.SetActive(true);
 
             // Set shader variables
-            colorBg.material.SetFloat("_MinRange", depthProcessing.min);
-            colorBg.material.SetFloat("_MaxRange", depthProcessing.max);
+            colorBg.material.SetFloat("_MinRange", depthProcessing.Min);
+            colorBg.material.SetFloat("_MaxRange", depthProcessing.Max);
         }
         else
         {

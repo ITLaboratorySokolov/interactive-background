@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,9 @@ public class DepthProcessing : MonoBehaviour
     /// <summary> Image displaying the texture </summary>
     [SerializeField]
     RawImage bgImage;
+    /// <summary> Color image displaying the texture </summary>
+    [SerializeField]
+    RawImage bgColorImage;
     /// <summary> Incoming depth texture </summary>
     [SerializeField]
     Texture depthTexture { get; set; }
@@ -18,9 +22,9 @@ public class DepthProcessing : MonoBehaviour
     Texture2D resultTexture;
 
     /// <summary> Min depth (near plane) </summary>
-    internal float min;
+    float min;
     /// <summary> Max depth (far plane) </summary>
-    internal float max;
+    float max;
 
     [Header("Helper variables")]
     /// <summary> Array with color pixels </summary>
@@ -28,10 +32,15 @@ public class DepthProcessing : MonoBehaviour
     /// <summary> Texture used for transformations </summary>
     Texture2D tx;
     /// <summary> Depth scale </summary>
-    double depthScale = 0.001;
+    float depthScale = 0.001f;
     /// <summary> Is color coding on or not </summary>
     internal bool colorOn;
-    
+
+    public float Min { get => min;
+                       set { bgColorImage.material.SetFloat("_MinRange", value); min = value; } }
+    public float Max { get => max;
+                       set { bgColorImage.material.SetFloat("_MaxRange", value); max = value; } }
+
     /// <summary>
     /// Performed once upon start
     /// </summary>
@@ -62,8 +71,8 @@ public class DepthProcessing : MonoBehaviour
     private void ProcessDepthIm()
     {
         // If color coding active, then processed through shader
-        if (colorOn)
-            return;
+        //if (colorOn)
+        //    return;
 
         tx = ImageProcessor.TextureToTexture2D(depthTexture);
         resultTexture.Reinitialize(tx.width, tx.height); // = new Texture2D(tx.width, tx.height);
@@ -71,8 +80,8 @@ public class DepthProcessing : MonoBehaviour
         pixels = tx.GetPixels();
 
         // Min and max visible valuable
-        double cmpMax = max / (0xffff * depthScale);
-        double cmpMin = min / (0xffff * depthScale);
+        double cmpMax = Max / (0xffff * depthScale);
+        double cmpMin = Min / (0xffff * depthScale);
 
         // Go through all pixels
         for (int i = 0; i < pixels.Length; i++)
@@ -95,5 +104,23 @@ public class DepthProcessing : MonoBehaviour
         bgImage.texture = resultTexture;
     }
 
+    internal float DepthToMeters(float r)
+    {
+        return r * 0xffff * depthScale;
+    }
 
+    internal int IsInInterval(float r)
+    {
+        // Min and max visible valuable
+        double cmpMax = Max / (0xffff * depthScale);
+        double cmpMin = Min / (0xffff * depthScale);
+
+        Debug.Log(r);
+
+        // Is depth in visible field
+        if (r > cmpMin && r < cmpMax)
+            return 1;
+
+        return 0;
+    }
 }
