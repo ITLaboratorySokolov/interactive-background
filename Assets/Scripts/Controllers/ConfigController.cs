@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -34,6 +35,11 @@ public class ConfigController : MonoBehaviour
     [SerializeField()]
     TMP_InputField urlFLD;
 
+    [Header("ErrorIcons")]
+    [SerializeField()]
+    GameObject errorNM;
+    [SerializeField()]
+    GameObject errorURL;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +57,11 @@ public class ConfigController : MonoBehaviour
         DisplayValues();
     }
 
+    /// <summary>
+    /// Display config values
+    /// - url of server
+    /// - client name
+    /// </summary>
     private void DisplayValues()
     {
         nameFLD.text = clientName.Value;
@@ -107,17 +118,36 @@ public class ConfigController : MonoBehaviour
         url.Value = urlFLD.text.Trim();
         clientName.Value = nameFLD.text.Trim();
 
+        urlFLD.text = url.Value;
+        nameFLD.text = clientName.Value;
+
+        bool noClient = false;
+        if (clientName.Value == null || clientName.Value.Length == 0)
+            noClient = true;
+        errorNM.SetActive(noClient);
+
+        bool noUrl = false;
+        if (url.Value == null || url.Value.Length == 0)
+            noUrl = true;
+        errorURL.SetActive(noUrl);
+
+        if (noUrl || noClient)
+            return;
+
         SceneManager.LoadScene(nextScene);
+    }
+
+    /// <summary>
+    /// Filter username
+    /// - only a-zA-Z0-9_- allowed
+    /// </summary>
+    public void FilterName()
+    {
+        nameFLD.text = Regex.Replace(nameFLD.text, "[^a-zA-Z0-9_-]+", "", RegexOptions.Compiled);
     }
 
     public void OnExit()
     {
         Application.Quit();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -53,9 +53,6 @@ public class CanvasController : MonoBehaviour
     /// <summary> Depth processing script </summary>
     [SerializeField]
     DepthProcessing depthProcessing;
-    /// <summary> Session script </summary>
-    [SerializeField]
-    SignalRSessionWrapper session;
     /// <summary> Fly swatter script </summary>
     [SerializeField]
     Swatter flySwatter;
@@ -87,7 +84,6 @@ public class CanvasController : MonoBehaviour
 
     public void Start()
     {
-        SetConnection();
         ChangeScore(0);
     }
 
@@ -95,7 +91,7 @@ public class CanvasController : MonoBehaviour
     /// Display connection status
     /// </summary>
     /// <param name="connected"> Is connected to server </param>
-    public void SetConnection() // bool connected)
+    public void SetConnection(SignalRSessionWrapper session) // bool connected)
     {
         Debug.Log(session.State.ToString());
 
@@ -262,7 +258,6 @@ public class CanvasController : MonoBehaviour
     public void SwitchLanguages()
     {
         langController.SwapLanguage(score);
-        SetConnection();
     }
 
     public void ToggleExitWindow(bool val)

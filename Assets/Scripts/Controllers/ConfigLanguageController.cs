@@ -19,6 +19,8 @@ public class ConfigLanguageController : MonoBehaviour
     string inputPromptCZ = "Napište text...";
     string inputPromptEN = "Enter text...";
 
+    string noNameMSG = "No client name provided";
+
     string langCZ = "EN";
     string langEN = "CZ";
 
@@ -43,6 +45,7 @@ public class ConfigLanguageController : MonoBehaviour
     [SerializeField()]
     TMP_InputField urlFLD;
 
+    public string NoNameMSG { get => noNameMSG; set => noNameMSG = value; }
 
     public void SwapLanguage()
     {
@@ -66,6 +69,9 @@ public class ConfigLanguageController : MonoBehaviour
 
             nameFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptEN;
             urlFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptEN;
+
+            NoNameMSG = "No client name provided";
+
         }
         else if (lang == "CZ")
         {
@@ -77,6 +83,8 @@ public class ConfigLanguageController : MonoBehaviour
 
             nameFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptCZ;
             urlFLD.placeholder.GetComponent<TMP_Text>().text = inputPromptCZ;
+
+            NoNameMSG = "Prázdné uživatelské jméno";
         }
     }
 }

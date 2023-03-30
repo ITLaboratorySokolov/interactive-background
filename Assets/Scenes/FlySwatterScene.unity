@@ -2030,7 +2030,6 @@ MonoBehaviour:
   exitWindow: {fileID: 1514937173}
   connectionTXT: {fileID: 1013304076}
   depthProcessing: {fileID: 371485021}
-  session: {fileID: 1893513015}
   flySwatter: {fileID: 459560982}
   langController: {fileID: 775691680}
   colorBg: {fileID: 1277862671}
@@ -2668,6 +2667,19 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 775691679}
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
+        m_MethodName: SetConnection
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1893513015}
+          m_ObjectArgumentAssemblyTypeName: ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session.SignalRSessionWrapper,
+            zcu.technologylab.common.unity
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5376,6 +5388,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 775691679}
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
+        m_MethodName: SetConnection
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1893513015}
+          m_ObjectArgumentAssemblyTypeName: ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session.SignalRSessionWrapper,
+            zcu.technologylab.common.unity
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   actionEnd:
     m_PersistentCalls:
       m_Calls:
@@ -5463,10 +5488,11 @@ MonoBehaviour:
       - m_Target: {fileID: 775691679}
         m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
         m_MethodName: SetConnection
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1893513015}
+          m_ObjectArgumentAssemblyTypeName: ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session.SignalRSessionWrapper,
+            zcu.technologylab.common.unity
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5488,12 +5514,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 775691679}
-        m_TargetAssemblyTypeName: ServerConnection, zcu.technologylab.realsenseprojection
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
         m_MethodName: SetConnection
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 1893513015}
+          m_ObjectArgumentAssemblyTypeName: ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session.SignalRSessionWrapper,
+            zcu.technologylab.common.unity
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5515,12 +5542,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 775691679}
-        m_TargetAssemblyTypeName: ServerConnection, zcu.technologylab.realsenseprojection
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
         m_MethodName: SetConnection
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 1893513015}
+          m_ObjectArgumentAssemblyTypeName: ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session.SignalRSessionWrapper,
+            zcu.technologylab.common.unity
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5542,12 +5570,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 775691679}
-        m_TargetAssemblyTypeName: ServerConnection, zcu.technologylab.realsenseprojection
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
         m_MethodName: SetConnection
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 1893513015}
+          m_ObjectArgumentAssemblyTypeName: ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session.SignalRSessionWrapper,
+            zcu.technologylab.common.unity
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5569,12 +5598,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 775691679}
-        m_TargetAssemblyTypeName: ServerConnection, zcu.technologylab.realsenseprojection
+        m_TargetAssemblyTypeName: CanvasController, zcu.technologylab.realsenseprojection
         m_MethodName: SetConnection
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 1893513015}
+          m_ObjectArgumentAssemblyTypeName: ZCU.TechnologyLab.Common.Unity.Behaviours.Connections.Client.Session.SignalRSessionWrapper,
+            zcu.technologylab.common.unity
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

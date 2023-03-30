@@ -18,6 +18,7 @@ public class Swatter : MonoBehaviour
     /// <summary> Background image - processed depth </summary>
     [SerializeField]
     internal RawImage bgImage;
+    /// <summary> Debug image </summary>
     [SerializeField]
     internal RawImage ted;
 
@@ -59,9 +60,11 @@ public class Swatter : MonoBehaviour
         flyMinLoc = fly.transform.Find("min");
         flyMaxLoc = fly.transform.Find("max");
 
-        ted.texture = new Texture2D(1920, 1080);
     }
 
+    /// <summary>
+    /// Debug method - detecting the position of fly in texture
+    /// </summary>
     private void TestDetection()
     {
         float scale = backgroundGroup.transform.localScale.x;
@@ -107,12 +110,15 @@ public class Swatter : MonoBehaviour
             nT.Apply();
         }
 
-        Destroy(ted.texture);
+        if (ted.texture != null)
+            Destroy(ted.texture);
         ted.texture = nT;
     }
 
     /// <summary>
     /// Tests if the fly was hit
+    /// - detects the space occupied by the fly in the image
+    /// - if enough pixels covered, then the fly was hit
     /// </summary>
     public void TestHit()
     {
@@ -174,6 +180,12 @@ public class Swatter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Swat the fly
+    /// - play sounds
+    /// - add points
+    /// - move fly
+    /// </summary>
     private void SwatFly()
     {
         // Fly was hit more than one frame ago = it found an empty place to sit on
@@ -191,15 +203,21 @@ public class Swatter : MonoBehaviour
         flyController.MoveToNewLocation();
     }
 
+    /// <summary>
+    /// Count number of ocluded valid depth values
+    /// </summary>
+    /// <param name="rC"> Texture cutout to test </param>
+    /// <returns> Number of ocluded valid depth values </returns>
     private int TestRelevantCutout(Color[] rC)
     {
         int obstructed = 0;
 
-            for (int i = 0; i < rC.Length; i++)
-            {
-                if (rC[i].a > 0.1)
-                    obstructed++;
-            }
+        for (int i = 0; i < rC.Length; i++)
+        {
+            if (rC[i].a > 0.1)
+                obstructed++;
+        }
+
         return obstructed;
     }
 
