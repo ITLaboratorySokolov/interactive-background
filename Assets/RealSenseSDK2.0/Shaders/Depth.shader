@@ -68,7 +68,6 @@ Shader "Custom/Depth" {
 					return 0;
 				}
 
-				// Compute color coordinates
 				z = (z - _MinRange) / (_MaxRange - _MinRange);
 				if (z <= 0) {
 					discard;

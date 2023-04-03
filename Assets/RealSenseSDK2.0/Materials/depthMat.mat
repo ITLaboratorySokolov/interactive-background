@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: f8395e4599857704d889f76eb8a306b5, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - _COLORMAP_INFERNO
+  - _COLORMAP_PLASMA
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -31,7 +31,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Colormap: 2
+    - _Colormap: 1
     - _DepthScale: 0.001
     - _MaxRange: 0.6
     - _MinRange: 0

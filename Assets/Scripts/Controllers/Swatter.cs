@@ -125,8 +125,8 @@ public class Swatter : MonoBehaviour
         // Get textures
         rx = ImageProcessor.TextureToTexture2D(bgImage.texture);
 
-        int screenW = 1920; // Screen.width;
-        int screenH = 1080; // Screen.height;
+        int screenW = Screen.width;
+        int screenH = Screen.height;
 
         // SCALE
         float scale = backgroundGroup.transform.localScale.x;
@@ -139,17 +139,18 @@ public class Swatter : MonoBehaviour
 
         // this poisition into percentage according to new size of img
         Vector2 flyPos = (Vector2)((flyMinLoc.position + (flyMaxLoc.position - flyMinLoc.position) / 2)) + padSize;
-        Vector2 perc = new Vector2(flyPos.x / newSize.x, flyPos.y / newSize.y);
+        Vector2 posPerc = new Vector2(flyPos.x / newSize.x, flyPos.y / newSize.y);
 
         // PAN
         // -> pan also needs to be affected by scale
         Vector2 pan = (backgroundGroup.transform.localPosition * 1 / scale);
-        pan = new Vector2((pan.x / screenW) * rx.width, (pan.y / screenH) * rx.height);
+        Vector2 panPerc = new Vector2(pan.x / screenW, pan.y / screenH);
 
         // POSITION
         // -> now this percentage needs to be scaled back onto the texture
-        Vector2 flyPosInTXT = new Vector2(perc.x * rx.width, perc.y * rx.height);
-        Vector2 posInTex = -pan + flyPosInTXT;
+        Vector2 panInTXT = new Vector2(panPerc.x * rx.width, panPerc.y * rx.height);
+        Vector2 flyPosInTXT = new Vector2(posPerc.x * rx.width, posPerc.y * rx.height);
+        Vector2 posInTex = - panInTXT + flyPosInTXT;
 
         // -> size also affected by scale
         int width = (int)(((Mathf.Abs((flyMaxLoc.position - flyMinLoc.position).x) * 1/scale) / screenW) * rx.width);
@@ -158,8 +159,6 @@ public class Swatter : MonoBehaviour
         int startX = (int)posInTex.x - width / 2;
         int startY = (int)(rx.height - posInTex.y) - height / 2;
 
-        startX = Mathf.Clamp(startX, 0, rx.width);
-        startY = Mathf.Clamp(startY, 0, rx.height);
         width = Mathf.Clamp(width, 0, rx.width - startX);
         height = Mathf.Clamp(height, 0, rx.height - startY);
 
@@ -173,7 +172,7 @@ public class Swatter : MonoBehaviour
 
             // If more than 40% of fly covered -> hit
             double pVal = ((double)obstructed) / count;
-            if (pVal > 0.4)
+            if (pVal > 0.5)
                 SwatFly();
 
             Debug.Log(pVal);

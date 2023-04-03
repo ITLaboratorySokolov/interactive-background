@@ -80,24 +80,26 @@ public class DepthProcessing : MonoBehaviour
         pixels = tx.GetPixels();
 
         // Min and max visible valuable
-        double cmpMax = Max / (0xffff * depthScale);
-        double cmpMin = Min / (0xffff * depthScale);
+        float cmpMax = Max / (0xffff * depthScale);
+        float cmpMin = Min / (0xffff * depthScale);
 
+        float r = 0;
         // Go through all pixels
         for (int i = 0; i < pixels.Length; i++)
         {
             Color res = new Color(0, 0, 0, 0);
             Color d = pixels[i];
 
-            float r = d.r; //r is unscaled depth, normalized to [0-1]
-            // double distMeters = r * 0xffff * 0.001f; // to meters
-            
+            r = d.r; //r is unscaled depth, normalized to [0-1]
+                           // double distMeters = r * 0xffff * 0.001f; // to meters
+
             // Is depth in visible field
             if (r > cmpMin && r < cmpMax)
                 res = new Color(0, 0, 0, 1);
 
             pixels[i] = res;
         }
+
         resultTexture.SetPixels(pixels);
         resultTexture.Apply();
 

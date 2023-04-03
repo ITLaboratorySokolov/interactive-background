@@ -84,6 +84,15 @@ public class CanvasController : MonoBehaviour
 
     public void Start()
     {
+        int screenW = Screen.width;
+        int screenH = Screen.height;
+
+        RectTransform rtfC = colorBg.GetComponent<RectTransform>();
+        rtfC.sizeDelta = new Vector2(screenW, screenH);
+
+        RectTransform rtfS = shadowBg.GetComponent<RectTransform>();
+        rtfS.sizeDelta = new Vector2(screenW, screenH);
+
         ChangeScore(0);
     }
 
