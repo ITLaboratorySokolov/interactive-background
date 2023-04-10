@@ -5,8 +5,6 @@ using System.Threading;
 using UnityEngine;
 using ZCU.TechnologyLab.Common.Unity.Behaviours.AssetVariables;
 
-// TODO path to config file
-
 /// <summary>
 /// Script managing the set up of the application
 /// - reads config file
@@ -115,6 +113,9 @@ public class SetUpScript : MonoBehaviour
         canvas.ChangeZoom(settings.Zoom);
     }
 
+    /// <summary>
+    /// Reload config file
+    /// </summary>
     public void ResetSetUp()
     {
         Debug.Log("Reseting configuration");

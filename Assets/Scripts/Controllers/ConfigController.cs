@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -10,6 +7,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using ZCU.TechnologyLab.Common.Unity.Behaviours.AssetVariables;
 
+/// <summary>
+/// Class used to control Canvas in the menu scene
+/// </summary>
 public class ConfigController : MonoBehaviour
 {
     string pathToConfig;
@@ -113,6 +113,9 @@ public class ConfigController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// On Play button clicked
+    /// </summary>
     public void Play()
     {
         url.Value = urlFLD.text.Trim();
@@ -121,11 +124,13 @@ public class ConfigController : MonoBehaviour
         urlFLD.text = url.Value;
         nameFLD.text = clientName.Value;
 
+        // if no client text display error
         bool noClient = false;
         if (clientName.Value == null || clientName.Value.Length == 0)
             noClient = true;
         errorNM.SetActive(noClient);
 
+        // if no url text display error
         bool noUrl = false;
         if (url.Value == null || url.Value.Length == 0)
             noUrl = true;
@@ -146,6 +151,9 @@ public class ConfigController : MonoBehaviour
         nameFLD.text = Regex.Replace(nameFLD.text, "[^a-zA-Z0-9_-]+", "", RegexOptions.Compiled);
     }
 
+    /// <summary>
+    /// On exit button clicked
+    /// </summary>
     public void OnExit()
     {
         Application.Quit();

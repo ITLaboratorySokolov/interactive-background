@@ -39,10 +39,11 @@ public class CanvasController : MonoBehaviour
     /// <summary> Depth image </summary>
     [SerializeField]
     GameObject background;
-    int score;
+    /// <summary> Exit window </summary>
     [SerializeField]
     GameObject exitWindow;
-
+    /// <summary> Score </summary>
+    int score;
 
     [Header("Connection")]
     /// <summary> Text displaying connection status </summary>
@@ -56,6 +57,7 @@ public class CanvasController : MonoBehaviour
     /// <summary> Fly swatter script </summary>
     [SerializeField]
     Swatter flySwatter;
+    /// <summary> Language controller </summary>
     [SerializeField]
     LanguageController langController;
 
@@ -82,6 +84,9 @@ public class CanvasController : MonoBehaviour
         Application.Quit();
     }
 
+    /// <summary>
+    /// Start
+    /// </summary>
     public void Start()
     {
         int screenW = Screen.width;
@@ -264,11 +269,18 @@ public class CanvasController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Switch languages
+    /// </summary>
     public void SwitchLanguages()
     {
         langController.SwapLanguage(score);
     }
 
+    /// <summary>
+    /// Toggle exit window
+    /// </summary>
+    /// <param name="val"> Turn exit window on if true, off if false </param>
     public void ToggleExitWindow(bool val)
     {
         exitWindow.SetActive(val);

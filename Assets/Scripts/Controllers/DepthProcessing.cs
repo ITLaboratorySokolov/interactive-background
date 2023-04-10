@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -106,11 +104,21 @@ public class DepthProcessing : MonoBehaviour
         bgImage.texture = resultTexture;
     }
 
+    /// <summary>
+    /// Transform depth to meters
+    /// </summary>
+    /// <param name="r"></param>
+    /// <returns></returns>
     internal float DepthToMeters(float r)
     {
         return r * 0xffff * depthScale;
     }
 
+    /// <summary>
+    /// Is value r in interval between Min and Max
+    /// </summary>
+    /// <param name="r"></param>
+    /// <returns></returns>
     internal int IsInInterval(float r)
     {
         // Min and max visible valuable

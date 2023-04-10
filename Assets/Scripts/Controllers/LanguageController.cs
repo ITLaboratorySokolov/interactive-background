@@ -1,11 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using ZCU.TechnologyLab.Common.Connections.Client.Session;
 
+/// <summary>
+/// Class used for translating displayed labels
+/// Aplication has a Czech mode and an English mode
+/// </summary>
 public class LanguageController : MonoBehaviour
 {
     [Header("Text")]
@@ -154,6 +155,11 @@ public class LanguageController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Translate session state to string
+    /// </summary>
+    /// <param name="state"> Session state </param>
+    /// <returns></returns>
     internal string GetSessionStateString(SessionState state)
     {
         if (lang == "CZ")
@@ -173,6 +179,10 @@ public class LanguageController : MonoBehaviour
         return state.ToString();
     }
 
+    /// <summary>
+    /// Get "title" displayed next to the score
+    /// </summary>
+    /// <returns> Score title </returns>
     internal string GetPointsTitle()
     {
         if (lang == "CZ")

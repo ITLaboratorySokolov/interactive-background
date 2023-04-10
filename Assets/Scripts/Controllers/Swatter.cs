@@ -63,7 +63,8 @@ public class Swatter : MonoBehaviour
     }
 
     /// <summary>
-    /// Debug method - detecting the position of fly in texture
+    /// Detecting the position of fly in texture
+    /// [DEBUG METHOD]
     /// </summary>
     private void TestDetection()
     {
@@ -174,8 +175,6 @@ public class Swatter : MonoBehaviour
             double pVal = ((double)obstructed) / count;
             if (pVal > 0.5)
                 SwatFly();
-
-            Debug.Log(pVal);
         }
     }
 

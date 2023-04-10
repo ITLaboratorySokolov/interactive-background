@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Class that manages connection to server
 /// - connects to server
-/// - 4 times per second sends updates of the screen
+/// - once per second sends updates of the screen
 /// - disconnects from server
 /// </summary>
 public class ServerConnection : MonoBehaviour
@@ -29,14 +29,12 @@ public class ServerConnection : MonoBehaviour
     /// <summary> Session </summary>
     [SerializeField]
     SignalRSessionWrapper session; //SignalRSessionWrapper
-    /// <summary> Data session </summary>
-    // [SerializeField]
-    // RestDataClient dataSession; // RestDataClientWrapper 
     /// <summary> Countdown to next image send </summary>
     private double timeToSnapshot;
-
+    /// <summary> Server url </summary>
     [SerializeField]
     StringVariable url;
+    /// <summary> Client name </summary>
     [SerializeField]
     StringVariable clientName;
 
@@ -49,8 +47,6 @@ public class ServerConnection : MonoBehaviour
     UnityEvent actionEnd = new UnityEvent();
     /// <summary> Synchronization call has been finished </summary>
     bool syncCallDone;
-    /// <summary> Has client been disconnected from server </summary>
-    bool disconnected;
 
     [Header("Data objects")]
     /// <summary> Bitmap serializer </summary>
@@ -99,12 +95,18 @@ public class ServerConnection : MonoBehaviour
         Destroy(t);
     }
 
+    /// <summary>
+    /// On reconnecting
+    /// </summary>
     public void OnReconnecting()
     {
         Debug.Log("Trying to reconnect...");
         syncCallDone = false;
     }
 
+    /// <summary>
+    /// On reconnected to server
+    /// </summary>
     public void OnReconnected()
     {
         Debug.Log("Reconnected...");
@@ -127,7 +129,6 @@ public class ServerConnection : MonoBehaviour
     /// </summary>
     public void ResetConnection()
     {
-        disconnected = false;
         syncCallDone = false;
     }
 
@@ -184,6 +185,7 @@ public class ServerConnection : MonoBehaviour
     /// </summary>
     private async Task GetObjectAsync()
     {
+        // try to get object from server
         try
         {
             WorldObjectDto d = await dataConnection.GetWorldObjectAsync("FlyKiller_" + clientName.Value);
@@ -192,11 +194,31 @@ public class ServerConnection : MonoBehaviour
             wod.Scale = d.Scale;
             wod.Properties = d.Properties;
         }
+        // if not located on server - send it to server
         catch
         {
-            SendToServer(wod, false);
-            Debug.Log("Object " + wod.Name + " was sent to server database.");
+            StartCoroutine(SendForFirstTime());
         }
+    }
+
+    /// <summary>
+    /// Send world object to server for the first time
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SendForFirstTime()
+    {
+        yield return new WaitForEndOfFrame();
+
+        Texture2D t = ScreenCapture.CaptureScreenshotAsTexture();
+        var data = t.GetRawTextureData();
+        var properties = serializer.Serialize(t.width, t.height, "RGBA", data);
+
+        wod.Properties = properties;
+
+        SendToServer(wod, false);
+        Debug.Log("Object " + wod.Name + " was sent to server database.");
+
+        Destroy(t);
     }
 
     /// <summary>

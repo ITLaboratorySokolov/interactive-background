@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Variable with values for filter settings
+/// </summary>
 [CreateAssetMenu(fileName = "Variable", menuName = "TechnologyLab.Common/Variables/FilterSetting")]
 public class FilterSettingVariable : ScriptableObject
 {

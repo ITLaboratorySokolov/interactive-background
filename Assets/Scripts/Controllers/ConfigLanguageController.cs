@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class used for translating displayed labels in title scene
+/// Aplication has a Czech mode and an English mode
+/// </summary>
 public class ConfigLanguageController : MonoBehaviour
 {
-
+    [Header("String")]
     string urlCZ = "URL serveru:";
     string urlEN = "Server URL:";
 
@@ -20,12 +22,12 @@ public class ConfigLanguageController : MonoBehaviour
     string inputPromptEN = "Enter text...";
 
     string noNameMSG = "No client name provided";
+    public string NoNameMSG { get => noNameMSG; set => noNameMSG = value; }
 
     string langCZ = "EN";
     string langEN = "CZ";
 
     string lang = "EN";
-
 
     [Header("Text")]
     [SerializeField()]
@@ -45,8 +47,9 @@ public class ConfigLanguageController : MonoBehaviour
     [SerializeField()]
     TMP_InputField urlFLD;
 
-    public string NoNameMSG { get => noNameMSG; set => noNameMSG = value; }
-
+    /// <summary>
+    /// Swap language
+    /// </summary>
     public void SwapLanguage()
     {
         if (lang == "EN")
@@ -57,6 +60,9 @@ public class ConfigLanguageController : MonoBehaviour
         SwapLabels();
     }
 
+    /// <summary>
+    /// Swap displayed labels
+    /// </summary>
     public void SwapLabels()
     {
         if (lang == "EN")
