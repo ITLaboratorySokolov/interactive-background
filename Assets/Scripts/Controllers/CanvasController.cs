@@ -98,6 +98,8 @@ public class CanvasController : MonoBehaviour
         RectTransform rtfS = shadowBg.GetComponent<RectTransform>();
         rtfS.sizeDelta = new Vector2(screenW, screenH);
 
+        zoom = 1;
+
         ChangeScore(0);
     }
 
@@ -138,6 +140,12 @@ public class CanvasController : MonoBehaviour
         float zoom = -1;
         if (float.TryParse(zoomFLD.text.Trim(), out zoom))
         {
+            if (zoom < 0)
+            {
+                zoomFLD.text = $"{this.zoom}";
+                return;
+            }
+
             background.transform.localScale = new Vector3(Mathf.Sign(background.transform.localScale.x) * zoom, Mathf.Sign(background.transform.localScale.y) * zoom, Mathf.Sign(background.transform.localScale.z) * zoom);
             this.zoom = zoom;
         }
@@ -152,7 +160,12 @@ public class CanvasController : MonoBehaviour
     {
         float min = -1;
         if (float.TryParse(nearFLD.text.Trim(), out min))
-            depthProcessing.Min = min;
+        {
+            if (min >= 0)
+                depthProcessing.Min = min;
+            else
+                nearFLD.text = "" + depthProcessing.Min;
+        }
         else
             nearFLD.text = "" + depthProcessing.Min;
     }
@@ -165,7 +178,10 @@ public class CanvasController : MonoBehaviour
         float max = -1;
         if (float.TryParse(farFLD.text.Trim(), out max))
         {
-            depthProcessing.Max = max;
+            if (max >= 0)
+                depthProcessing.Max = max;
+            else
+               farFLD.text = "" + depthProcessing.Max;
         }
         else
             farFLD.text = "" + depthProcessing.Max;
