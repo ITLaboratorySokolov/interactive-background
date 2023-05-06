@@ -51,6 +51,8 @@ public class Swatter : MonoBehaviour
     [Header("Helper variables")]
     /// <summary> Texture2D used for manipulation </summary>
     Texture2D rx;
+    /// <summary> Is background image flipped horizontally </summary>
+    internal bool invertedX;
 
     /// <summary>
     /// Performes once upon start
@@ -157,8 +159,12 @@ public class Swatter : MonoBehaviour
         int width = (int)(((Mathf.Abs((flyMaxLoc.position - flyMinLoc.position).x) * 1/scale) / screenW) * rx.width);
         int height = (int)(((Mathf.Abs((flyMaxLoc.position - flyMinLoc.position).y) * 1/scale) / screenH) * rx.height);
 
+        if (invertedX)
+            posInTex.x = rx.width - posInTex.x;
+        posInTex.y = rx.height - posInTex.y;
+
         int startX = (int)posInTex.x - width / 2;
-        int startY = (int)(rx.height - posInTex.y) - height / 2;
+        int startY = (int)posInTex.y - height / 2;
 
         width = Mathf.Clamp(width, 0, rx.width - startX);
         height = Mathf.Clamp(height, 0, rx.height - startY);

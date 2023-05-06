@@ -286,6 +286,20 @@ public class CanvasController : MonoBehaviour
     }
 
     /// <summary>
+    /// Flip background image horizontally
+    /// </summary>
+    public void HorizontalFlip()
+    {
+        Vector3 shadowScale = shadowBg.gameObject.transform.localScale;
+        shadowBg.gameObject.transform.localScale = new Vector3(-shadowScale.x, shadowScale.y, shadowScale.z);
+
+        Vector3 colorScale = colorBg.gameObject.transform.localScale;
+        colorBg.gameObject.transform.localScale = new Vector3(-colorScale.x, colorScale.y, colorScale.z);
+
+        flySwatter.invertedX = !flySwatter.invertedX;
+    }
+
+    /// <summary>
     /// Switch languages
     /// </summary>
     public void SwitchLanguages()
