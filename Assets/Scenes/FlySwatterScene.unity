@@ -2267,6 +2267,7 @@ MonoBehaviour:
   depthColorTitleTXT: {fileID: 1183587745}
   colorsTXT: {fileID: 668926234}
   quitTXT: {fileID: 1724428865}
+  horizontalFlipTXT: {fileID: 177780310}
   langBT: {fileID: 1162517935}
   yesBT: {fileID: 402770867}
   noBT: {fileID: 1171166218}
@@ -3598,7 +3599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.60827637, y: -416}
+  m_AnchoredPosition: {x: -0.60827637, y: -463}
   m_SizeDelta: {x: 159.3916, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1248306560

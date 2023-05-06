@@ -28,6 +28,8 @@ public class LanguageController : MonoBehaviour
     TMP_Text colorsTXT;
     [SerializeField()]
     TMP_Text quitTXT;
+    [SerializeField()]
+    TMP_Text horizontalFlipTXT;
 
     [Header("Buttons")]
     [SerializeField()]
@@ -69,6 +71,8 @@ public class LanguageController : MonoBehaviour
     string colorTEN = "Depth colors";
     string colorCZ = "Zobrazit barvy";
     string colorEN = "Display colors";
+    string horizontalCZ = "Zrcadlit";
+    string horizontalEN = "Horizontal flip";
 
     string inputPromptCZ = "Vložte èíslo...";
     string inputPromptEN = "Enter number...";
@@ -119,6 +123,7 @@ public class LanguageController : MonoBehaviour
             depthColorTitleTXT.text = colorTCZ;
             colorsTXT.text = colorCZ;
             quitTXT.text = quitCZ;
+            horizontalFlipTXT.text = horizontalCZ;
 
             langBT.GetComponentInChildren<TMP_Text>().text = langCZ;
 
@@ -142,6 +147,7 @@ public class LanguageController : MonoBehaviour
             depthColorTitleTXT.text = colorTEN;
             colorsTXT.text = colorEN;
             quitTXT.text = quitEN;
+            horizontalFlipTXT.text = horizontalEN;
 
             langBT.GetComponentInChildren<TMP_Text>().text = langEN;
 
