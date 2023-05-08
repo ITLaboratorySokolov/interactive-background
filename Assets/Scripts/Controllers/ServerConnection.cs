@@ -258,9 +258,11 @@ public class ServerConnection : MonoBehaviour
     /// <param name="worldImage"> Transfer object </param>
     private async void SendToServer(WorldObjectDto worldImage, bool update)
     {
+        bool contains = await dataConnection.ContainsWorldObjectAsync(worldImage.Name);
+
         try
         {
-            if (update)
+            if (contains)
             {
                 WorldObjectPropertiesDto props = new WorldObjectPropertiesDto() { Properties = worldImage.Properties };
                 await dataConnection.UpdateWorldObjectPropertiesAsync(worldImage.Name, props);
@@ -275,6 +277,29 @@ public class ServerConnection : MonoBehaviour
             Debug.LogError("Unable to send to server:");
             Debug.Log(e.Message);
         }
+
+        /*
+        try
+        {
+            if (update)
+            {
+                WorldObjectPropertiesDto props = new WorldObjectPropertiesDto() { Properties = worldImage.Properties };
+                await dataConnection.UpdateWorldObjectPropertiesAsync(worldImage.Name, props);
+            }
+            else
+            {
+                await dataConnection.AddWorldObjectAsync(worldImage);
+            }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Unable to send to server:");
+                Debug.Log(e.Message);
+
+                if (update)
+                    await dataConnection.AddWorldObjectAsync(worldImage);
+        }
+        */
     }
 
     /// <summary>
