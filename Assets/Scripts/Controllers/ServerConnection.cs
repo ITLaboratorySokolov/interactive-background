@@ -63,11 +63,14 @@ public class ServerConnection : MonoBehaviour
 
     /// <summary>
     /// Performes once upon start
+    /// - setting connection
     /// - creates instances of needed local classes
     /// - calls action actionStart
     /// </summary>
     private void Start()
     {
+        StartCoroutine(InitAndStartSessionCoroutine());
+
         serializer = new RawBitmapSerializer();
         connection = new ServerSessionAdapter(session);
 
@@ -93,6 +96,28 @@ public class ServerConnection : MonoBehaviour
         wod.Properties = properties;
 
         Destroy(t);
+
+        Debug.Log("Finished start");
+    }
+
+    /// <summary>
+    /// Starting coroutine
+    /// - setting connection
+    /// - creates instances of needed local classes
+    /// - calls action actionStart
+    /// </summary>
+    /// <returns> IEnumerator </returns>
+    IEnumerator InitAndStartSessionCoroutine()
+    {
+        var task =  session.InitializeAsync();
+
+        while (!task.IsCompleted)
+            yield return null;
+
+        task = session.StartSessionAsync();
+
+        while (!task.IsCompleted)
+            yield return null;
     }
 
     /// <summary>
@@ -110,7 +135,6 @@ public class ServerConnection : MonoBehaviour
     public void OnReconnected()
     {
         Debug.Log("Reconnected...");
-
         StartCoroutine(SyncCall());
     }
 
@@ -143,14 +167,18 @@ public class ServerConnection : MonoBehaviour
     }
 
     /// <summary>
-    /// Restarting procedure
-    /// - creates a minimum 5s delay
+    /// Restarting coroutine
+    /// - creates a minimum 5s delay between attempts
+    /// - tries to start the session
     /// </summary>
-    /// <returns></returns>
     IEnumerator RestartConnection()
     {
+        Debug.Log("Restarting attempt");
         yield return new WaitForSeconds(5);
         actionStart.Invoke();
+        var task = session.StartSessionAsync();
+        while (!task.IsCompleted)
+            yield return null;
     }
 
     /// <summary>
@@ -277,29 +305,6 @@ public class ServerConnection : MonoBehaviour
             Debug.LogError("Unable to send to server:");
             Debug.Log(e.Message);
         }
-
-        /*
-        try
-        {
-            if (update)
-            {
-                WorldObjectPropertiesDto props = new WorldObjectPropertiesDto() { Properties = worldImage.Properties };
-                await dataConnection.UpdateWorldObjectPropertiesAsync(worldImage.Name, props);
-            }
-            else
-            {
-                await dataConnection.AddWorldObjectAsync(worldImage);
-            }
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("Unable to send to server:");
-                Debug.Log(e.Message);
-
-                if (update)
-                    await dataConnection.AddWorldObjectAsync(worldImage);
-        }
-        */
     }
 
     /// <summary>

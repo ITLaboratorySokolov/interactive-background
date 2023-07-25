@@ -17,7 +17,7 @@ namespace ZCU.TechnologyLab.Common.Unity.Behaviours.WorldObjects
     {
         [Header("Networking")]
         [SerializeField]
-        [HelpBox("Server Data Connection and Server Session Connection have to be assigned.", HelpBoxAttribute.MessageType.Warning, true)]
+        [HelpBox("Server Data Connection and Server Session Connection have to be assigned.", HelpBoxAttribute.MessageType.Warning)]
         [FormerlySerializedAs("serverDataAdapter")]
         private ServerDataAdapterWrapper _serverDataAdapter;
 

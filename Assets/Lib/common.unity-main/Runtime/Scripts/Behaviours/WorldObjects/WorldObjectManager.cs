@@ -29,18 +29,18 @@ namespace ZCU.TechnologyLab.Common.Unity.Behaviours.WorldObjects
     public class WorldObjectManager : MonoBehaviour
     {
         [Header("Networking")]
-        [HelpBox("Server Data Connection has to be assigned.", HelpBoxAttribute.MessageType.Warning, true)]
+        [HelpBox("Server Data Connection has to be assigned.", HelpBoxAttribute.MessageType.Warning)]
         [SerializeField]
         [FormerlySerializedAs("serverDataAdapter")]
         private ServerDataAdapterWrapper _serverDataAdapter;
 
         [Header("Storage")]
-        [HelpBox("World Object Storage has to be assigned.", HelpBoxAttribute.MessageType.Warning, true)]
+        [HelpBox("World Object Storage has to be assigned.", HelpBoxAttribute.MessageType.Warning)]
         [SerializeField]
         [FormerlySerializedAs("worldObjectStorage")]
         private WorldObjectStorageWrapper _worldObjectStorage;
 
-        [HelpBox("Prefab Storage has to be assigned.", HelpBoxAttribute.MessageType.Warning, true)]
+        [HelpBox("Prefab Storage has to be assigned.", HelpBoxAttribute.MessageType.Warning)]
         [SerializeField]
         [FormerlySerializedAs("prefabStorage")]
         private PrefabStorageWrapper _prefabStorage;
